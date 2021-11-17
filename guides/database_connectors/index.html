@@ -1073,6 +1073,8 @@ categories.</p>
 <li>PostgreSQL</li>
 <li>MongoDB</li>
 <li>MySQL</li>
+<li>Amazon Redshift</li>
+<li>Snowflake</li>
 </ul>
 <p>Other platforms will be added in future releases.</p>
 <h2 id="creating-a-connectionconfig-object">Creating a ConnectionConfig object</h2>
@@ -1085,7 +1087,7 @@ categories.</p>
 <p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to kebab-case (slugified), is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application-postgresql-db</code>.</p>
 </li>
 <li>
-<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, and <code>mysql</code>.</p>
+<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>redshift</code>, and <code>snowflake</code>.</p>
 </li>
 <li>
 <p><code>access</code> sets the connection's permissions, one of "read" (Fidesops may only read from your database) or "write" (Fidesops can read from and write to your database).</p>

@@ -271,6 +271,33 @@
             "in": "query"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Unvalidated Secrets",
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/MongoDBDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/PostgreSQLDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MySQLDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RedshiftDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SnowflakeDocsSchema"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2163,11 +2190,15 @@
           "content": {
             "application/json": {
               "schema": {
-                "title": "Storage Secrets",
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                }
+                "title": "Unvalidated Storage Secrets",
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/StorageSecretsS3Docs"
+                  },
+                  {
+                    "$ref": "#/components/schemas/StorageSecretsOnetrustDocs"
+                  }
+                ]
               }
             }
           },
@@ -2729,7 +2760,9 @@
           "postgres",
           "mongodb",
           "mysql",
-          "https"
+          "https",
+          "redshift",
+          "snowflake"
         ],
         "description": "Supported types to which we can connect fides-ops."
       },
@@ -3331,6 +3364,70 @@
         },
         "description": "The description model for a masking strategy"
       },
+      "MongoDBDocsSchema": {
+        "title": "MongoDBDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          },
+          "defaultauthdb": {
+            "title": "Defaultauthdb",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Mongo DB Secrets Schema for API docs"
+      },
+      "MySQLDocsSchema": {
+        "title": "MySQLDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "dbname": {
+            "title": "Dbname",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "description": "MySQL Secrets Schema for API Docs"
+      },
       "Page_ConnectionConfigurationResponse_": {
         "title": "Page[ConnectionConfigurationResponse]",
         "required": [
@@ -3628,6 +3725,38 @@
         },
         "description": "A holistic view of a Policy record, including all foreign keys by default."
       },
+      "PostgreSQLDocsSchema": {
+        "title": "PostgreSQLDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "dbname": {
+            "title": "Dbname",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Postgres Secrets Schema for API Docs"
+      },
       "PrivacyRequestCreate": {
         "title": "PrivacyRequestCreate",
         "required": [
@@ -3780,6 +3909,38 @@
         },
         "description": "The schema for the more detailed PrivacyRequest response containing detailed execution logs."
       },
+      "RedshiftDocsSchema": {
+        "title": "RedshiftDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          },
+          "database": {
+            "title": "Database",
+            "type": "string"
+          },
+          "user": {
+            "title": "User",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Redshift Secrets Schema for API Docs"
+      },
       "ResponseFormat": {
         "title": "ResponseFormat",
         "enum": [
@@ -3865,6 +4026,46 @@
           }
         },
         "description": "An external representation of a Rule's target DataCategory within a Fidesops Policy"
+      },
+      "SnowflakeDocsSchema": {
+        "title": "SnowflakeDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "user_login_name": {
+            "title": "User Login Name",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "account_identifier": {
+            "title": "Account Identifier",
+            "type": "string"
+          },
+          "database_name": {
+            "title": "Database Name",
+            "type": "string"
+          },
+          "schema_name": {
+            "title": "Schema Name",
+            "type": "string"
+          },
+          "warehouse_name": {
+            "title": "Warehouse Name",
+            "type": "string"
+          },
+          "role_name": {
+            "title": "Role Name",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Snowflake Secrets Schema for API Docs"
       },
       "StorageDestination": {
         "title": "StorageDestination",
@@ -4010,6 +4211,51 @@
         },
         "additionalProperties": false,
         "description": "The details required to represent an AWS S3 storage bucket."
+      },
+      "StorageSecretsOnetrustDocs": {
+        "title": "StorageSecretsOnetrustDocs",
+        "required": [
+          "onetrust_hostname",
+          "onetrust_client_id",
+          "onetrust_client_secret"
+        ],
+        "type": "object",
+        "properties": {
+          "onetrust_hostname": {
+            "title": "Onetrust Hostname",
+            "type": "string"
+          },
+          "onetrust_client_id": {
+            "title": "Onetrust Client Id",
+            "type": "string"
+          },
+          "onetrust_client_secret": {
+            "title": "Onetrust Client Secret",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The secrets required to send results to Onetrust, for documentation"
+      },
+      "StorageSecretsS3Docs": {
+        "title": "StorageSecretsS3Docs",
+        "required": [
+          "aws_access_key_id",
+          "aws_secret_access_key"
+        ],
+        "type": "object",
+        "properties": {
+          "aws_access_key_id": {
+            "title": "Aws Access Key Id",
+            "type": "string"
+          },
+          "aws_secret_access_key": {
+            "title": "Aws Secret Access Key",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "The secrets required to connect to S3, for documentation"
       },
       "StorageType": {
         "title": "StorageType",
