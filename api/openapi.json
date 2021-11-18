@@ -3243,6 +3243,10 @@
             "title": "Primary Key",
             "type": "boolean"
           },
+          "data_type": {
+            "title": "Data Type",
+            "type": "string"
+          },
           "length": {
             "title": "Length",
             "type": "integer"
@@ -3798,6 +3802,10 @@
           },
           "policy_key": {
             "title": "Policy Key",
+            "type": "string"
+          },
+          "encryption_key": {
+            "title": "Encryption Key",
             "type": "string"
           }
         },

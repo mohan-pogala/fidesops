@@ -570,6 +570,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    Encryption
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decrypting-your-access-request-results" class="md-nav__link">
+    Decrypting your access request results
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -930,6 +944,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#encryption" class="md-nav__link">
+    Encryption
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decrypting-your-access-request-results" class="md-nav__link">
+    Decrypting your access request results
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -951,6 +979,8 @@
 <li>How can I execute a Privacy Request?</li>
 <li>How do I monitor Privacy Requests as they execute?</li>
 <li>How can I integrate the Privacy Request flow into my existing support tools?</li>
+<li>Specifying encryption of access request results </li>
+<li>Decrypting access request results</li>
 </ul>
 <p>Take me directly to <a href="/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs</a>.</p>
 <h2 id="what-is-a-privacy-request">What is a Privacy Request?</h2>
@@ -1001,6 +1031,80 @@
 <li>Generic API interoperability: Third party services can be authorized by creating additional OAuth clients. Tokens obtained from OAuth clients can be managed and revoked at any time. Pleae see <a href="../oauth/">How-To: Authenticate with OAuth</a> for more information.</li>
 <li>OneTrust: Fidesops can be configured to act as (or as part of) the fulfilment layer in OneTrust's Data Subject Request automation flow. Please see <a href="../onetrust/">How-To: Configure OneTrust Integration</a> for more information.</li>
 </ul>
+<h2 id="encryption">Encryption</h2>
+<p>You can optionally encrypt your access request results by supplying an <code>encryption_key</code> string in the request body:
+We will use the supplied encryption_key to encrypt the contents of your JSON and CSV results using an AES-256 algorithm in GCM mode.
+When converted to bytes, your encryption_key must be 16 bytes long.  The data we return will have the nonce concatenated 
+to the encrypted data.</p>
+<p>POST /privacy-request
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;requested_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-08-30T16:09:37.359Z&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;identities&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@example.com&quot;</span><span class="p">}],</span>
+        <span class="nt">&quot;policy_key&quot;</span><span class="p">:</span> <span class="s2">&quot;my_access_policy&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;encryption_key&quot;</span><span class="p">:</span> <span class="s2">&quot;test--encryption&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</td></tr></table></p>
+<h2 id="decrypting-your-access-request-results">Decrypting your access request results</h2>
+<p>If you specified an encryption key, we encrypted the access result data using your key and an internally-generated <code>nonce</code> with an AES 
+256 algorithm in GCM mode.  The return value is a 12-byte nonce plus the encrypted data that is all b64encoded together.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>+------------------+-------------------+
+| nonce (12 bytes) | message (N bytes) |
++------------------+-------------------+
+</code></pre></div>
+</td></tr></table>
+<p>For example, pretend you specified an encryption key of <code>test--encryption</code>, and the resulting data was uploaded to
+S3 in a JSON file: <code>GPUiK9tq5k/HfBnSN+J+OvLXZ+GCisapdI2KGP7A1WK+dz1XHef+hWb/SjszdqdNVGvziyY6GF5KIrvrXgxjZuaAvgU='</code>.  You will
+need to implement something similar to the snippet below on your end to decrypt:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives.ciphers.aead</span> <span class="kn">import</span> <span class="n">AESGCM</span>
+
+<span class="n">encrypted</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;GPUiK9tq5k/HfBnSN+J+OvLXZ+GCisapdI2KGP7A1WK+dz1XHef+hWb/SjszdqdNVGvziyY6GF5KIrvrXgxjZuaAvgU=&quot;</span> 
+<span class="n">encryption_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;test--encryption&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>  <span class="c1"># Only you know this</span>
+
+<span class="n">encrypted_combined</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span>
+<span class="n">nonce</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">encrypted_combined</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">encrypted_message</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">encrypted_combined</span><span class="p">[</span><span class="mi">12</span><span class="p">:]</span>
+<span class="n">gcm</span> <span class="o">=</span> <span class="n">AESGCM</span><span class="p">(</span><span class="n">encryption_key</span><span class="p">)</span>
+
+<span class="n">decrypted_bytes</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">nonce</span><span class="p">,</span> <span class="n">encrypted_message</span><span class="p">,</span> <span class="n">nonce</span><span class="p">)</span>
+<span class="n">decrypted_str</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">decrypted_bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">decrypted_str</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s2">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;test street&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;NY&quot;</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>If CSV data was uploaded, each CSV in the zipfile was encrypted using a different nonce so you'll need to follow
+a similar process for each csv file.</p>
                 
               
               
