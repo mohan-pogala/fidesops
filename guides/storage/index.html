@@ -914,7 +914,7 @@
 <li>How to test your storage destinations</li>
 <li>How to extend this module to create a new, custom storage destination type</li>
 </ul>
-<p>Take me directly to <a href="/api#operations-Storage-upload_data_api_v1_storage__request_id__post/">API docs</a> (you'll need to <code>make server</code> first)</p>
+<p>Take me directly to <a href="/fidesops/api#operations-Storage-upload_data_api_v1_storage__request_id__post">API docs</a> </p>
 <h2 id="overview">Overview</h2>
 <p>Access requests requests will produce a data package upon completion. This data will need to be uploaded to a storage destination (e.g. an S3 bucket). </p>
 <p>Fidesops never stores privacy request results locally, so you’ll need to configure at least one storage destination if you wish to process Access requests.</p>
@@ -929,7 +929,7 @@
 <li><strong>OneTrust</strong> - A OneTrust storage destination should be configured if you wish to use Fidesops to process requests from an existing OneTrust integration. Read more about how our OneTrust integration works <a href="../onetrust/">here</a></li>
 </ul>
 <h2 id="configuration">Configuration</h2>
-<p>Let's get started. To create a new StorageConfig, use the following endpoint (<a href="/api#operations-Storage-put_config_api_v1_storage_config_put/">API docs here</a>):</p>
+<p>Let's get started. To create a new StorageConfig, use the following endpoint (<a href="/fidesops/api#operations-Storage-put_config_api_v1_storage_config_put">API docs here</a>):</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1033,7 +1033,7 @@ Params:</p>
 <h2 id="authentication">Authentication</h2>
 <p>Next, you'll need to authenticate secrets with the specific storage destination.</p>
 <p>Authentication is not needed for the <code>local</code> destination type.</p>
-<p>Use the <code>storage_key</code> obtained from above in the following endpoint (<a href="/api#operations-Storage-put_config_secrets_api_v1_storage_config__config_key__secret_put">API docs here</a>): </p>
+<p>Use the <code>storage_key</code> obtained from above in the following endpoint (<a href="/fidesops/api#operations-Storage-put_config_secrets_api_v1_storage_config__config_key__secret_put">API docs here</a>): </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1070,7 +1070,7 @@ Params:</p>
 <h2 id="testing">Testing</h2>
 <p>To test that your storage destination works correctly, you may hit the upload endpoint directly, where <code>request_id</code> in the path is an arbitrary string.</p>
 <p>Keep in mind that OneTrust destinations will need to be tested end-to-end, using the OneTrust interface to approve a test privacy request. </p>
-<p>To upload data to a storage destination of choice (<a href="/api#operations-Storage-upload_data_api_v1_storage__request_id__post/">api docs here</a>):</p>
+<p>To upload data to a storage destination of choice (<a href="/fidesops/api#operations-Storage-upload_data_api_v1_storage__request_id__post">api docs here</a>):</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>

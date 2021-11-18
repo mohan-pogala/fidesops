@@ -912,7 +912,7 @@
 <span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_access_token</span><span class="p">(</span><span class="n">client_id</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Authorize with fidesops via OAuth. Returns a valid access token if successful.</span>
-<span class="sd">    See http://localhost:8000/docs#/OAuth/acquire_access_token_api_v1_oauth_token_post</span>
+<span class="sd">    See http://localhost:8000/api#operations-OAuth-acquire_access_token_api_v1_oauth_token_post</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;client_credentials&quot;</span><span class="p">,</span>
@@ -976,7 +976,7 @@ Oauth headers at this point:</p>
 <span class="k">def</span> <span class="nf">create_oauth_client</span><span class="p">(</span><span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a new OAuth client in fidesops.Returns the response JSON if successful.</span>
-<span class="sd">    See http://localhost:8000/docs#/OAuth/acquire_access_token_api_v1_oauth_token_post</span>
+<span class="sd">    See http://localhost:8000/api#operations-OAuth-acquire_access_token_api_v1_oauth_token_post</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Here we&#39;re giving the client all the scopes, but in a production app, just give the client the scopes they actually need.</span>

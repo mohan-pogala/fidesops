@@ -1081,7 +1081,7 @@ value you'd like pseudonymized. This endpoint is also useful for getting a feel 
 </code></pre></div>
 </td></tr></table>
 <p>The email has been replaced with a random string of 20 characters, while still preserving that the value is an email.</p>
-<p>See <a href="http://0.0.0.0:8080/docs#/Masking/mask_value_api_v1_masking_mask_put">Masking values API docs</a> on how to use fidesops to as a masking service .</p>
+<p>See <a href="/fidesops/api#operations-tag-Masking">Masking values API docs</a> on how to use fidesops to as a masking service .</p>
 <h2 id="supported-masking-strategies">Supported Masking Strategies</h2>
 <h3 id="supported-by-fidesops-policies">Supported by fidesops policies</h3>
 <ul>
@@ -1133,7 +1133,7 @@ that captures that strategy for the Policy.</p>
 </td></tr></table>
 <p>See the <a href="../policies/">Policy guide</a> for more detailed instructions on creating Policies and Rules.</p>
 <h2 id="getting-masking-options">Getting masking options</h2>
-<p>Issue a GET request to <a href="http://0.0.0.0:8080/docs#/Masking/list_masking_strategies_api_v1_masking_strategy_get"><code>/api/v1/masking/strategy</code></a> to preview the different masking
+<p>Issue a GET request to <a href="/fidesops/api#operations-Masking-list_masking_strategies_api_v1_masking_strategy_get"><code>/api/v1/masking/strategy</code></a> to preview the different masking
 strategies available, along with their configuration options. </p>
 <h2 id="extensibility">Extensibility</h2>
 <p>In fidesops, masking strategies are all built on top of an abstract base class - <code>MaskingStrategy</code>. 
@@ -1300,7 +1300,7 @@ pasted below:</p>
 <span class="kn">from</span> <span class="nn">fidesops.service.masking.strategy.masking_strategy_string_rewrite</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">StringRewriteMaskingStrategy</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">fidesops.common_exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">SolonValidationError</span>
+<span class="kn">from</span> <span class="nn">fidesops.common_exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">FidesopsValidationError</span>
 
 <span class="kn">from</span> <span class="nn">fidesops.schemas.masking.masking_configuration</span> <span class="kn">import</span> <span class="n">FormatPreservationConfig</span>
 
@@ -1333,7 +1333,7 @@ pasted below:</p>
         <span class="n">strategy_config</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">get_configuration_model</span><span class="p">()(</span><span class="o">**</span><span class="n">configuration</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">strategy</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">strategy_config</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SolonValidationError</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">FidesopsValidationError</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 <p>The <code>SupportedMaskingStrategy</code> enum maps the strategy name to the masking strategy implementation class. </p>

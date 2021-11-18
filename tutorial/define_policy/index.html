@@ -950,7 +950,7 @@ convenience (handy if you'll be running this script multiple times).</p>
 <span class="k">def</span> <span class="nf">create_policy</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a request policy in fidesops with the given key.Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/docs#/Policy/create_or_update_policies_api_v1_policy_put</span>
+<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_policies_api_v1_policy_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">policy_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -975,7 +975,7 @@ convenience (handy if you'll be running this script multiple times).</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a Policy Rule to return matched data in an access request to the given Storage destination.</span>
 <span class="sd">    Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/docs#/Policy/create_or_update_rules_api_v1_policy__policy_key__rule_put</span>
+<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_policies_api_v1_policy_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">rule_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -1021,7 +1021,7 @@ convenience (handy if you'll be running this script multiple times).</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a Policy Rule Target that matches the given data_category.</span>
 <span class="sd">    Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/docs#/Policy/create_or_update_rule_targets_api_v1_policy__policy_key__rule__rule_key__target_put</span>
+<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_rules_api_v1_policy__policy_key__rule_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">target_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -1054,7 +1054,7 @@ convenience (handy if you'll be running this script multiple times).</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes a Policy rule with the given key.</span>
 <span class="sd">    Returns the response JSON.</span>
-<span class="sd">    See http://localhost:8000/docs#/Policy/delete_rule_api_v1_policy__policy_key__rule__rule_key__delete</span>
+<span class="sd">    See http://localhost:8000/api#operations-Policy-delete_rule_api_v1_policy__policy_key__rule__rule_key__delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/policy/</span><span class="si">{</span><span class="n">policy_key</span><span class="si">}</span><span class="s2">/rule/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>

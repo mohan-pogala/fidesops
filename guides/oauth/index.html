@@ -1005,7 +1005,7 @@ Content-Type: application/json
 <p>For this call, we have to populate the <code>Authorization</code> header. Notice that the header's value is formed  as <code>Bearer &lt;token&gt;</code>. We also have to declare the request's <code>Content-Type</code> to be <code>application/json</code>.</p>
 <h3 id="authorize-your-client-with-scopes">Authorize your Client with Scopes</h3>
 <p>To add scopes to the client, the body of your request must contain an array of scope tokens. </p>
-<p>You can retrieve the available scopes by calling <a href="/api#operations-OAuth-read_scopes_api_v1_oauth_scope_get"><code>GET /api/v1/oauth/scopes</code></a>, or you can look in <a href="https://github.com/ethyca/solon/blob/main/src/fidesops/api/v1/scope_registry.py">the scope registry file</a>.</p>
+<p>You can retrieve the available scopes by calling <a href="/fidesops/api#operations-OAuth-read_scopes_api_v1_oauth_scope_get"><code>GET /api/v1/oauth/scopes</code></a>, or you can look in <a href="https://github.com/ethyca/fidesops/blob/main/src/fidesops/api/v1/scope_registry.py">the scope registry file</a>.</p>
 <p>If the call is successful, Fidesapi responds with a new client ID/client secret pair:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1023,13 +1023,13 @@ Content-Type: application/json
 </code></pre></div>
 </td></tr></table>
 <h2 id="create-an-access-token">Create an Access Token</h2>
-<p>You then create a new access token by calling <a href="/api#operations-OAuth-acquire_access_token_api_v1_oauth_token_post"><code>POST /api/v1/oauth/token</code></a> with the new credentials. </p>
+<p>You then create a new access token by calling <a href="/fidesops/api#operations-OAuth-acquire_access_token_api_v1_oauth_token_post"><code>POST /api/v1/oauth/token</code></a> with the new credentials. </p>
 <p>In the above example, your new access token only lets the client read policies and rules -- the client nor create other clients, nor write policies, nor perform other operations using Fidesops APIs.</p>
 <h3 id="access-token-expiration">Access Token Expiration</h3>
 <p>By default, access tokens expire after 11520 minutes (8 days). To specify a different expiration time (in minutes) set the <code>OAUTH_ACCESS_TOKEN_EXPIRE_MINUTES</code> environment variable.</p>
 <p>If you call a Fidesops API with an expired token, the call returns <code>401</code>.</p>
 <h3 id="other-oauth-calls">Other OAuth Calls</h3>
-<p>Fidesops defines OAuth operations that let you delete a client, and read and write a client's scopes. See the <a href="/api#operations-tag-OAuth"><strong>OAuth</strong> section of the <strong>API</strong> documentation</a> for details. </p>
+<p>Fidesops defines OAuth operations that let you delete a client, and read and write a client's scopes. See the <a href="/fidesops/api#operations-tag-OAuth"><strong>OAuth</strong> section of the <strong>API</strong> documentation</a> for details. </p>
                 
               
               

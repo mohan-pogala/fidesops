@@ -594,15 +594,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-1-install-fidesops-via-docker" class="md-nav__link">
-    Option 1: Install fidesops via Docker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-install-fidesops-via-python" class="md-nav__link">
-    Option 2: Install fidesops via Python
+  <a href="#install-fidesops-via-docker" class="md-nav__link">
+    Install fidesops via Docker
   </a>
   
 </li>
@@ -891,15 +884,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-1-install-fidesops-via-docker" class="md-nav__link">
-    Option 1: Install fidesops via Docker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-install-fidesops-via-python" class="md-nav__link">
-    Option 2: Install fidesops via Python
+  <a href="#install-fidesops-via-docker" class="md-nav__link">
+    Install fidesops via Docker
   </a>
   
 </li>
@@ -1018,7 +1004,7 @@
 <li>OR Python 3.8 or newer (if installing via Python)</li>
 </ul>
 <p>Depending on your preferences, you can install <code>fidesops</code> in one of two ways: <em>Docker</em> or <em>Python</em>.</p>
-<h3 id="option-1-install-fidesops-via-docker">Option 1: Install fidesops via Docker</h3>
+<h3 id="install-fidesops-via-docker">Install fidesops via Docker</h3>
 <p>If you typically run your applications via Docker, you'll probably be familiar with pulling images and configuring them with environment variables. Setting up a <code>fidesops</code> container should contain no surprises.</p>
 <p>First, ensure that Docker is running on your host, with a minimum version of <code>20.10.8</code>.</p>
 <p>You can <code>docker pull ethyca/fidesops</code> to get the latest image from Ethyca's Docker Hub here: <a href="https://hub.docker.com/r/ethyca/fidesops">ethyca/fidesops</a>.</p>
@@ -1160,72 +1146,6 @@ INFO:uvicorn.error:Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 </td></tr></table>
 <p>Now, for most Docker hosts, you won't be calling <code>docker run</code> directly, and instead will be providing configuration variables to Kubernetes/Swarm/ECS/etc. As you can see in the <code>docker run</code> example above, this config is quite minimal and should just involve specifying (1) the image, (2) the port mapping, (3) all the various environment variables for configuration.</p>
 <p>Note that there's no need for a persistent volume mount for the web server, it's fully ephemeral and relies on the database for all it's permanent state.</p>
-<h3 id="option-2-install-fidesops-via-python">Option 2: Install fidesops via Python</h3>
-<p>Releases of <code>fidesops</code> are published to PyPI here: <a href="https://pypi.org/project/fidesops/">fidesops</a>. Typically you'll setup a virtual environment and then run <code>pip install</code>:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pip install fidesops
-</code></pre></div>
-</td></tr></table>
-<p>Once installed, you'll need a minimal config TOML file to specify the required config variables to run the server. Create a file called <code>fidesops.toml</code> in the working directory you'll run <code>fidesops</code> from using the following template, replacing the values as needed. For details on these config variables, refer to the table in <a href="#option-1-install-fidesops-via-docker">Option 1</a> above.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">[database]</span>
-<span class="n">SERVER</span><span class="o">=</span><span class="s">&quot;postgres.internal&quot;</span>
-<span class="n">PORT</span><span class="o">=</span><span class="s">&quot;5432&quot;</span>
-<span class="n">USER</span><span class="o">=</span><span class="s">&quot;fidesops&quot;</span>
-<span class="n">PASSWORD</span><span class="o">=</span><span class="s">&quot;fidesopssecret&quot;</span>
-<span class="n">DB</span><span class="o">=</span><span class="s">&quot;fidesops&quot;</span>
-
-<span class="k">[redis]</span>
-<span class="n">HOST</span><span class="o">=</span><span class="s">&quot;redis.internal&quot;</span>
-<span class="n">PORT</span><span class="o">=</span><span class="s">&quot;6379&quot;</span>
-<span class="n">PASSWORD</span><span class="o">=</span><span class="s">&quot;fidesopssecret&quot;</span>
-
-<span class="k">[security]</span>
-<span class="n">APP_ENCRYPTION_KEY</span><span class="o">=</span><span class="s">&quot;averyveryverysecretencryptionkey&quot;</span>
-<span class="n">OAUTH_ROOT_CLIENT_ID</span><span class="o">=</span><span class="s">&quot;fidesopsadmin&quot;</span>
-<span class="n">OAUTH_ROOT_CLIENT_SECRET</span><span class="o">=</span><span class="s">&quot;fidesopsadminsecret&quot;</span>
-</code></pre></div>
-</td></tr></table></p>
-<p>Once installed, you can run <code>fidesops webserver</code> to start the server:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>fidesops webserver
-INFO:fidesops.main:****************fidesops****************
-INFO:fidesops.main:Running any pending DB migrations...
-INFO:alembic.runtime.migration:Context impl PostgresqlImpl.
-INFO:alembic.runtime.migration:Will assume transactional DDL.
-INFO:fidesops.main:Starting scheduled request intake...
-INFO:apscheduler.scheduler:Scheduler started
-INFO:fidesops.main:Starting web server...
-INFO:uvicorn.error:Started server process [37]
-INFO:uvicorn.error:Waiting for application startup.
-INFO:uvicorn.error:Application startup complete.
-INFO:uvicorn.error:Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
-</code></pre></div>
-</td></tr></table>
-<p>Ensure that you set up your web server to run this command on startup and map port 8080 as necessary in your firewall rules, etc. and you should be good to go!</p>
 <h3 id="test-the-web-server">Test the Web Server</h3>
 <p>To test that your server is running, visit <code>http://{server_url}/health</code> in your browser (e.g. http://0.0.0.0:8080/health) and you should see <code>{ "healthy": true }</code>.</p>
 <p>You now have a functional <code>fidesops</code> server running! Now you can use the API to setup your OAuth clients, connect to databases, configure policies, execute privacy requests, etc. To learn more, head to the <a href="../guides/oauth/">How-To Guides</a> for details.</p>
