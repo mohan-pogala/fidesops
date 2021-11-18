@@ -3242,6 +3242,10 @@
           "primary_key": {
             "title": "Primary Key",
             "type": "boolean"
+          },
+          "length": {
+            "title": "Length",
+            "type": "integer"
           }
         },
         "description": "Fidesops-specific annotations used for query traversal"
