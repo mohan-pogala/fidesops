@@ -951,7 +951,7 @@
 <li>Authorizing your client with scopes</li>
 <li>Creating OAuth tokens</li>
 </ul>
-<p>When you invoke a Fidesops API, you must pass an <em>access token</em> as the value of the <code>Authorization</code> header. Furthermore, the token must included a <em>scope</em> that gives you permission to do take an action on the API. For example, let's say you want to create a new Policy by calling <code>PUT /api/v1/policy</code>. The token that you pass to the <code>Authorization</code> header must include the <code>policy:create_or_update</code> scope.</p>
+<p>When you invoke a Fidesops API, you must pass an <em>access token</em> as the value of the <code>Authorization</code> header. Furthermore, the token must included a <em>scope</em> that gives you permission to do take an action on the API. For example, let's say you want to create a new Policy by calling <code>PATCH /api/v1/policy</code>. The token that you pass to the <code>Authorization</code> header must include the <code>policy:create_or_update</code> scope.</p>
 <p>This document explains how to craft a properly-scoped access token.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>First, create an access token for the "root" client, included in the deployment by default. The root client's token is all-powerful: It contains all scopes so it can call any of the Fidesops APIs.</p>

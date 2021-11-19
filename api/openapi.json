@@ -98,13 +98,13 @@
           }
         ]
       },
-      "put": {
+      "patch": {
         "tags": [
           "Connections"
         ],
-        "summary": "Put Connections",
+        "summary": "Patch Connections",
         "description": "Given a list of connection config data elements, create or update corresponding ConnectionConfig objects\nor report failure\n\nIf the key in the payload exists, it will be used to update an existing ConnectionConfiguration.\nOtherwise, a new ConnectionConfiguration will be created for you.\n\nNote that ConnectionConfiguration.secrets are not updated through this endpoint.",
-        "operationId": "put_connections_api_v1_connection_put",
+        "operationId": "patch_connections_api_v1_connection_patch",
         "requestBody": {
           "content": {
             "application/json": {
@@ -511,13 +511,13 @@
           }
         ]
       },
-      "put": {
+      "patch": {
         "tags": [
           "Datasets"
         ],
-        "summary": "Put Datasets",
+        "summary": "Patch Datasets",
         "description": "Given a list of dataset elements, create or update corresponding Dataset objects\nor report failure\n\nUse for bulk creating and/or updating datasets.\n\nIf the fides_key for a given dataset exists, it will be treated as an update.\nOtherwise, a new dataset will be created.",
-        "operationId": "put_datasets_api_v1_connection__connection_key__dataset_put",
+        "operationId": "patch_datasets_api_v1_connection__connection_key__dataset_patch",
         "parameters": [
           {
             "required": true,
@@ -1265,13 +1265,13 @@
           }
         ]
       },
-      "put": {
+      "patch": {
         "tags": [
           "Policy"
         ],
         "summary": "Create Or Update Policies",
         "description": "Given a list of policy data elements, create or update corresponding Policy objects\nor report failure",
-        "operationId": "create_or_update_policies_api_v1_policy_put",
+        "operationId": "create_or_update_policies_api_v1_policy_patch",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1369,13 +1369,13 @@
       }
     },
     "/api/v1/policy/{policy_key}/rule": {
-      "put": {
+      "patch": {
         "tags": [
           "Policy"
         ],
         "summary": "Create Or Update Rules",
         "description": "Given a list of Rule data elements, create or update corresponding Rule objects\nor report failure",
-        "operationId": "create_or_update_rules_api_v1_policy__policy_key__rule_put",
+        "operationId": "create_or_update_rules_api_v1_policy__policy_key__rule_patch",
         "parameters": [
           {
             "required": true,
@@ -1486,13 +1486,13 @@
       }
     },
     "/api/v1/policy/{policy_key}/rule/{rule_key}/target": {
-      "put": {
+      "patch": {
         "tags": [
           "Policy"
         ],
         "summary": "Create Or Update Rule Targets",
         "description": "Given a list of Rule data elements, create corresponding Rule objects\nor report failure",
-        "operationId": "create_or_update_rule_targets_api_v1_policy__policy_key__rule__rule_key__target_put",
+        "operationId": "create_or_update_rule_targets_api_v1_policy__policy_key__rule__rule_key__target_patch",
         "parameters": [
           {
             "required": true,
@@ -1804,7 +1804,7 @@
           "Privacy Requests"
         ],
         "summary": "Create Privacy Request",
-        "description": "Given a list of privacy request data elements, create corresponding PrivacyRequest objects\nor report failure and execute them within the FidesOps system.\n\nYou cannot update privacy requests after they've been created.",
+        "description": "Given a list of privacy request data elements, create corresponding PrivacyRequest objects\nor report failure and execute them within the Fidesops system.\n\nYou cannot update privacy requests after they've been created.",
         "operationId": "create_privacy_request_api_v1_privacy_request_post",
         "requestBody": {
           "content": {
@@ -2104,13 +2104,13 @@
           }
         ]
       },
-      "put": {
+      "patch": {
         "tags": [
           "Storage"
         ],
-        "summary": "Put Config",
+        "summary": "Patch Config",
         "description": "Given a list of storage destination elements, create or update corresponding StorageConfig objects\nor report failure.",
-        "operationId": "put_config_api_v1_storage_config_put",
+        "operationId": "patch_config_api_v1_storage_config_patch",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3663,7 +3663,7 @@
             "type": "string"
           }
         },
-        "description": "An external representation of a FidesOps Policy"
+        "description": "An external representation of a Fidesops Policy"
       },
       "PolicyMaskingSpec": {
         "title": "PolicyMaskingSpec",
