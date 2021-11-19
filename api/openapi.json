@@ -164,6 +164,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -212,6 +213,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -255,6 +257,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -342,6 +345,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -392,6 +396,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -452,6 +457,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -523,6 +529,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -588,6 +595,7 @@
             "required": true,
             "schema": {
               "title": "Fides Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "fides_key",
@@ -597,6 +605,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -645,6 +654,7 @@
             "required": true,
             "schema": {
               "title": "Fides Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "fides_key",
@@ -654,6 +664,7 @@
             "required": true,
             "schema": {
               "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "connection_key",
@@ -1331,6 +1342,7 @@
             "required": true,
             "schema": {
               "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "policy_key",
@@ -1381,6 +1393,7 @@
             "required": true,
             "schema": {
               "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "policy_key",
@@ -1446,6 +1459,7 @@
             "required": true,
             "schema": {
               "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "policy_key",
@@ -1455,6 +1469,7 @@
             "required": true,
             "schema": {
               "title": "Rule Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "rule_key",
@@ -1498,6 +1513,7 @@
             "required": true,
             "schema": {
               "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "policy_key",
@@ -1507,6 +1523,7 @@
             "required": true,
             "schema": {
               "title": "Rule Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "rule_key",
@@ -1572,6 +1589,7 @@
             "required": true,
             "schema": {
               "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "policy_key",
@@ -1581,6 +1599,7 @@
             "required": true,
             "schema": {
               "title": "Rule Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "rule_key",
@@ -1590,6 +1609,7 @@
             "required": true,
             "schema": {
               "title": "Rule Target Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "rule_target_key",
@@ -2170,6 +2190,7 @@
             "required": true,
             "schema": {
               "title": "Config Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "config_key",
@@ -2248,6 +2269,7 @@
             "required": true,
             "schema": {
               "title": "Config Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "config_key",
@@ -2296,6 +2318,7 @@
             "required": true,
             "schema": {
               "title": "Config Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
               "type": "string"
             },
             "name": "config_key",
@@ -2475,6 +2498,7 @@
           },
           "storage_key": {
             "title": "Storage Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           }
         }
@@ -2724,6 +2748,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "connection_type": {
@@ -2781,6 +2806,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "connection_type": {
@@ -3660,6 +3686,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           }
         },
@@ -3721,6 +3748,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "rules": {
@@ -3802,6 +3830,7 @@
           },
           "policy_key": {
             "title": "Policy Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "encryption_key": {
@@ -3975,6 +4004,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "action_type": {
@@ -3982,6 +4012,7 @@
           },
           "storage_destination_key": {
             "title": "Storage Destination Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "masking_strategy": {
@@ -4004,6 +4035,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "action_type": {
@@ -4031,6 +4063,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "data_category": {
@@ -4111,6 +4144,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "format": {
@@ -4148,6 +4182,7 @@
           },
           "key": {
             "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
             "type": "string"
           },
           "format": {

@@ -954,7 +954,7 @@
     <span class="s2">&quot;destinations&quot;</span>: <span class="o">[</span>
       <span class="o">{</span>
         <span class="s2">&quot;name&quot;</span>: str,
-        <span class="s2">&quot;key&quot;</span>: str <span class="o">(</span>optional<span class="o">)</span>,
+        <span class="s2">&quot;key&quot;</span>: FidesOpsKey <span class="o">(</span>optional<span class="o">)</span>,
         <span class="s2">&quot;type&quot;</span>: str,
         <span class="s2">&quot;format&quot;</span>: str
         <span class="s2">&quot;details&quot;</span>: <span class="o">{</span>
@@ -974,7 +974,7 @@
 Params:</p>
 <ul>
 <li><code>name</code>: A unique user-friendly name for your storage destination.</li>
-<li><code>key</code>: A unique key used to manage your storage destination. This is auto-generated from <code>name</code> (dasherized) if left blank.</li>
+<li><code>key</code>: A unique key used to manage your storage destination. This is auto-generated from <code>name</code> if left blank. Accepted values are alphanumeric, <code>_</code>, and <code>.</code>.</li>
 <li><code>type</code>: Type of storage destination. Supported types include <code>s3</code>, <code>onetrust</code>, and <code>local</code>. You may configure multiple destinations of the same type.</li>
 <li><code>format</code>: Format of uploaded data. Supported formats include <code>json</code> and <code>csv</code>. For OneTrust and local destination types, use <code>json</code>.</li>
 </ul>
@@ -1022,7 +1022,7 @@ Params:</p>
                 <span class="s2">&quot;naming&quot;</span>: <span class="s2">&quot;request_id&quot;</span>,
                 <span class="s2">&quot;object_name&quot;</span>: <span class="s2">&quot;requests&quot;</span>
             <span class="o">}</span>,
-            <span class="s2">&quot;key&quot;</span>: <span class="s2">&quot;s3-storage-2&quot;</span>
+            <span class="s2">&quot;key&quot;</span>: <span class="s2">&quot;s3_storage_2&quot;</span>
         <span class="o">}</span>
     <span class="o">]</span>,
     <span class="s2">&quot;total&quot;</span>: <span class="m">1</span>,

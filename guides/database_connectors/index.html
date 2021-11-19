@@ -1084,7 +1084,7 @@ categories.</p>
 <p><code>name</code>  is a  a human-readable name for your database.</p>
 </li>
 <li>
-<p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to kebab-case (slugified), is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application-postgresql-db</code>.</p>
+<p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to snake-case, is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application_postgresql_db</code>.</p>
 </li>
 <li>
 <p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>redshift</code>, and <code>snowflake</code>.</p>
@@ -1109,7 +1109,7 @@ categories.</p>
 [
   { 
     &quot;name&quot;: &quot;Application PostgreSQL DB&quot;,
-    &quot;key&quot;: &quot;application-postgresql-db&quot;,
+    &quot;key&quot;: &quot;application_postgresql_db&quot;,
     &quot;connection_type&quot;: &quot;postgres&quot;,
     &quot;access&quot;: &quot;read&quot;
   }
@@ -1131,7 +1131,7 @@ categories.</p>
 [
   { 
     &quot;name&quot;: &quot;My Mongo DB&quot;,
-    &quot;key&quot;: &quot;my-mongo-db&quot;,
+    &quot;key&quot;: &quot;my_mongo_db&quot;,
     &quot;connection_type&quot;: &quot;mongodb&quot;,
     &quot;access&quot;: &quot;write&quot;
   }
@@ -1151,7 +1151,7 @@ categories.</p>
 [
   { 
     &quot;name&quot;: &quot;My MySQL DB&quot;,
-    &quot;key&quot;: &quot;my-mysql-db&quot;,
+    &quot;key&quot;: &quot;my_mysql_db&quot;,
     &quot;connection_type&quot;: &quot;mysql&quot;,
     &quot;access&quot;: &quot;write&quot;
   }
@@ -1190,7 +1190,7 @@ categories.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/my-mongo-db/secret?verify=false`
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/my_mongo_db/secret?verify=false`
 
 {
     &quot;url&quot;: &quot;mongodb://mongo_user:mongo_pass@mongodb_example/mongo_test&quot;
@@ -1210,7 +1210,7 @@ you should adjust the ConnectionConfig Secrets properties through additional cal
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Test completed for ConnectionConfig with key: app-postgres-db.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Test completed for ConnectionConfig with key: app_postgres_db.&quot;</span><span class="p">,</span>
     <span class="nt">&quot;test_status&quot;</span><span class="p">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span>
     <span class="nt">&quot;failure_reason&quot;</span><span class="p">:</span> <span class="kc">null</span>
 <span class="p">}</span>
@@ -1222,7 +1222,7 @@ you should adjust the ConnectionConfig Secrets properties through additional cal
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Secrets updated for ConnectionConfig with key: app-mongo-db.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Secrets updated for ConnectionConfig with key: app_mongo_db.&quot;</span><span class="p">,</span>
     <span class="nt">&quot;test_status&quot;</span><span class="p">:</span> <span class="s2">&quot;failed&quot;</span><span class="p">,</span>
     <span class="nt">&quot;failure_reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Operation Failure connecting to MongoDB.&quot;</span>
 <span class="p">}</span>

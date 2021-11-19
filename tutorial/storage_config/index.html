@@ -945,7 +945,7 @@ to upload this to a Storage location like S3.  S3 would require a follow-up step
 </code></pre></div>
 </td></tr></table>
 <h3 id="call-helper-method-to-set-up-storage">Call helper method to set up Storage</h3>
-<p>This will define a local Storage location called <code>example-storage</code> that expects JSON data.  </p>
+<p>This will define a local Storage location called <code>example_storage</code> that expects JSON data.  </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -958,7 +958,7 @@ to upload this to a Storage location like S3.  S3 would require a follow-up step
         <span class="o">...</span>
         <span class="c1"># Configure a Storage Config to upload the results</span>
         <span class="n">create_local_storage</span><span class="p">(</span>
-            <span class="n">key</span><span class="o">=</span><span class="s2">&quot;example-storage&quot;</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="s2">&quot;example_storage&quot;</span><span class="p">,</span>
             <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
             <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">,</span>
         <span class="p">)</span>

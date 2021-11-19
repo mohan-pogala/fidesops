@@ -982,7 +982,7 @@
 </code></pre></div>
 </td></tr></table>
 <h3 id="call-helper-methods-to-connect-to-postgres">Call helper methods to connect to Postgres</h3>
-<p>Add calls for our new methods, to create a Postgres ConnectionConfig called <code>flaskr-postgres</code>, and 
+<p>Add calls for our new methods, to create a Postgres ConnectionConfig called <code>flaskr_postgres</code>, and 
 then update that connection's secrets with individual URI components.  This will encrypt and save the URI components 
 and also attempt to make a test connection to our Flask App's Postgres Database.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1002,10 +1002,10 @@ and also attempt to make a test connection to our Flask App's Postgres Database.
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="o">...</span>
     <span class="c1"># Connect to our PostgreSQL database</span>
-    <span class="n">create_postgres_connection</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;flaskr-postgres&quot;</span><span class="p">,</span> <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">)</span>
+    <span class="n">create_postgres_connection</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;flaskr_postgres&quot;</span><span class="p">,</span> <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">)</span>
 
     <span class="n">configure_postgres_connection</span><span class="p">(</span>
-        <span class="n">key</span><span class="o">=</span><span class="s2">&quot;flaskr-postgres&quot;</span><span class="p">,</span>
+        <span class="n">key</span><span class="o">=</span><span class="s2">&quot;flaskr_postgres&quot;</span><span class="p">,</span>
         <span class="n">host</span><span class="o">=</span><span class="n">POSTGRES_SERVER</span><span class="p">,</span>
         <span class="n">port</span><span class="o">=</span><span class="n">POSTGRES_PORT</span><span class="p">,</span>
         <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;flaskr&quot;</span><span class="p">,</span>

@@ -1003,7 +1003,7 @@ the user by <code>email</code>, and from there, travel through other tables link
 </code></pre></div>
 </td></tr></table>
 <h3 id="call-helper-method-to-create-a-dataset">Call helper method to create a dataset</h3>
-<p>Our connection_key is the <code>flaskr-postgres</code> ConnectionConfig we created in the previous step,
+<p>Our connection_key is the <code>flaskr_postgres</code> ConnectionConfig we created in the previous step,
 and we're also passing in our completed YAML file:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1017,7 +1017,7 @@ and we're also passing in our completed YAML file:</p>
     <span class="o">...</span>
     <span class="c1"># Upload the Dataset YAML for our PostgreSQL schema</span>
     <span class="n">datasets</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span>
-        <span class="n">connection_key</span><span class="o">=</span><span class="s2">&quot;flaskr-postgres&quot;</span><span class="p">,</span>
+        <span class="n">connection_key</span><span class="o">=</span><span class="s2">&quot;flaskr_postgres&quot;</span><span class="p">,</span>
         <span class="n">yaml_path</span><span class="o">=</span><span class="s2">&quot;fides_resources/flaskr_postgres_dataset.yml&quot;</span><span class="p">,</span>
         <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">,</span>
     <span class="p">)</span>
