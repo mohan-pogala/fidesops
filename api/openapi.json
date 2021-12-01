@@ -1640,6 +1640,668 @@
         ]
       }
     },
+    "/api/v1/policy/{policy_key}/webhook/pre_execution": {
+      "get": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Get Policy Pre Execution Webhooks",
+        "description": "Return a paginated list of all Pre-Execution Webhooks that will run in order for the Policy **before** a\nPrivacy Request is executed.",
+        "operationId": "get_policy_pre_execution_webhooks_api_v1_policy__policy_key__webhook_pre_execution_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_PolicyWebhookResponse_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Create Or Update Pre Execution Webhooks",
+        "description": "Create or update the list of Policy Pre-Execution Webhooks that run **before** query execution.\n\nAll webhooks must be included in the request in the desired order. Any missing webhooks\nfrom the request body will be removed.",
+        "operationId": "create_or_update_pre_execution_webhooks_api_v1_policy__policy_key__webhook_pre_execution_put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Webhooks",
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PolicyWebhookCreate"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Or Update Pre Execution Webhooks Api V1 Policy  Policy Key  Webhook Pre Execution Put",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyWebhookResponse"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:create_or_update"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/policy/{policy_key}/webhook/post_execution": {
+      "get": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Get Policy Post Execution Webhooks",
+        "description": "Return a paginated list of all Post-Execution Webhooks that will run in order for the Policy **after** a\nPrivacy Request is executed.",
+        "operationId": "get_policy_post_execution_webhooks_api_v1_policy__policy_key__webhook_post_execution_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Page",
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 1
+            },
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Size",
+              "maximum": 100.0,
+              "minimum": 1.0,
+              "type": "integer",
+              "default": 50
+            },
+            "name": "size",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_PolicyWebhookResponse_"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Create Or Update Post Execution Webhooks",
+        "description": "Create or update the list of Policy Post-Execution Webhooks that run **after** query execution.\n\nAll webhooks must be included in the request in the desired order. Any missing webhooks\nfrom the request body will be removed.",
+        "operationId": "create_or_update_post_execution_webhooks_api_v1_policy__policy_key__webhook_post_execution_put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Webhooks",
+                "maxItems": 50,
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PolicyWebhookCreate"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Create Or Update Post Execution Webhooks Api V1 Policy  Policy Key  Webhook Post Execution Put",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyWebhookResponse"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:create_or_update"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/policy/{policy_key}/webhook/pre_execution/{pre_webhook_key}": {
+      "get": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Get Policy Pre Execution Webhook",
+        "description": "Loads the given Pre-Execution Webhook on the Policy",
+        "operationId": "get_policy_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Pre Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "pre_webhook_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:read"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Delete Pre Execution Webhook",
+        "description": "Delete the Pre-Execution Webhook from the Policy and reorder remaining webhooks as necessary.",
+        "operationId": "delete_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Pre Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "pre_webhook_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookDeleteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:delete"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Update Pre Execution Webhook",
+        "description": "PATCH a single Policy Pre-Execution Webhook that runs **prior** to executing the Privacy Request.\n\nNote that updates to the webhook's \"order\" can affect the order of the other pre-execution webhooks.",
+        "operationId": "update_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__patch",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Pre Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "pre_webhook_key",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyWebhookUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookUpdateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:create_or_update"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/policy/{policy_key}/webhook/post_execution/{post_webhook_key}": {
+      "get": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Get Policy Post Execution Webhook",
+        "description": "Loads the given Post-Execution Webhook on the Policy",
+        "operationId": "get_policy_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Post Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "post_webhook_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:read"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Delete Post Execution Webhook",
+        "description": "Delete the Post-Execution Webhook from the Policy and reorder remaining webhooks as necessary.",
+        "operationId": "delete_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Post Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "post_webhook_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookDeleteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:delete"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Policy Webhooks"
+        ],
+        "summary": "Update Post Execution Webhook",
+        "description": "PATCH a single Policy Post-Execution Webhook that runs **after** executing the Privacy Request.\n\nNote that updates to the webhook's \"order\" can affect the order of the other post-execution webhooks.",
+        "operationId": "update_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__patch",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Policy Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "policy_key",
+            "in": "path"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Post Webhook Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "post_webhook_key",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyWebhookUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyWebhookUpdateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "webhook:create_or_update"
+            ]
+          }
+        ]
+      }
+    },
     "/api/v1/privacy-request": {
       "get": {
         "tags": [
@@ -3598,6 +4260,40 @@
           }
         }
       },
+      "Page_PolicyWebhookResponse_": {
+        "title": "Page[PolicyWebhookResponse]",
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyWebhookResponse"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "minimum": 0.0,
+            "type": "integer"
+          },
+          "page": {
+            "title": "Page",
+            "minimum": 1.0,
+            "type": "integer"
+          },
+          "size": {
+            "title": "Size",
+            "minimum": 1.0,
+            "type": "integer"
+          }
+        }
+      },
       "Page_StorageDestinationResponse_": {
         "title": "Page[StorageDestinationResponse]",
         "required": [
@@ -3760,6 +4456,126 @@
           }
         },
         "description": "A holistic view of a Policy record, including all foreign keys by default."
+      },
+      "PolicyWebhookCreate": {
+        "title": "PolicyWebhookCreate",
+        "required": [
+          "direction",
+          "connection_config_key"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "$ref": "#/components/schemas/WebhookDirection"
+          },
+          "key": {
+            "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "connection_config_key": {
+            "title": "Connection Config Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          }
+        },
+        "description": "Request schema for creating/updating a Policy Webhook"
+      },
+      "PolicyWebhookDeleteResponse": {
+        "title": "PolicyWebhookDeleteResponse",
+        "required": [
+          "new_order"
+        ],
+        "type": "object",
+        "properties": {
+          "new_order": {
+            "title": "New Order",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookOrder"
+            }
+          }
+        },
+        "description": "Response schema after deleting a webhook; new_order includes remaining reordered webhooks if applicable"
+      },
+      "PolicyWebhookResponse": {
+        "title": "PolicyWebhookResponse",
+        "required": [
+          "direction",
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "direction": {
+            "$ref": "#/components/schemas/WebhookDirection"
+          },
+          "key": {
+            "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "connection_config": {
+            "$ref": "#/components/schemas/ConnectionConfigurationResponse"
+          },
+          "order": {
+            "title": "Order",
+            "type": "integer"
+          }
+        },
+        "description": "Response schema after creating a PolicyWebhook"
+      },
+      "PolicyWebhookUpdate": {
+        "title": "PolicyWebhookUpdate",
+        "type": "object",
+        "properties": {
+          "direction": {
+            "$ref": "#/components/schemas/WebhookDirection"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "connection_config_key": {
+            "title": "Connection Config Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          },
+          "order": {
+            "title": "Order",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request schema for updating a single webhook - fields are optional"
+      },
+      "PolicyWebhookUpdateResponse": {
+        "title": "PolicyWebhookUpdateResponse",
+        "required": [
+          "resource",
+          "new_order"
+        ],
+        "type": "object",
+        "properties": {
+          "resource": {
+            "$ref": "#/components/schemas/PolicyWebhookResponse"
+          },
+          "new_order": {
+            "title": "New Order",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookOrder"
+            }
+          }
+        },
+        "description": "Response schema after a PATCH to a single webhook - because updating the order of this webhook can update the\norder of other webhooks, new_order will include the new order if order was adjusted at all"
       },
       "PostgreSQLDocsSchema": {
         "title": "PostgreSQLDocsSchema",
@@ -4316,6 +5132,15 @@
         ],
         "description": "Enum for storage destination types"
       },
+      "TestStatus": {
+        "title": "TestStatus",
+        "enum": [
+          "succeeded",
+          "failed",
+          "skipped"
+        ],
+        "description": "Enum for supplying statuses of validating credentials for a Connection Config to the user"
+      },
       "TestStatusMessage": {
         "title": "TestStatusMessage",
         "required": [
@@ -4328,8 +5153,7 @@
             "type": "string"
           },
           "test_status": {
-            "title": "Test Status",
-            "type": "string"
+            "$ref": "#/components/schemas/TestStatus"
           },
           "failure_reason": {
             "title": "Failure Reason",
@@ -4380,6 +5204,34 @@
             "type": "string"
           }
         }
+      },
+      "WebhookDirection": {
+        "title": "WebhookDirection",
+        "enum": [
+          "one_way",
+          "two_way"
+        ],
+        "description": "The webhook direction"
+      },
+      "WebhookOrder": {
+        "title": "WebhookOrder",
+        "required": [
+          "key",
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "title": "Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          },
+          "order": {
+            "title": "Order",
+            "type": "integer"
+          }
+        },
+        "description": "Schema for displaying a minimal amount of information about the webhook and its order"
       }
     },
     "securitySchemes": {

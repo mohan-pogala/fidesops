@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://ethyca.github.io/fidesops/guides/datasets/">
+        <link rel="canonical" href="https://ethyca.github.io/fidesops/guides/policy_webhooks/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.2.5">
     
     
       
-        <title>Configure Datasets - Fidesops</title>
+        <title>Configure Policy Webhooks - Fidesops</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-a-dataset" class="md-skip">
+        <a href="#how-to-configure-policy-webhooks" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configure Datasets
+              Configure Policy Webhooks
             
           </span>
         </div>
@@ -422,88 +422,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Configure Datasets
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../datasets/" class="md-nav__link">
         Configure Datasets
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-dataset" class="md-nav__link">
-    What is a Dataset?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-a-dataset" class="md-nav__link">
-    Configuring a Dataset
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuring a Dataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#an-example-database" class="md-nav__link">
-    An example database
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dataset-members" class="md-nav__link">
-    Dataset members
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-members" class="md-nav__link">
-    Collection members
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#field-members" class="md-nav__link">
-    Field members
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -559,11 +482,112 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../policy_webhooks/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configure Policy Webhooks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Configure Policy Webhooks
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy-webhook-defined" class="md-nav__link">
+    Policy Webhook Defined
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-https-connectionconfig" class="md-nav__link">
+    Creating an HTTPS ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-connectionconfig-secrets" class="md-nav__link">
+    Adding ConnectionConfig Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-pre-execution-or-post-execution-policy-webhooks" class="md-nav__link">
+    Defining Pre-Execution or Post-Execution Policy Webhooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-single-webhook" class="md-nav__link">
+    Updating a Single Webhook
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating a Single Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expected-webhook-request-and-response-format" class="md-nav__link">
+    Expected Webhook Request and Response Format
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -869,6 +893,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -877,50 +903,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-a-dataset" class="md-nav__link">
-    What is a Dataset?
+  <a href="#policy-webhook-defined" class="md-nav__link">
+    Policy Webhook Defined
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-a-dataset" class="md-nav__link">
-    Configuring a Dataset
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Configuring a Dataset">
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#an-example-database" class="md-nav__link">
-    An example database
+  <a href="#creating-an-https-connectionconfig" class="md-nav__link">
+    Creating an HTTPS ConnectionConfig
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataset-members" class="md-nav__link">
-    Dataset members
+  <a href="#adding-connectionconfig-secrets" class="md-nav__link">
+    Adding ConnectionConfig Secrets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#collection-members" class="md-nav__link">
-    Collection members
+  <a href="#defining-pre-execution-or-post-execution-policy-webhooks" class="md-nav__link">
+    Defining Pre-Execution or Post-Execution Policy Webhooks
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#field-members" class="md-nav__link">
-    Field members
+  <a href="#updating-a-single-webhook" class="md-nav__link">
+    Updating a Single Webhook
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating a Single Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expected-webhook-request-and-response-format" class="md-nav__link">
+    Expected Webhook Request and Response Format
+  </a>
   
 </li>
       
@@ -937,14 +983,78 @@
               
                 
                 
-                  <h1>Configure Datasets</h1>
-                
-                <h2 id="what-is-a-dataset">What is a Dataset?</h2>
-<p>A Fidesops <em>Dataset</em> is the configuration you provide for a database or other queryable datastore. We use the term <em>Dataset</em> and not <em>Database</em> to emphasize that this will ultimately be applicable to a wide variety of datastores beyond traditional databases. With Datasets, a <em>Collection</em> is the term used for a SQL table, mongo database collection, or any other single coherent set values.</p>
-<h2 id="configuring-a-dataset">Configuring a Dataset</h2>
-<p>Beyond collection and field names, Fidesops needs some additional information to fully configure a Dataset. Let's look at a simple example database, and how it would be translated into a configuration in Fidesops.</p>
-<h4 id="an-example-database">An example database</h4>
-<p>Here we have a database of customers and addresses (the example is a bit simplified from an actual SQL schema). We have a <code>customer</code> table that has a foreign key of <code>address_id</code> to an <code>address</code> table:</p>
+                <h1 id="how-to-configure-policy-webhooks">How-To: Configure Policy Webhooks</h1>
+<p>In this section we'll cover:</p>
+<ul>
+<li>What's a Policy Webhook?</li>
+<li>How do I configure Policy Webhooks?<ul>
+<li>Create a ConnectionConfig</li>
+<li>Add ConnectionConfig secrets</li>
+<li>Define PolicyPreWebhooks or PolicyPostWebhooks</li>
+</ul>
+</li>
+<li>Expected webhook request and response format</li>
+</ul>
+<p>Take me directly to the <a href="/fidesops/api/#operations-Policy_Webhooks-get_policy_pre_execution_webhooks_api_v1_policy__policy_key__webhook_pre_execution_get">Policy Webhooks API documentation</a>.</p>
+<h2 id="policy-webhook-defined">Policy Webhook Defined</h2>
+<p>A Policy Webhook is an HTTPS Callback that you've defined on a Policy to call an external
+REST API endpoint <em>before</em> or <em>after</em> a PrivacyRequest executes.</p>
+<p>You can define as many webhooks as you'd like.  Webhooks can be <code>one_way</code>, 
+where we will just ping your API and move on, or <code>two_way</code>, where we will wait for a response. Any <code>derived_identities</code>
+returned from a <code>two_way</code> webhook will be saved and can be used to locate other user information.  For example, a webhook
+might take a known <code>email</code> <code>identity</code> and use that to find a <code>phone_number</code> <code>identity</code>.</p>
+<p>Another use case for a Policy Webhook might be to log a user out of your mobile app after you've cleared
+their data from your system.  In this case, you'd create a <code>Policy</code> and a <code>ConnectionConfig</code> to describe the URL to hit
+to clear the cache. You'd then create a <code>one-way</code> <code>PolicyPostWebhook</code> to run after your PrivacyRequest executes. </p>
+<h2 id="configuration">Configuration</h2>
+<p>Big picture, you will define an <code>https</code> <code>ConnectionConfig</code> that contains the details to
+make a request to your API endpoint.  You will then define a <code>PolicyPreWebhook</code> or a <code>PolicyPostWebhook</code>
+for a specific <code>Policy</code> using that <code>ConnectionConfig</code>.</p>
+<h3 id="creating-an-https-connectionconfig">Creating an HTTPS ConnectionConfig</h3>
+<p>The information that describes how to connect to your API endpoint lives on a <code>ConnectionConfig</code>. We also use
+<code>ConnectionConfigs</code> to connect to databases like <code>PostgreSQL</code> and <code>MongoDB</code>.  This same construct can help us store
+how to connect to an external API endpoint. </p>
+<p>For more information on ConnectionConfigs, see how to <a href="/fidesops/api/#operations-Connections-put_connections_api_v1_connection_put">Create a ConnectionConfig.</a></p>
+<p>To start, send a <code>PATCH</code> request to <code>/v1/connection</code> to add an <code>https</code> ConnectionConfig:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Webhook Connection Configuration&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;test_webhook_connection_config&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;connection_type&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;access&quot;</span><span class="p">:</span> <span class="s2">&quot;read&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="adding-connectionconfig-secrets">Adding ConnectionConfig Secrets</h3>
+<p>The secret details needed to talk to your API endpoint are defined by making a PUT to the ConnectionConfig Secrets endpoint:
+These credentials are stored encrypted in the <code>fidesops</code> <code>app</code> database.</p>
+<p>See API docs on how to <a href="/fidesops/api#operations-Connections-put_connection_config_secrets_api_v1_connection__connection_key__secret_put">Set a ConnectionConfig's Secrets</a>.</p>
+<p><code>PUT</code> <code>/v1/connection/test_webhook_connection_config</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="p">{</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;test_authorization&quot;</span>
+    <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="defining-pre-execution-or-post-execution-policy-webhooks">Defining Pre-Execution or Post-Execution Policy Webhooks</h3>
+<p>After you've defined a ConnectionConfig, you can create lists of webhooks to run <em>before</em> (PolicyPreWebhooks)
+or <em>after</em> (PolicyPostWebhooks) a PrivacyRequest is executed.</p>
+<p>If you are defining PolicyPreWebhooks, all desired PolicyPreWebhooks should be included in the request
+body in the desired order.  Any PolicyPreWebhooks on the Policy <em>not</em> included in the request, will be removed from the 
+Policy. The same applies for PolicyPostWebhooks.</p>
+<p>To update your list of PolicyPreWebhooks:</p>
+<p><code>PUT /policy/&lt;policy_key&gt;/webhook/pre_execution</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -958,23 +1068,46 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">CUSTOMER</span> <span class="p">(</span>
-  <span class="n">id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-  <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">,</span>
-  <span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">,</span>
-  <span class="n">address_id</span> <span class="nb">int</span> <span class="k">REFERENCES</span> <span class="n">ADDRESS</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">ADDRESS</span><span class="p">(</span>
-  <span class="n">id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-  <span class="n">street</span> <span class="nb">VARCHAR</span><span class="p">,</span>
-  <span class="n">city</span> <span class="nb">VARCHAR</span><span class="p">,</span>
-  <span class="k">state</span> <span class="nb">VARCHAR</span><span class="p">,</span>
-  <span class="n">zip</span> <span class="nb">VARCHAR</span>
-<span class="p">);</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;connection_config_key&quot;</span><span class="p">:</span> <span class="s2">&quot;test_webhook_connection_config&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;one_way&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;wake_up_snowflake_db&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Wake up Snowflake DB Webhook&quot;</span>
+    <span class="p">},</span>
+     <span class="p">{</span>
+        <span class="nt">&quot;connection_config_key&quot;</span><span class="p">:</span> <span class="s2">&quot;test_webhook_connection_config&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;two_way&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;prep_systems_webhook&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Prep Systems Webhook&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </code></pre></div>
 </td></tr></table>
-<p>A Fidesops Dataset consists of a declaration of fields, with metadata describing how those fields are related. We use the information about their relationship to navigate between different collections. The dataset declaration for the above schema looks like:</p>
+<p>This creates two webhooks that are run sequentially for the Policy before a PrivacyRequest runs.</p>
+<p>Similarly, to update your list of Post-Execution webhooks on a Policy:</p>
+<p><code>PUT /policy/&lt;policy_key&gt;/webhook/post_execution</code></p>
+<p>See API docs for more information on how to <a href="/fidesops/api#operations-Policy_Webhooks-create_or_update_pre_execution_webhooks_api_v1_policy__policy_key__webhook_pre_execution_put">Update PolicyPreWebhooks</a>
+and how to <a href="/fidesops/api#operations-Policy_Webhooks-create_or_update_post_execution_webhooks_api_v1_policy__policy_key__webhook_post_execution_put">Update PolicyPostWebhooks</a>.</p>
+<h3 id="updating-a-single-webhook">Updating a Single Webhook</h3>
+<p>To update a single PolicyPreWebhook or PolicyPostWebhook, send a PATCH request to update selected attributes.
+Note that updates to order can likewise update the order of related webhooks.</p>
+<p>The following example will update the PolicyPreWebhook with key <code>webhook_hook</code> to be <code>two_way</code> instead of 
+<code>one_way</code> and will update its order from 0 to 1.  Because we've defined two PolicyPreWebhooks, this causes the 
+webhook at position 1 to move to position 0. </p>
+<p><code>PATCH /policy/&lt;policy_key&gt;/webhook/pre-execution/wake_up_snowflake_db</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;two_way&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;order&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="response">Response</h4>
+<p>Because this PATCH request updated the order of other webhooks, a reordered summary is included under the 
+<code>new_order</code> attribute:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -993,100 +1126,34 @@
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">dataset</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">fides_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mydatabase</span>
-    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">internal database</span>
-    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">our internal database of customer data</span>
-    <span class="nt">collections</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">address</span>
-        <span class="nt">fields</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">system.operations</span><span class="p p-Indicator">]</span>
-            <span class="nt">fidesops_meta</span><span class="p">:</span>
-              <span class="nt">primary_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">street</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.contact.street</span><span class="p p-Indicator">]</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">city</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.contact.city</span><span class="p p-Indicator">]</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">state</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.contact.state</span><span class="p p-Indicator">]</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zip</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.contact.postal_code</span><span class="p p-Indicator">]</span>
-
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">customer</span>
-        <span class="nt">after</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mydatabase.address</span>
-        <span class="nt">fields</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">address_id</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">system.operations</span><span class="p p-Indicator">]</span>
-            <span class="nt">fidesops_meta</span><span class="p">:</span>
-              <span class="nt">references</span><span class="p">:</span>
-                <span class="p p-Indicator">-</span> <span class="nt">dataset</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mydatabase</span>
-                  <span class="nt">field</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">address.id</span>
-                  <span class="nt">direction</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">to</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">created</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">system.operations</span><span class="p p-Indicator">]</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.contact.email</span><span class="p p-Indicator">]</span>
-            <span class="nt">fidesops_meta</span><span class="p">:</span>
-              <span class="nt">identity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">id</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.derived.identifiable.unique_id</span><span class="p p-Indicator">]</span>
-            <span class="nt">fidesops_meta</span><span class="p">:</span>
-              <span class="nt">primary_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
-            <span class="nt">data_categories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">user.provided.identifiable.name</span><span class="p p-Indicator">]</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;two_way&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;wake_up_snowflake_db&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Wake up Snowflake DB Webhook&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;connection_config&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;TRUNCATED&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;order&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;new_order&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;prep_systems_webhook&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;order&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;wake_up_snowflake_db&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;order&quot;</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
-</td></tr></table>
-<h4 id="dataset-members">Dataset members</h4>
-<ul>
-<li><code>fides_key</code>: A unique identifier name for the dataset</li>
-<li><code>collections</code>: A list of addressable collections.</li>
-<li><code>after</code>: An optional list of datasets that must be fully traversed before this dataset is queried.</li>
-</ul>
-<h4 id="collection-members">Collection members</h4>
-<ul>
-<li><code>name</code>: The name of the collection in your configuration must correspond to the name used for it in your datastore, since it will be used to generate query and update statements.</li>
-<li><code>fields</code>: A list of addressable fields in the collection. Specifying the fields in the collection tells fidesOps what data to address in the collection.</li>
-<li><code>after</code>: An optional list of  collections (in the form <code>[dataset name].[collection name]</code> ) that must be fully traversed before this collection is queried.</li>
-</ul>
-<h4 id="field-members">Field members</h4>
-<ul>
-<li><code>name</code>: The name of the field will be used to generate query and update statements. Please note that Fidesops does not do automated schema discovery. It is only aware of the fields you declare. This means that the only fields that will be addressed and retrieved by Fidesops queries are the fields you declare.</li>
-<li><code>data_categories</code>: Annotating data_categories connects fields to policy rules, and determines which actions apply to each field. For more information see <a href="../policies/">Policies</a></li>
-<li><code>fidesops_meta</code>: The fidesops_meta section specifies some additional fields that control how Fidesops manages your data:<ul>
-<li><code>references</code>:  A declaration of relationships between collections. Where the configuration declares a reference to <code>mydatabase:address:id</code> it means Fidesops will use the values from <code>mydatabase.address.id</code> to search for related values in <code>customer</code>. Unlike the SQL declaration, this is not an enforceable relationship, but simply a statement of which values are connected.  In the example above, the references from the <code>customer</code> field to <code>mydatabase.address.id</code> is analogous to a SQL statement <code>customer id REFERENCES address.id</code>, with the exception that any dataset and collection can be referenced. The relationship requires you to specify the dataset as well as the collection for relationships, because you may declare a configuration with multiple datasets, where values in one collection in the first dataset are searched using values found in the second dataset.</li>
-<li><code>field</code>: The specified linked field, using the syntax <code>[dataset name].[collection name ].[field name]</code>.</li>
-<li><code>identity</code>: Signifies that this field is an identity value that can be used as the root for a traversal <a href="../query_execution/">See graph traversal</a></li>
-<li><code>direction</code>(<em>Optional</em>): Accepted values are <code>from</code> or <code>to</code>. This determines how Fidesops uses the relationships to discover data. If the direction is <code>to</code>, Fidesops will only use data in the <em>source</em> collection to discover data in the <em>referenced</em> collection. If the direction is <code>from</code>, Fidesops will only use data in the <em>referenced</em> collection to discover data in the <em>source</em> collection. If the direction is omitted, Fidesops will traverse the relation in whatever direction works to discover all related data.</li>
-<li><code>primary_key</code> (<em>Optional</em>): A boolean value that means that Fidesops will treat this field as a unique row identifier for generating update statements. If multiple fields are marked as primary keys the combination of their values will be treated as a combined key. In SQL terms, we'd issue a query that looked like <code>SELECT ... FROM TABLE WHERE primary_key_name_1 = value1 AND primary_key_name_2 = value2</code>. If no primary key is specified for any field on a collection, no updates will be generated against that collection.</li>
-<li><code>data_type</code> (<em>Optional</em>): An indication of type of data held by this field. Data types are used to convert values to the appropriate type when those values are used in queries. Data types are also used to generate the appropriate masked value when runnint erasures, since Fidesops needs to know the type of data exxpected by the field in order to generate an appropriate masked value. Available datatypes are <code>string</code>, <code>integer</code>, <code>float</code>, <code>boolean</code>, and <code>object_id</code>.</li>
-<li><code>length</code> (<em>Optional</em>): An indicator of field length.</li>
-</ul>
-</li>
-</ul>
+</td></tr></table></p>
+<p>Similarly, to update your a Post-Execution webhook on a Policy:</p>
+<p><code>PATCH /policy/&lt;policy_key&gt;/webhook/post_execution/&lt;post_execution_key&gt;</code></p>
+<p>See API docs for more information on how to <a href="/fidesops/api#operations-Policy_Webhooks-update_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__patch">PATCH a PolicyPreWebhook</a>
+and how to <a href="/fidesops/api#operations-Policy_Webhooks-update_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__patch">PATCH a PolicyPostWebhook</a>.</p>
+<h2 id="expected-webhook-request-and-response-format">Expected Webhook Request and Response Format</h2>
+<p>In progress, this will be added in the next release.  For now, you have the ability to configure webhooks. The work
+to trigger those callbacks is ongoing.</p>
                 
               
               
@@ -1143,9 +1210,9 @@
       
         
         <a
-          href="../database_connectors/"
+          href="../storage/"
           class="md-footer__link md-footer__link--prev"
-          aria-label="Previous: Connect SQL and NoSQL Databases"
+          aria-label="Previous: Configure Storage Destinations"
           rel="prev"
         >
           <div class="md-footer__button md-icon">
@@ -1156,7 +1223,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Connect SQL and NoSQL Databases
+              Configure Storage Destinations
             </div>
           </div>
         </a>
@@ -1166,9 +1233,9 @@
       
         
         <a
-          href="../query_execution/"
+          href="../privacy_requests/"
           class="md-footer__link md-footer__link--next"
-          aria-label="Next: Preview Query Execution"
+          aria-label="Next: Execute Privacy Requests"
           rel="next"
         >
           <div class="md-footer__title">
@@ -1176,7 +1243,7 @@
               <span class="md-footer__direction">
                 Next
               </span>
-              Preview Query Execution
+              Execute Privacy Requests
             </div>
           </div>
           <div class="md-footer__button md-icon">
