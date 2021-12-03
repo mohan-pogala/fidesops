@@ -968,6 +968,14 @@ the user by <code>email</code>, and from there, travel through other tables link
     <span class="nt">identity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">email</span>
 </code></pre></div>
 </td></tr></table>
+<p>Optional <code>fidesops_meta</code> fields:
+- <code>data_type</code>: only required for processing erasure requests, however, whenever specified, Fidesops will attempt to coerce the field's value to the type. For erasure requests in particular, Fidesops requires <code>data_type</code> to ensure that the configured masking strategy can process the value. Supported data types:
+  - <code>string</code>
+  - <code>integer</code>
+  - <code>float</code>
+  - <code>boolean</code>
+  - <code>object_id</code>
+- <code>length</code>: if <code>length</code> is specified, in an erasure request, Fidesops will truncate the end of the masked value to the specified <code>length</code>. This should be used if your database column has a length restriction. E.g. if a specific row has <code>email</code> of <code>jerry@mail.com</code>, and the masked value is <code>23982r3n8rupq8ewurnw</code>, and <code>length</code> is set to <code>10</code>, then the resulting update query will use the value <code>23982r3n8r</code>.</p>
 <h2 id="upload-this-dataset-to-fidesops">Upload this Dataset to Fidesops</h2>
 <p>For more detailed information, <a href="../../guides/datasets/">see the Datasets Guide</a>.</p>
 <hr />
