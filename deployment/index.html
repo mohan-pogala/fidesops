@@ -588,6 +588,19 @@
     Step 1: Setup Hosted Database
   </a>
   
+    <nav class="md-nav" aria-label="Step 1: Setup Hosted Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fidesops-postgresql-app-database-diagram" class="md-nav__link">
+    Fidesops PostgreSQL app database diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -878,6 +891,19 @@
     Step 1: Setup Hosted Database
   </a>
   
+    <nav class="md-nav" aria-label="Step 1: Setup Hosted Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fidesops-postgresql-app-database-diagram" class="md-nav__link">
+    Fidesops PostgreSQL app database diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -977,6 +1003,8 @@
 </tr>
 </tbody>
 </table>
+<h3 id="fidesops-postgresql-app-database-diagram">Fidesops PostgreSQL <code>app</code> database diagram</h3>
+<p><img alt="PostgreSQL Database" src="../img/app_database.png" /></p>
 <h2 id="step-2-setup-hosted-cache">Step 2: Setup Hosted Cache</h2>
 <p>During privacy request execution, <code>fidesops</code> collects result data in a temporary Redis cache that automatically expires to ensure personal data is never retained erroneously. Any hosted Redis database will work for this purpose (Redis version 6.2.0+), from a simple Docker <a href="https://hub.docker.com/_/redis">redis</a> container to a managed service (e.g. AWS ElastiCache, GCP Memorystore, Azure Cache, Redis Cloud).</p>
 <p>NOTE: Similar to PostgreSQL, there <em>is no reason to expose this cache to the public Internet</em> as long as it is will be accessible by your <code>fidesops</code> web server!</p>
