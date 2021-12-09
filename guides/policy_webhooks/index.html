@@ -849,8 +849,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#expected-webhook-request-and-response-format" class="md-nav__link">
-    Expected Webhook Request and Response Format
+  <a href="#webhook-request-format" class="md-nav__link">
+    Webhook Request Format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expected-webhook-response-format" class="md-nav__link">
+    Expected Webhook Response Format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resuming-privacyrequest-execution" class="md-nav__link">
+    Resuming PrivacyRequest Execution
   </a>
   
 </li>
@@ -878,7 +892,8 @@
 <li>Define PolicyPreWebhooks or PolicyPostWebhooks</li>
 </ul>
 </li>
-<li>Expected webhook request and response format</li>
+<li>Expected webhook request and response formats</li>
+<li>Resuming Privacy Request Execution</li>
 </ul>
 <p>Take me directly to the <a href="/fidesops/api/#operations-Policy_Webhooks-get_policy_pre_execution_webhooks_api_v1_policy__policy_key__webhook_pre_execution_get">Policy Webhooks API documentation</a>.</p>
 <h2 id="policy-webhook-defined">Policy Webhook Defined</h2>
@@ -933,8 +948,8 @@ These credentials are stored encrypted in the <code>fidesops</code> <code>app</c
 </code></pre></div>
 </td></tr></table>
 <h3 id="defining-pre-execution-or-post-execution-policy-webhooks">Defining Pre-Execution or Post-Execution Policy Webhooks</h3>
-<p>After you've defined a ConnectionConfig, you can create lists of webhooks to run <em>before</em> (PolicyPreWebhooks)
-or <em>after</em> (PolicyPostWebhooks) a PrivacyRequest is executed.</p>
+<p>After you've defined a <code>ConnectionConfig</code>, you can create lists of webhooks to run <em>before</em> (<code>PolicyPreWebhooks</code>)
+or <em>after</em> (<code>PolicyPostWebhooks</code>) a PrivacyRequest is executed.</p>
 <p>If you are defining PolicyPreWebhooks, all desired PolicyPreWebhooks should be included in the request
 body in the desired order.  Any PolicyPreWebhooks on the Policy <em>not</em> included in the request, will be removed from the 
 Policy. The same applies for PolicyPostWebhooks.</p>
@@ -1036,9 +1051,88 @@ webhook at position 1 to move to position 0. </p>
 <p><code>PATCH /policy/&lt;policy_key&gt;/webhook/post_execution/&lt;post_execution_key&gt;</code></p>
 <p>See API docs for more information on how to <a href="/fidesops/api#operations-Policy_Webhooks-update_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__patch">PATCH a PolicyPreWebhook</a>
 and how to <a href="/fidesops/api#operations-Policy_Webhooks-update_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__patch">PATCH a PolicyPostWebhook</a>.</p>
-<h2 id="expected-webhook-request-and-response-format">Expected Webhook Request and Response Format</h2>
-<p>In progress, this will be added in the next release.  For now, you have the ability to configure webhooks. The work
-to trigger those callbacks is ongoing.</p>
+<h2 id="webhook-request-format">Webhook Request Format</h2>
+<p>NOTE: FEATURE IN PROGRESS.</p>
+<p>Before and after running access or erasure requests, Fidesops will send requests to any configured webhooks in sequential order
+with the following request body:</p>
+<p>POST <user-defined URL>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;privacy_request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;pri_029832ba-3b84-40f7-8946-82aec6f95448&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;one_way | two_way&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;callback_type&quot;</span><span class="p">:</span> <span class="s2">&quot;pre | post&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@example.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Most of these attributes were configured by you: the <code>direction</code>, the <code>callback_type</code> ("pre" for <code>PolicyPreWebhook</code>s that will run 
+before PrivacyRequest execution or "post" for <code>PolicyPostWebhook</code>s that will run after PrivacyRequestExecution).
+Known identities are also embedded in the request.</p>
+<p>For <code>two-way</code> <code>PolicyPreWebhooks</code>, we include specific headers in case you need to pause PrivacyRequest 
+execution while you take care of additional processing on your end.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>     <span class="p">{</span>
+        <span class="nt">&quot;reply-to&quot;</span><span class="p">:</span> <span class="s2">&quot;/privacy-request/&lt;privacy_request_id&gt;/resume&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;reply-to-token&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;jwe_token&gt;&quot;</span>
+     <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+ To resume, you should send a request back to the <code>reply-to</code> URL with the <code>reply-to-token</code>.</p>
+<h2 id="expected-webhook-response-format">Expected Webhook Response Format</h2>
+<p>Your webhook should respond immediately. If more processing time is needed, either make sure it is configured as a 
+<code>one-way</code> webhook, or reply back with <code>halt=True</code> if you want to pause execution and wait for your processing to finish.
+Note that only <code>PolicyPreWebhooks</code> can pause execution. </p>
+<p>We don't expect a response from <code>one-way</code> webhooks, but <code>two-way</code> webhooks should respond with the following: </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;derived_identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@gmail.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;halt&quot;</span><span class="p">:</span> <span class="s2">&quot;true | false&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Derived identities are optional: a returned email or phone number will replace currently known emails or phone numbers.</p>
+<h2 id="resuming-privacyrequest-execution">Resuming PrivacyRequest Execution</h2>
+<p>If your webhook needed more processing time, once completed, send a request to the <code>reply-to</code> URL 
+given to you in the original request header with the <code>reply-to-token</code> auth token.</p>
+<p><code>POST privacy_request/&lt;privacy-request-id&gt;/resume</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;derived_identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@gmail.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>If there are no derived identities, an empty <code>{}</code> request body will suffice.</p>
+<p>The <code>reply-to-token</code> is a JWE containing the current webhook id, scopes to access the callback endpoint, 
+and the datetime the token is issued.  We unpack this and resume the privacy request execution after the 
+specified webhook. The <code>reply-to-token</code> expires when the redis cache expires (<code>config.redis.DEFAULT_TTL_SECONDS</code>).
+Once the redis cache expires, Fidesops no longer has the original identity data and the privacy request should be resubmitted.</p>
                 
               
               

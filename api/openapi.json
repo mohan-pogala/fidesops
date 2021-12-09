@@ -2663,6 +2663,64 @@
         ]
       }
     },
+    "/api/v1/privacy-request/{privacy_request_id}/resume": {
+      "post": {
+        "tags": [
+          "Privacy Requests"
+        ],
+        "summary": "Resume Privacy Request",
+        "description": "Resume running a privacy request after it was paused by a Pre-Execution webhook",
+        "operationId": "resume_privacy_request_api_v1_privacy_request__privacy_request_id__resume_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Privacy Request Id",
+              "type": "string"
+            },
+            "name": "privacy_request_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrivacyRequestResumeFormat"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "privacy-request:resume"
+            ]
+          }
+        ]
+      }
+    },
     "/api/v1/storage/{request_id}": {
       "post": {
         "tags": [
@@ -4669,6 +4727,7 @@
             "type": "string"
           }
         },
+        "additionalProperties": false,
         "description": "Some PII grouping pertaining to a human"
       },
       "PrivacyRequestResponse": {
@@ -4708,12 +4767,29 @@
         },
         "description": "Schema to check the status of a PrivacyRequest"
       },
+      "PrivacyRequestResumeFormat": {
+        "title": "PrivacyRequestResumeFormat",
+        "type": "object",
+        "properties": {
+          "derived_identities": {
+            "title": "Derived Identities",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PrivacyRequestIdentity"
+              }
+            ],
+            "default": {}
+          }
+        },
+        "description": "Expected request body to resume a privacy request after it was paused by a webhook"
+      },
       "PrivacyRequestStatus": {
         "title": "PrivacyRequestStatus",
         "enum": [
           "in_processing",
           "pending",
           "complete",
+          "paused",
           "error"
         ],
         "description": "Enum for privacy request statuses, reflecting where they are in the Privacy Request Lifecycle"
