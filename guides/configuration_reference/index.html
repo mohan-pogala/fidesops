@@ -574,6 +574,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#-reporting-a-running-applications-configuration" class="md-nav__link">
     - Reporting a running application's configuration
   </a>
@@ -906,6 +913,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#additional-environment-variables" class="md-nav__link">
+    Additional environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#-reporting-a-running-applications-configuration" class="md-nav__link">
     - Reporting a running application's configuration
   </a>
@@ -1216,6 +1230,33 @@ TASK_RETRY_BACKOFF=2
 </code></pre></div>
 </td></tr></table>
 <p>Please note: The configuration is case-sensitive, so the variables must be specified in UPPERCASE.</p>
+<h2 id="additional-environment-variables">Additional environment variables</h2>
+<table>
+<thead>
+<tr>
+<th>ENV Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOG_PII</code></td>
+<td>False</td>
+<td>If this is set to "True", pii values will display unmasked in log output. This variable should always be set to "False" in production systems.</td>
+</tr>
+<tr>
+<td><code>DEV_MODE</code></td>
+<td>False</td>
+<td>If "True", the fidesops server will run with hot-reloading of files. This variable should always be set to "False" in production systems.</td>
+</tr>
+<tr>
+<td><code>FIDESOPS_CONFIG_PATH</code></td>
+<td>None</td>
+<td>If this variable is set to a path, that path will be used to load .toml files first. That is, any .toml files on this path will override any installed .toml files.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="-reporting-a-running-applications-configuration">- Reporting a running application's configuration</h2>
 <p>You can view the currently running configuration of a Fidesops application with the following request:</p>
 <p><code>GET /api/v1/config</code></p>
