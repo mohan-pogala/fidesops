@@ -4671,7 +4671,7 @@
         "title": "PrivacyRequestCreate",
         "required": [
           "requested_at",
-          "identities",
+          "identity",
           "policy_key"
         ],
         "type": "object",
@@ -4695,12 +4695,8 @@
             "type": "string",
             "format": "date-time"
           },
-          "identities": {
-            "title": "Identities",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PrivacyRequestIdentity"
-            }
+          "identity": {
+            "$ref": "#/components/schemas/PrivacyRequestIdentity"
           },
           "policy_key": {
             "title": "Policy Key",
@@ -4771,8 +4767,8 @@
         "title": "PrivacyRequestResumeFormat",
         "type": "object",
         "properties": {
-          "derived_identities": {
-            "title": "Derived Identities",
+          "derived_identity": {
+            "title": "Derived Identity",
             "allOf": [
               {
                 "$ref": "#/components/schemas/PrivacyRequestIdentity"

@@ -934,7 +934,7 @@
 </code></pre></div>
 </td></tr></table>
 <p>For our last step, we'll write a method that will let us create a Privacy Request.  We need to specify the
-Policy we want applied to that Privacy Request, as well as the starting Identities of the user we'll need
+Policy we want applied to that Privacy Request, as well as the starting identity of the user we'll need
 to locate the remaining user information:</p>
 <h3 id="define-helper-method">Define helper method</h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -969,7 +969,7 @@ to locate the remaining user information:</p>
         <span class="p">{</span>
             <span class="s2">&quot;requested_at&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
             <span class="s2">&quot;policy_key&quot;</span><span class="p">:</span> <span class="n">policy_key</span><span class="p">,</span>
-            <span class="s2">&quot;identities&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">}],</span>
+            <span class="s2">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">},</span>
         <span class="p">},</span>
     <span class="p">]</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>

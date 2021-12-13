@@ -900,9 +900,9 @@
 <p>A Policy Webhook is an HTTPS Callback that you've defined on a Policy to call an external
 REST API endpoint <em>before</em> or <em>after</em> a PrivacyRequest executes.</p>
 <p>You can define as many webhooks as you'd like.  Webhooks can be <code>one_way</code>, 
-where we will just ping your API and move on, or <code>two_way</code>, where we will wait for a response. Any <code>derived_identities</code>
+where we will just ping your API and move on, or <code>two_way</code>, where we will wait for a response. Any new fields in <code>derived_identity</code>
 returned from a <code>two_way</code> webhook will be saved and can be used to locate other user information.  For example, a webhook
-might take a known <code>email</code> <code>identity</code> and use that to find a <code>phone_number</code> <code>identity</code>.</p>
+might take a known <code>email</code> <code>identity</code> and use that to find a <code>phone_number</code> <code>derived_identity</code>.</p>
 <p>Another use case for a Policy Webhook might be to log a user out of your mobile app after you've cleared
 their data from your system.  In this case, you'd create a <code>Policy</code> and a <code>ConnectionConfig</code> to describe the URL to hit
 to clear the cache. You'd then create a <code>one-way</code> <code>PolicyPostWebhook</code> to run after your PrivacyRequest executes. </p>
@@ -1068,7 +1068,7 @@ with the following request body:</p>
   <span class="nt">&quot;privacy_request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;pri_029832ba-3b84-40f7-8946-82aec6f95448&quot;</span><span class="p">,</span>
   <span class="nt">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;one_way | two_way&quot;</span><span class="p">,</span>
   <span class="nt">&quot;callback_type&quot;</span><span class="p">:</span> <span class="s2">&quot;pre | post&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@example.com&quot;</span><span class="p">,</span>
     <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
   <span class="p">}</span>
@@ -1102,7 +1102,7 @@ Note that only <code>PolicyPreWebhooks</code> can pause execution. </p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;derived_identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;derived_identity&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@gmail.com&quot;</span><span class="p">,</span>
     <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
   <span class="p">},</span>
@@ -1110,7 +1110,7 @@ Note that only <code>PolicyPreWebhooks</code> can pause execution. </p>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>Derived identities are optional: a returned email or phone number will replace currently known emails or phone numbers.</p>
+<p>Derived identity is optional: a returned email or phone number will replace currently known emails or phone numbers.</p>
 <h2 id="resuming-privacyrequest-execution">Resuming PrivacyRequest Execution</h2>
 <p>If your webhook needed more processing time, once completed, send a request to the <code>reply-to</code> URL 
 given to you in the original request header with the <code>reply-to-token</code> auth token.</p>
@@ -1121,7 +1121,7 @@ given to you in the original request header with the <code>reply-to-token</code>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;derived_identities&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;derived_identity&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;customer-1@gmail.com&quot;</span><span class="p">,</span>
     <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;555-5555&quot;</span>
   <span class="p">}</span>
