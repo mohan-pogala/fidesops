@@ -16,7 +16,7 @@
     
     
       
-        <title>How-To: Configure Policy Webhooks - Fidesops</title>
+        <title>Configure Policy Webhooks - Fidesops</title>
       
     
     
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How-To: Configure Policy Webhooks
+              Configure Policy Webhooks
             
           </span>
         </div>
@@ -375,12 +375,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         How-To Guides
@@ -473,6 +475,133 @@
       <a href="../storage/" class="md-nav__link">
         Configure Storage Destinations
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configure Policy Webhooks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Configure Policy Webhooks
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy-webhook-defined" class="md-nav__link">
+    Policy Webhook Defined
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-https-connectionconfig" class="md-nav__link">
+    Creating an HTTPS ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-connectionconfig-secrets" class="md-nav__link">
+    Adding ConnectionConfig Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-pre-execution-or-post-execution-policy-webhooks" class="md-nav__link">
+    Defining Pre-Execution or Post-Execution Policy Webhooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-single-webhook" class="md-nav__link">
+    Updating a Single Webhook
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating a Single Webhook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    Response
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook-request-format" class="md-nav__link">
+    Webhook Request Format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expected-webhook-response-format" class="md-nav__link">
+    Expected Webhook Response Format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resuming-privacyrequest-execution" class="md-nav__link">
+    Resuming PrivacyRequest Execution
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -899,17 +1028,16 @@
 <h2 id="policy-webhook-defined">Policy Webhook Defined</h2>
 <p>A Policy Webhook is an HTTPS Callback that you've defined on a Policy to call an external
 REST API endpoint <em>before</em> or <em>after</em> a PrivacyRequest executes.</p>
-<p>You can define as many webhooks as you'd like.  Webhooks can be <code>one_way</code>, 
-where we will just ping your API and move on, or <code>two_way</code>, where we will wait for a response. Any new fields in <code>derived_identity</code>
-returned from a <code>two_way</code> webhook will be saved and can be used to locate other user information.  For example, a webhook
-might take a known <code>email</code> <code>identity</code> and use that to find a <code>phone_number</code> <code>derived_identity</code>.</p>
+<p>You can define as many webhooks as you'd like.  Webhooks can be <code>one_way</code>, where we will just ping your API and move on, 
+or <code>two_way</code>, where we will wait for a response. Any <code>derived_identities</code> returned from a <code>two_way</code> webhook will be saved 
+and can be used to locate other user information.  For example, a webhook might take a known <code>email</code> <code>identity</code> and
+use that to find a <code>phone_number</code> <code>derived)identity</code>.</p>
 <p>Another use case for a Policy Webhook might be to log a user out of your mobile app after you've cleared
 their data from your system.  In this case, you'd create a <code>Policy</code> and a <code>ConnectionConfig</code> to describe the URL to hit
 to clear the cache. You'd then create a <code>one-way</code> <code>PolicyPostWebhook</code> to run after your PrivacyRequest executes. </p>
 <h2 id="configuration">Configuration</h2>
-<p>Big picture, you will define an <code>https</code> <code>ConnectionConfig</code> that contains the details to
-make a request to your API endpoint.  You will then define a <code>PolicyPreWebhook</code> or a <code>PolicyPostWebhook</code>
-for a specific <code>Policy</code> using that <code>ConnectionConfig</code>.</p>
+<p>Big picture, you will define an <code>https</code> <code>ConnectionConfig</code> that contains the details to make a request to your API endpoint.<br />
+You will then define a <code>PolicyPreWebhook</code> or a <code>PolicyPostWebhook</code>for a specific <code>Policy</code> using that <code>ConnectionConfig</code>.</p>
 <h3 id="creating-an-https-connectionconfig">Creating an HTTPS ConnectionConfig</h3>
 <p>The information that describes how to connect to your API endpoint lives on a <code>ConnectionConfig</code>. We also use
 <code>ConnectionConfigs</code> to connect to databases like <code>PostgreSQL</code> and <code>MongoDB</code>.  This same construct can help us store
@@ -942,7 +1070,7 @@ These credentials are stored encrypted in the <code>fidesops</code> <code>app</c
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="p">{</span>
-        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.example.com&quot;</span><span class="p">,</span>
         <span class="nt">&quot;authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;test_authorization&quot;</span>
     <span class="p">}</span>
 </code></pre></div>
@@ -1052,7 +1180,6 @@ webhook at position 1 to move to position 0. </p>
 <p>See API docs for more information on how to <a href="/fidesops/api#operations-Policy_Webhooks-update_pre_execution_webhook_api_v1_policy__policy_key__webhook_pre_execution__pre_webhook_key__patch">PATCH a PolicyPreWebhook</a>
 and how to <a href="/fidesops/api#operations-Policy_Webhooks-update_post_execution_webhook_api_v1_policy__policy_key__webhook_post_execution__post_webhook_key__patch">PATCH a PolicyPostWebhook</a>.</p>
 <h2 id="webhook-request-format">Webhook Request Format</h2>
-<p>NOTE: FEATURE IN PROGRESS.</p>
 <p>Before and after running access or erasure requests, Fidesops will send requests to any configured webhooks in sequential order
 with the following request body:</p>
 <p>POST <user-defined URL>
@@ -1089,7 +1216,10 @@ execution while you take care of additional processing on your end.</p>
      <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
- To resume, you should send a request back to the <code>reply-to</code> URL with the <code>reply-to-token</code>.</p>
+ To resume, you should send a request back to the <code>reply-to</code> URL with the <code>reply-to-token</code>.  The <code>reply-to-token</code> will
+expire when your redis cache expires: <code>config.redis.DEFAULT_TTL_SECONDS</code> (Fidesops uses the redis cache to temporarily
+ store identity data).  At this point, your PrivacyRequest will be given an <code>error</code> status and you would have to resubmit
+the PrivacyRequest.</p>
 <h2 id="expected-webhook-response-format">Expected Webhook Response Format</h2>
 <p>Your webhook should respond immediately. If more processing time is needed, either make sure it is configured as a 
 <code>one-way</code> webhook, or reply back with <code>halt=True</code> if you want to pause execution and wait for your processing to finish.
@@ -1179,6 +1309,58 @@ Once the redis cache expires, Fidesops no longer has the original identity data 
 <footer class="md-footer">
 
   <!-- Link to previous and/or next page -->
+  
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label="Footer"
+    >
+
+      <!-- Link to previous page -->
+      
+        
+        <a
+          href="../storage/"
+          class="md-footer__link md-footer__link--prev"
+          aria-label="Previous: Configure Storage Destinations"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Configure Storage Destinations
+            </div>
+          </div>
+        </a>
+      
+
+      <!-- Link to next page -->
+      
+        
+        <a
+          href="../privacy_requests/"
+          class="md-footer__link md-footer__link--next"
+          aria-label="Next: Execute Privacy Requests"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Execute Privacy Requests
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
 
 
