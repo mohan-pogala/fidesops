@@ -509,6 +509,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#example-3-amazon-redshift-set-url-and-schema" class="md-nav__link">
+    Example 3: Amazon Redshift: Set URL and Schema
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1008,6 +1015,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#example-3-amazon-redshift-set-url-and-schema" class="md-nav__link">
+    Example 3: Amazon Redshift: Set URL and Schema
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1206,6 +1220,23 @@ categories.</p>
 
 {
     &quot;url&quot;: &quot;mongodb://mongo_user:mongo_pass@mongodb_example/mongo_test&quot;
+}
+</code></pre></div>
+</td></tr></table>
+<h4 id="example-3-amazon-redshift-set-url-and-schema">Example 3: Amazon Redshift: Set URL and Schema</h4>
+<p>This Amazon Redshift example sets the database secrets as a <code>url</code> property and a <code>db_schema</code> property.  Redshift
+databases have one or more schemas, with the default being named <code>public</code>.  If you need to set a different schema,
+specify <code>db_schema</code> for Redshift and it will be set as the <code>search_path</code> when querying.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/my_redshift_db/secret`
+
+{
+    &quot;url&quot;: &quot;redshift+psycopg2://username@host.amazonaws.com:5439/database&quot;,
+    &quot;db_schema&quot;: &quot;my_test_schema&quot;
 }
 </code></pre></div>
 </td></tr></table>

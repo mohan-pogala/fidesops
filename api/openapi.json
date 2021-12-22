@@ -4867,6 +4867,10 @@
           "password": {
             "title": "Password",
             "type": "string"
+          },
+          "db_schema": {
+            "title": "Db Schema",
+            "type": "string"
           }
         },
         "additionalProperties": false,
