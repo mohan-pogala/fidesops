@@ -1065,20 +1065,20 @@ This policy is subtly different from the concept of a Policy in <a href="https:/
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span> <span class="err">/api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule</span>
-<span class="p">[</span>
-  <span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mask Provided Emails&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;mask_provided_emails&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;action_type&quot;</span><span class="p">:</span> <span class="s2">&quot;erasure&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;masking_strategy&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;hash&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA-512&quot;</span>
-      <span class="p">},</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">]</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span><span class="w"> </span><span class="err">/api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule</span><span class="w"></span>
+<span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mask Provided Emails&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mask_provided_emails&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;erasure&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;masking_strategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;strategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hash&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;configuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SHA-512&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 This will create a rule to hash a not-yet-specified value with a SHA-512 hash. We need to specify a target to hash, so we need to creat a target for this rule:</p>
@@ -1087,12 +1087,12 @@ This will create a rule to hash a not-yet-specified value with a SHA-512 hash. W
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span> <span class="err">api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule/</span><span class="p">{</span><span class="err">rule_key</span><span class="p">}</span>
-  <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&quot;data_category&quot;</span><span class="p">:</span> <span class="s2">&quot;user.provided.identifiable.contact.email&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">]</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule/</span><span class="p">{</span><span class="err">rule_key</span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;data_category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user.provided.identifiable.contact.email&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>This policy, <code>user_email_address_polcy</code>, will now do the following:

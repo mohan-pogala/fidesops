@@ -971,7 +971,7 @@ convenience (handy if you'll be running this script multiple times).</p>
             <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/policy&quot;</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">oauth_headers</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">),</span>
         <span class="n">json</span><span class="o">=</span><span class="n">policy_create_data</span><span class="p">,</span>
@@ -998,7 +998,7 @@ convenience (handy if you'll be running this script multiple times).</p>
             <span class="s2">&quot;storage_destination_key&quot;</span><span class="p">:</span> <span class="n">storage_destination_key</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/policy/</span><span class="si">{</span><span class="n">policy_key</span><span class="si">}</span><span class="s2">/rule&quot;</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">oauth_headers</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">),</span>
         <span class="n">json</span><span class="o">=</span><span class="n">rule_create_data</span><span class="p">,</span>
@@ -1041,7 +1041,7 @@ convenience (handy if you'll be running this script multiple times).</p>
             <span class="s2">&quot;data_category&quot;</span><span class="p">:</span> <span class="n">data_category</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/policy/</span><span class="si">{</span><span class="n">policy_key</span><span class="si">}</span><span class="s2">/rule/</span><span class="si">{</span><span class="n">rule_key</span><span class="si">}</span><span class="s2">/target&quot;</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">oauth_headers</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">),</span>
         <span class="n">json</span><span class="o">=</span><span class="n">target_create_data</span><span class="p">,</span>

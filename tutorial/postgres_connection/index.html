@@ -940,7 +940,7 @@
             <span class="s2">&quot;access&quot;</span><span class="p">:</span> <span class="s2">&quot;write&quot;</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/connection&quot;</span><span class="p">,</span>
         <span class="n">headers</span><span class="o">=</span><span class="n">oauth_headers</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">),</span>
         <span class="n">json</span><span class="o">=</span><span class="n">connection_create_data</span><span class="p">,</span>

@@ -3501,6 +3501,15 @@
         },
         "description": "Describes the returned schema for a ConnectionConfiguration.\n\nDo *NOT* add \"secrets\" to this schema."
       },
+      "ConnectionTestStatus": {
+        "title": "ConnectionTestStatus",
+        "enum": [
+          "succeeded",
+          "failed",
+          "skipped"
+        ],
+        "description": "Enum for supplying statuses of validating credentials for a Connection Config to the user"
+      },
       "ConnectionType": {
         "title": "ConnectionType",
         "enum": [
@@ -3925,6 +3934,14 @@
           },
           "fidesops_meta": {
             "$ref": "#/components/schemas/FidesopsMeta"
+          },
+          "fields": {
+            "title": "Fields",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FidesopsDatasetField"
+            },
+            "default": []
           }
         },
         "description": "Extends fideslang DatasetField model with additional Fidesops annotations"
@@ -5210,15 +5227,6 @@
         ],
         "description": "Enum for storage destination types"
       },
-      "TestStatus": {
-        "title": "TestStatus",
-        "enum": [
-          "succeeded",
-          "failed",
-          "skipped"
-        ],
-        "description": "Enum for supplying statuses of validating credentials for a Connection Config to the user"
-      },
       "TestStatusMessage": {
         "title": "TestStatusMessage",
         "required": [
@@ -5231,7 +5239,7 @@
             "type": "string"
           },
           "test_status": {
-            "$ref": "#/components/schemas/TestStatus"
+            "$ref": "#/components/schemas/ConnectionTestStatus"
           },
           "failure_reason": {
             "title": "Failure Reason",

@@ -946,40 +946,40 @@ add both a container for <code>redis</code> and <code>fidesops</code> services b
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-  <span class="l l-Scalar l-Scalar-Plain">redis</span><span class="p p-Indicator">:</span>
-    <span class="nt">image</span><span class="p">:</span> <span class="s">&quot;redis:6.2.5-alpine&quot;</span>
-    <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">redis-server --requirepass redispass</span>
-    <span class="nt">expose</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">6379</span>
-    <span class="nt">ports</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;6379:6379&quot;</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;redis:6.2.5-alpine&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-server --requirepass redispass</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;6379:6379&quot;</span><span class="w"></span>
 
-  <span class="nt">fidesops</span><span class="p">:</span>
-    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ethyca/fidesops:latest</span>
-    <span class="nt">depends_on</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">redis</span>
-    <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fidesops webserver</span>
-    <span class="nt">volumes</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./fides_uploads:/fidesops/fides_uploads</span>
-    <span class="nt">expose</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">8000</span>
-    <span class="nt">ports</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;8000:8080&quot;</span>
-    <span class="nt">environment</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__APP_ENCRYPTION_KEY=QLMI5I0xLWUXE4JN4Asnba79JiBHWWM3</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__OAUTH_ROOT_CLIENT_ID=fidesopsadmin</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__OAUTH_ROOT_CLIENT_SECRET=fidesopsadminsecret</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__SERVER=db</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__USER=postgres</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__PASSWORD=postgres</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__DB=fidesops</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__PORT=5432</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__HOST=redis</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__PORT=6379</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__PASSWORD=redispass</span>
+<span class="w">  </span><span class="nt">fidesops</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ethyca/fidesops:latest</span><span class="w"></span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fidesops webserver</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./fides_uploads:/fidesops/fides_uploads</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expose</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8080&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__APP_ENCRYPTION_KEY=QLMI5I0xLWUXE4JN4Asnba79JiBHWWM3</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__OAUTH_ROOT_CLIENT_ID=fidesopsadmin</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__SECURITY__OAUTH_ROOT_CLIENT_SECRET=fidesopsadminsecret</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__SERVER=db</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__USER=postgres</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__PASSWORD=postgres</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__DB=fidesops</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__DATABASE__PORT=5432</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__HOST=redis</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__PORT=6379</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FIDESOPS__REDIS__PASSWORD=redispass</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table></p>
 <h2 id="verify-that-fidesops-is-installed">Verify that fidesops is installed</h2>
