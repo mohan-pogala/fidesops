@@ -533,38 +533,12 @@
     What is a Privacy Request?
   </a>
   
-    <nav class="md-nav" aria-label="What is a Privacy Request?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-does-a-privacy-request-work-in-conjunction-with-a-policy" class="md-nav__link">
-    How does a Privacy Request work in conjunction with a Policy?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-can-i-execute-a-privacy-request" class="md-nav__link">
-    How can I execute a Privacy Request?
+  <a href="#how-do-i-submit-a-privacy-request" class="md-nav__link">
+    How do I submit a Privacy Request?
   </a>
-  
-    <nav class="md-nav" aria-label="How can I execute a Privacy Request?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    Note:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -907,38 +881,12 @@
     What is a Privacy Request?
   </a>
   
-    <nav class="md-nav" aria-label="What is a Privacy Request?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-does-a-privacy-request-work-in-conjunction-with-a-policy" class="md-nav__link">
-    How does a Privacy Request work in conjunction with a Policy?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-can-i-execute-a-privacy-request" class="md-nav__link">
-    How can I execute a Privacy Request?
+  <a href="#how-do-i-submit-a-privacy-request" class="md-nav__link">
+    How do I submit a Privacy Request?
   </a>
-  
-    <nav class="md-nav" aria-label="How can I execute a Privacy Request?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    Note:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -996,11 +944,11 @@
 </ul>
 <p>Take me directly to <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs</a>.</p>
 <h2 id="what-is-a-privacy-request">What is a Privacy Request?</h2>
-<p>A Privacy Request in its simplest form describes a request by a user, to process data pertaining to their identity. Privacy Requests are currently supported in two forms, <code>access</code> and <code>erasure</code>. For more information on action types, please see <a href="../policies/#rule-attributes">How-To: Configure Request Policies</a>.</p>
-<h4 id="how-does-a-privacy-request-work-in-conjunction-with-a-policy">How does a Privacy Request work in conjunction with a Policy?</h4>
-<p>A Privacy Request must always be associated with a pre-configured <code>Policy</code>. While a Privacy Request describes <em>whose</em> data to process, a <code>Policy</code> describes <em>how</em> to process that data.</p>
-<h2 id="how-can-i-execute-a-privacy-request">How can I execute a Privacy Request?</h2>
-<p>Privacy Requests can be executed by submitting them to Fidesops via the Privacy Request API as follows:</p>
+<p>A Privacy Request represents a request to perform an action on a user's identity data. The Request object itself identifies the user by email address, phone number, social security number, or other identifiable information. The data that will be affected and how it's affected is described in a Policy object that's associated with the Request.</p>
+<p>For more information on Policies, see <a href="../policies/#rule-attributes">How-To: Configure Policies</a>.</p>
+<h2 id="how-do-i-submit-a-privacy-request">How do I submit a Privacy Request?</h2>
+<p>You submit a Privacy Request by calling the  <strong>Submit a Privacy Request</strong> operation. Here, 
+we submit  a request to apply the <code>a-demo-policy</code> Policy to all target data in the <a href="../../glossary/">Identity Graph</a> that can be generated from the email address <code>identity@example.com</code> and the phone number <code>+1 (123) 456 7891</code>.</p>
 <p><code>POST /api/v1/privacy-request</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1012,35 +960,56 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[
-  {
-    &quot;external_id&quot;: &quot;a-user-defined-id&quot;,
-    &quot;requested_at&quot;: &quot;2021-10-31T16:00:00.000Z&quot;,
-    &quot;policy_key&quot;: &quot;a-demo-policy&quot;,
-    &quot;identity&quot;: {
-      &quot;email&quot;: &quot;identity@example.com&quot;,
-      &quot;phone_number: &quot;+1 (123) 456 7891&quot;
-    },
-  }
-]
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-user-defined-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requested_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-31T16:00:00.000Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;policy_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-demo-policy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;identity@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;phone_number: &quot;</span><span class="err">+</span><span class="mi">1</span><span class="w"> </span><span class="err">(</span><span class="mi">123</span><span class="err">)</span><span class="w"> </span><span class="mi">456</span><span class="w"> </span><span class="mi">7891</span><span class="err">&quot;</span>
+<span class="err">    },</span>
+<span class="err">  }</span>
+<span class="err">]</span>
 </code></pre></div>
 </td></tr></table>
-<h4 id="note">Note:</h4>
 <ul>
-<li>This request will submit a Privacy Request for execution that applies the <code>a-demo-policy</code> Policy to all target data in the <a href="../../glossary/">Identity Graph</a> that can be generated from the email address <code>identity@example.com</code> or the phone number <code>+1 (123) 456 7891</code>.</li>
+<li>
+<p><code>external_id</code> is an optional  identifier of your own invention that lets you track the Privacy Request. See <a href="../reporting/">How-To: Report on Privacy Requests</a> for more information.</p>
+</li>
+<li>
+<p><code>requested_at</code> is an ISO8601 timestamp that specifies the moment that the request was submitted.</p>
+</li>
+<li>
+<p><code>policy_key</code> identifies the Policy object to which this request will be applied. See <a href="../policies/">How-To: Configure Request Policies</a> for more information.</p>
+</li>
+<li>
+<p><code>identities</code> is an array of objects that contain data that identify the users whose data will be affected by the Policy. Each object identifies a single user by AND'ing the object's properties. </p>
+</li>
+<li>
+<p>This request will submit a Privacy Request for execution that applies the <code>a-demo-policy</code> Policy to all target data in the <a href="../../glossary/">Identity Graph</a> that can be generated from the email address <code>identity@example.com</code> or the phone number <code>+1 (123) 456 7891</code>.</p>
+</li>
 <li>Specifying a <code>external_id</code> enables us to track this Privacy Request with that <code>external_id</code> later on. See <a href="../reporting/">How-To: Report on Privacy Requests</a> for more information.</li>
 <li><code>policy_key</code> should correspond to a previously configured <code>Policy</code> object. See <a href="../policies/">How-To: Configure Request Policies</a> for more information.</li>
-<li>A full list of attributes available to set on the Privacy Request can be found in the <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs</a>.</li>
 </ul>
+<p>A full list of attributes available to set on the Privacy Request can be found in the <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs</a>.</p>
 <h2 id="how-do-i-monitor-privacy-requests-as-they-execute">How do I monitor Privacy Requests as they execute?</h2>
 <p>Privacy Requests can be monitored at any time throughout their execution by submitting any of the following requests:</p>
 <p><code>GET api/v1/privacy-request?id=&lt;privacy_request_id&gt;</code></p>
 <p><code>GET api/v1/privacy-request?external_id=&lt;external_id&gt;</code></p>
 <p>For more detailed examples and further Privacy Request filtering in Fidesops please see <a href="../reporting/">How-To: Report on Privacy Requests</a>.</p>
 <h2 id="how-can-i-integrate-the-privacy-request-flow-into-my-existing-support-tools">How can I integrate the Privacy Request flow into my existing support tools?</h2>
-<p>Alongside generic API interopoerability, Fidesops provides a direct integration with the OneTrust's DSAR automation flow.</p>
+<p>Alongside generic API interoperability, Fidesops provides a direct integration with the OneTrust's DSAR automation flow.</p>
 <ul>
-<li>Generic API interoperability: Third party services can be authorized by creating additional OAuth clients. Tokens obtained from OAuth clients can be managed and revoked at any time. Pleae see <a href="../oauth/">How-To: Authenticate with OAuth</a> for more information.</li>
+<li>
+<p>Generic API interoperability: Third party services can be authorized by creating additional OAuth clients. Tokens obtained from OAuth clients can be managed and revoked at any time. See <a href="../oauth/">How-To: Authenticate with OAuth</a> for more information.</p>
+</li>
+<li>
+<p>OneTrust: Fidesops can be configured to act as (or as part of) the fulfillment layer in OneTrust's Data Subject Request automation flow. Please see <a href="../onetrust/">How-To: Configure OneTrust Integration</a> for more information.</p>
+</li>
+<li>
+<p>Generic API interoperability: Third party services can be authorized by creating additional OAuth clients. Tokens obtained from OAuth clients can be managed and revoked at any time. Pleae see <a href="../oauth/">How-To: Authenticate with OAuth</a> for more information.</p>
+</li>
 <li>OneTrust: Fidesops can be configured to act as (or as part of) the fulfilment layer in OneTrust's Data Subject Request automation flow. Please see <a href="../onetrust/">How-To: Configure OneTrust Integration</a> for more information.</li>
 </ul>
 <h2 id="encryption">Encryption</h2>

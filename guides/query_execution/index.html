@@ -905,12 +905,12 @@
                 
                 <h1 id="query-execution">Query Execution</h1>
 <h2 id="graphs-and-traversals">Graphs and Traversals</h2>
-<p>Fidesops uses the datasets you provide to generate a <em>graph</em> of the resources. Based on the identity data you provide, Fidesops then generates a specific <em>traversal</em>, which is the order of steps that will be taken to fulfill the specific request. If no traversal can be generated that reaches all declared collections, Fidesops will generate an error.</p>
-<p>The graph supports both directed and non-directed edges using the optional <code>direction</code> parameter on the relation (non-directional edges may be traversed in either direction). You can always preview the queries that will be generated or manually control the order of operations by making relations explicitly directional and with the <code>after</code> dataset and collection parameters. </p>
+<p>Fidesops uses your Datasets to generate a <em>graph</em> of the resources. Based on the identity data you provide, Fidesops then generates a specific <em>traversal</em>, which is the order of steps that will be taken to fulfill a specific request. </p>
+<p>The graph supports both directed and non-directed edges using the optional <code>direction</code> parameter on the relation (non-directional edges may be traversed in either direction). You can preview the queries that will be generated or manually control the order of operations by making relations explicitly directional and with the and Collection parameters. If you specify a Collection that can't be reached, Fidesops generates an error.</p>
 <h2 id="an-example-graph">An example graph</h2>
-<p>Let's look at a slightly larger example. In this example there are 3 separate databases, a mysql database that stores users and their comments, a postgres DB that stores purchase information, and a mongoDB that stores user accounts. Each of them may have related data that we'd like to retrieve.</p>
+<p>In this example there are three databases: a mysql database that stores users and their comments, a postgres DB that stores purchase information, and a mongoDB that stores user accounts. Each of them may have related data that we'd like to retrieve.</p>
 <p><img alt="Example tables" src="../../img/traversal_tables.png" title="Example tables" /></p>
-<p>The (abbreviated) specification of these datasets looks like:</p>
+<p>The Dataset specification looks like this:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1066,14 +1066,14 @@
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">address_id</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
-<p>Typically we'll trigger a retrieval with one or at most a few pieces of user provided data, say, an email and a user_id. What we'll need to do is </p>
+<p>We trigger a retrieval with identity data, such as an email address or user ID, that's provided by the user. What we do is... </p>
 <ol>
-<li>Identify which collections have data we can search with using a piece of provided user data</li>
-<li>Find those related records</li>
-<li>Use that data to find any connected data</li>
+<li>Identify the collections that contain the identity data that the user provided.</li>
+<li>Find all related records.</li>
+<li>Use the data to find all connected data.</li>
 <li>Continue until we've found all related data.</li>
 </ol>
-<p>For the first step, we use the concept of an <code>identity</code>. In the Fidesops dataset specification, you may notice that any field may be marked with an <code>identity</code> notation:
+<p>For the first step, we use the concept of an <code>identity</code>. In the Fidesops Dataset specification, any field may be marked with an <code>identity</code> notation:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1086,12 +1086,11 @@
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">fidesop_meta</span><span class="p p-Indicator">:</span><span class="w"></span>
 <span class="w">           </span><span class="nt">identity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"> </span>
 </code></pre></div>
-</td></tr></table></p>
-<p>What this means is that we will <em>start</em> the data retrieval process with provided data that looks like 
-<code>{"email": "user@example.com", "username": "someone"}</code> by looking for any values in the collection <code>users</code> where <code>email == user@example.com</code>.  Note that the names of the provided starter data do not need to match the field names we're going to use this data to search. Also note that in this case, since we're providing two pieces of data,  we can also choose to start a search using the username provided value. In the above diagram, this means we have enough data to search in both <code>postgres_1.users.email</code> and <code>mongo_1.users.user_name</code>. </p>
+</td></tr></table>
+<p>What this means is that we will initiate the data retrieval process with provided data that looks like 
+<code>{"email": "user@example.com", "username": "someone"}</code> by looking for values in the collection <code>users</code> where <code>email == user@example.com</code>.  Note that the names of the provided starter data do not need to match the field names we're going to use this data to search. Also note that in this case, since we're providing two pieces of data,  we can also choose to start a search using the username provided value. In the above diagram, this means we have enough data to search in both <code>postgres_1.users.email</code> and <code>mongo_1.users.user_name</code>. </p>
 <h2 id="how-does-fidesops-execute-queries">How does Fidesops execute queries?</h2>
-<p>() The next step is to follow any links provided in field relationship information. In the (abbreviated) dataset declarations below, you can see that, for example, since we know that <code>mongo_1.accounts</code> data contains data related to <code>mongo_1.users</code>, we can retrieve data from <code>mongo_1.accounts</code> by running queries in sequence. We will generate and run queries that are appropriate to the type of datastore specified. Currently, MongoDB, PostgreSQL, and MySQL are supported, although more are planned.</p>
-<p>This will generate a set of queries that look like:</p>
+<p>The next step is to follow any links provided in field relationship information. In the abbreviated dataset declarations below, you can see that since we know that <code>mongo_1.accounts</code> data contains data related to <code>mongo_1.users</code>, we can retrieve data from <code>mongo_1.accounts</code> by generating this set of queries:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1123,13 +1122,13 @@
 <p>You can define multiple links between collections, which will generate OR queries like <code>SELECT a,b,c from TABLE_1 where name in  (values from TABLE\_2)  OR email in (values from TABLE\_3)</code>. </p>
 </li>
 <li>
-<p>If some collections in your dataset are not theoretically reachable from the relations you've specified, Fidesops will <em>not</em> run queries, but treats this as a configuration error. It is not an error if there are relations specified but there's just no data found to continue querying. In this case Fidesops will just return empty sets of data for collections where nothing was found.</p>
+<p>It's an error to specify a collection in your Dataset can't be reached through the relations you've specified.</p>
 </li>
 <li>
-<p>Fidesops first uses your datasets and your input data to "solve" the graph of your collections and how it is traversed. If your dataset has multiple identity values, you can create a situation where the query behavior depends on the values you input. In the example above,staring the graph traversal with <code>{"email":"value1", "username":"value2"}</code>  works fine, but starting with  <code>{"email":"value1"}</code> fails, since <code>mongo_1.users</code> is no longer reachable.</p>
+<p>Fidesops  uses your Datasets and your input data to "solve" the graph of your collections and how it is traversed. If your Dataset has multiple identity values, you can create a situation where the query behavior depends on the values you provide. In the example above, starting the graph traversal with <code>{"email": "value1", "username":" value2"}</code> is valid, but starting with  <code>{"email": "value1"}</code> fails because <code>mongo_1.users</code> is no longer reachable.</p>
 </li>
 <li>
-<p>There is no restriction on links between datasets. As in the example above, it's perfectly fine to query across datasets.</p>
+<p>As shown in the example, you can create queries between Datasets.</p>
 </li>
 </ul>
                 
