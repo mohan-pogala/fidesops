@@ -488,6 +488,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#example-4-mssql-connectionconfig" class="md-nav__link">
+    Example 4: MsSQL ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#set-the-connectionconfigs-secrets" class="md-nav__link">
     Set the ConnectionConfig's Secrets
   </a>
@@ -994,6 +1001,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#example-4-mssql-connectionconfig" class="md-nav__link">
+    Example 4: MsSQL ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#set-the-connectionconfigs-secrets" class="md-nav__link">
     Set the ConnectionConfig's Secrets
   </a>
@@ -1099,6 +1113,7 @@ categories.</p>
 <li>PostgreSQL</li>
 <li>MongoDB</li>
 <li>MySQL</li>
+<li>Microsoft SQLServer</li>
 <li>Amazon Redshift</li>
 <li>Snowflake</li>
 </ul>
@@ -1107,7 +1122,7 @@ categories.</p>
 <p>The connection between Fidesops and your database is represented by a <em>ConnectionConfig</em> object. To create a ConnectionConfig, you issue a request to the <a href="/fidesops/api/#operations-Connections-put_connections_api_v1_connection_put">Create a ConnectionConfig</a> operation, passing a payload that contains the properties listed below. </p>
 <ul>
 <li>
-<p><code>name</code>  is a  a human-readable name for your database.</p>
+<p><code>name</code>  is a human-readable name for your database.</p>
 </li>
 <li>
 <p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to snake-case, is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application_postgresql_db</code>.</p>
@@ -1184,8 +1199,28 @@ categories.</p>
 ]
 </code></pre></div>
 </td></tr></table>
+<h4 id="example-4-mssql-connectionconfig">Example 4: MsSQL ConnectionConfig</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PATCH api/v1/connection 
+[
+  { 
+    &quot;name&quot;: &quot;My MsSQL DB&quot;,
+    &quot;key&quot;: &quot;my_mssql_db&quot;,
+    &quot;connection_type&quot;: &quot;mssql&quot;,
+    &quot;access&quot;: &quot;write&quot;
+  }
+]
+</code></pre></div>
+</td></tr></table>
 <h3 id="set-the-connectionconfigs-secrets">Set the ConnectionConfig's Secrets</h3>
-<p>After you create a ConnectionConfig, you explain how to connect to it by setting its "secrets": host, port, user, and password. You do this by creating a ConnectionConfig Secrets object by calling the <a href="/fidesops/api#operations-Connections-put_connection_config_secrets_api_v1_connection__connection_key__secret_put">Set a ConnectionConfig's Secrets</a> operation. You can set the object's attributes separately, or supply a single <code>url</code> string that encodes them all.</p>
+<p>After you create a ConnectionConfig, you explain how to connect to it by setting its "secrets": host, port, user, and password (note that the secrets used are specific to the DB connector). You do this by creating a ConnectionConfig Secrets object by calling the <a href="/fidesops/api#operations-Connections-put_connection_config_secrets_api_v1_connection__connection_key__secret_put">Set a ConnectionConfig's Secrets</a> operation. You can set the object's attributes separately, or supply a single <code>url</code> string that encodes them all.</p>
 <p>If you set the <code>verify</code> query parameter to <code>true</code>, the operation  will  test the connection by issuing a trivial request to the database. The <code>test_status</code> response property announces the success of the connection attempt as <code>succeeded</code> or <code>failed</code>. If the attempt has failed, the <code>failure_reason</code> property gives further details about the failure.</p>
 <p>To skip the connection test, set <code>verify</code> to <code>false</code>.</p>
 <p>Note: Fidesops encrypts all ConnectionConfig Secrets values before they're stored.</p>

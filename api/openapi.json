@@ -294,6 +294,9 @@
                   },
                   {
                     "$ref": "#/components/schemas/SnowflakeDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MSSQLDocsSchema"
                   }
                 ]
               }
@@ -3080,7 +3083,7 @@
           "read",
           "write"
         ],
-        "description": "Perms given to the ConnectionConfig.  For example, with \"read\" permissions, fides-ops promises\nto not modify the data on a connected application database in any way.\n\n\"Write\" perms mean we can update/delete items in the connected database."
+        "description": "Perms given to the ConnectionConfig.  For example, with \"read\" permissions, fidesops promises\nto not modify the data on a connected application database in any way.\n\n\"Write\" perms mean we can update/delete items in the connected database."
       },
       "AccessToken": {
         "title": "AccessToken",
@@ -3518,9 +3521,10 @@
           "mysql",
           "https",
           "redshift",
-          "snowflake"
+          "snowflake",
+          "mssql"
         ],
-        "description": "Supported types to which we can connect fides-ops."
+        "description": "Supported types to which we can connect fidesops."
       },
       "CreateConnectionConfiguration": {
         "title": "CreateConnectionConfiguration",
@@ -4067,6 +4071,38 @@
             }
           }
         }
+      },
+      "MSSQLDocsSchema": {
+        "title": "MSSQLDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          },
+          "dbname": {
+            "title": "Dbname",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "description": "MS SQL Secrets Schema for API Docs"
       },
       "MaskingAPIResponse": {
         "title": "MaskingAPIResponse",
