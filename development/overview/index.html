@@ -992,12 +992,13 @@ commands to give you different functionality.</p>
 <li>Try this out locally with our <a href="../../postman/Fidesops.postman_collection.json">Fidesops Postman Collection</a></li>
 </ul>
 </li>
+<li><code>make integration-shell</code> - spins up everything in make server, plus all Docker Compose specified datastores (Postgres, MySQL, MSSQL, Mongodb) and opens a server shell. This is most useful for running <code>pytest -k ...</code> commands within the integration shell to test connected datastores.</li>
 <li><code>make black</code>, <code>make mypy</code>, and <code>make pylint</code> - auto-formats code</li>
 <li><code>make check-all</code> - runs the CI checks locally and verifies that your code meets project standards</li>
 <li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:</li>
 <li><code>ipython</code> - open a Python shell</li>
 <li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
-<li><code>make pytest-integration-access</code> - runs access integration tests.</li>
+<li><code>make pytest-integration</code> - runs access integration tests.</li>
 <li><code>make pytest-integration-erasure</code> - runs erasure integration tests.</li>
 <li><code>make reset-db</code> - tears down the Fideops postgres db, then recreates and re-runs migrations.</li>
 <li><code>make quickstart</code> - runs a quick, five second quickstart that talks to the Fidesops API to execute privacy requests</li>
