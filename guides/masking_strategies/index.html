@@ -520,36 +520,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-masking-strategies" class="md-nav__link">
-    Supported Masking Strategies
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Supported Masking Strategies">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-masking-strategies-and-associated-configuration-options" class="md-nav__link">
+    Supported Masking Strategies and Associated Configuration options
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Masking Strategies and Associated Configuration options">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supported-by-fidesops-policies" class="md-nav__link">
-    Supported by fidesops policies
+  <a href="#null-rewrite" class="md-nav__link">
+    Null Rewrite
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supported-by-masking-service-only" class="md-nav__link">
-    Supported by masking service only
+  <a href="#string-rewrite" class="md-nav__link">
+    String Rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-string-rewrite" class="md-nav__link">
+    Random String Rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes-encrypt" class="md-nav__link">
+    AES Encrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hmac" class="md-nav__link">
+    HMAC
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
   
 </li>
       
@@ -950,36 +978,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-masking-strategies" class="md-nav__link">
-    Supported Masking Strategies
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Supported Masking Strategies">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-masking-strategies-and-associated-configuration-options" class="md-nav__link">
+    Supported Masking Strategies and Associated Configuration options
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Masking Strategies and Associated Configuration options">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#supported-by-fidesops-policies" class="md-nav__link">
-    Supported by fidesops policies
+  <a href="#null-rewrite" class="md-nav__link">
+    Null Rewrite
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supported-by-masking-service-only" class="md-nav__link">
-    Supported by masking service only
+  <a href="#string-rewrite" class="md-nav__link">
+    String Rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    Hash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-string-rewrite" class="md-nav__link">
+    Random String Rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes-encrypt" class="md-nav__link">
+    AES Encrypt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hmac" class="md-nav__link">
+    HMAC
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
-  </a>
   
 </li>
       
@@ -1029,8 +1085,8 @@
 <li>What is data masking?</li>
 <li>Why might you want to mask personally identifiable information rather than delete?</li>
 <li>How do you use fidesops as a masking service only?</li>
-<li>What are the currently-supported masking strategies in fidesops?</li>
 <li>How do you configure masking strategies for your fidesops policies?</li>
+<li>What are the current supported masking strategies in fidesops?</li>
 <li>How do you create your own masking strategies?</li>
 </ul>
 <h2 id="data-masking-basics">Data masking basics</h2>
@@ -1043,9 +1099,7 @@ their associated address with another random string <code>2ab6jghdg37uhkaz3hpyav
 pseudonymized in most cases, and (at worst) may still be identifiable if the masking is reversible or easy to predict,
 which is a common mistake!</p>
 <p>In fidesops, your options to pseudonymize data are captured in "masking strategies". Fidesops supports a wide variety
-of masking strategies for different purposes when used directly as an API including HMAC, hashing, encryption, and 
-randomization. However, note that fidesops only supports the "null" strategy when processing privacy requests right now,
-but we'll be adding support for all masking strategies in an upcoming release!</p>
+of masking strategies for different purposes when used directly as an API including HMAC, Hash, AES encryption, string rewrite, random string rewrite, and null rewrite.</p>
 <h3 id="why-mask-instead-of-delete">Why mask instead of delete?</h3>
 <p>Deleting customer data may involve entirely deleting a whole record (all attributes of the entity) or permanent and 
 irreversible anonymization of the record by updating specific fields within a record with masked values.</p>
@@ -1058,7 +1112,7 @@ depending on how your tables are defined.</p>
 updated with the same masked values across all sources.</p>
 <p>Other reasons to mask instead of delete include legal requirements that have you retain certain data for a certain length of time.</p>
 <h2 id="using-fidesops-as-a-masking-service">Using fidesops as a masking service</h2>
-<p>If you just want to use fidesops as a masking service, you can send a PUT request to the masking endpoint with the 
+<p>If you just want to use fidesops as a masking service, you can send a <code>PUT</code> request to the masking endpoint with the 
 value you'd like pseudonymized. This endpoint is also useful for getting a feel of how the different masking strategies work.</p>
 <p>Example: <code>PUT /masking/mask?value=test@example.com</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1094,24 +1148,9 @@ value you'd like pseudonymized. This endpoint is also useful for getting a feel 
 </td></tr></table>
 <p>The email has been replaced with a random string of 20 characters, while still preserving that the value is an email.</p>
 <p>See <a href="/fidesops/api#operations-tag-Masking">Masking values API docs</a> on how to use fidesops to as a masking service .</p>
-<h2 id="supported-masking-strategies">Supported Masking Strategies</h2>
-<h3 id="supported-by-fidesops-policies">Supported by fidesops policies</h3>
-<ul>
-<li><code>NullMaskingStrategy</code>: Masks the input value with a null value.</li>
-<li>... More strategies coming soon</li>
-</ul>
-<h3 id="supported-by-masking-service-only">Supported by masking service only</h3>
-<ul>
-<li><code>StringRewriteMaskingStrategy</code>: Masks the input value with a default string value</li>
-<li><code>HashMaskingStrategy</code>: Masks the input value by returning a hashed version of the input value</li>
-<li><code>RandomStringRewriteMaskingStrategy</code>: Masks the input value with a random string of a specified length</li>
-<li><code>AesEncryptionMaskingStrategy</code>: Masks by encrypting the value using AES</li>
-<li><code>HmacMaskingStrategy</code>: Masks the input value by using the HMAC algorithm along with a hashed version of the data and a secret key</li>
-</ul>
 <h2 id="configuration">Configuration</h2>
-<p>Only null value masking is currently supported by fidesops policies, but support for other strategies is coming.
-Currently, erasure requests will replace customer data with null values.</p>
-<p>In the future, to configure a specific masking strategy to be used for a Policy, you will create an <code>erasure</code> rule
+<p>Erasure requests will mask data with the chosen masking strategy.</p>
+<p>To configure a specific masking strategy to be used for a Policy, you will create an <code>erasure</code> rule
 that captures that strategy for the Policy.</p>
 <p>Issue a PATCH request to <code>/policy/policy_key/rule</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1143,6 +1182,66 @@ that captures that strategy for the Policy.</p>
 <span class="w">    </span><span class="p">}]</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+<h2 id="supported-masking-strategies-and-associated-configuration-options">Supported Masking Strategies and Associated Configuration options</h2>
+<h3 id="null-rewrite">Null Rewrite</h3>
+<p>Masks the input value with a null value.</p>
+<p><code>strategy</code>: <code>null_rewrite</code></p>
+<p>No config needed.</p>
+<h3 id="string-rewrite">String Rewrite</h3>
+<p>Masks the input value with a default string value.</p>
+<p><code>strategy</code>: <code>string_rewrite</code></p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>rewrite_value</code>: <code>str</code> that will replace input values</li>
+<li><code>format_preservation</code> (optional): <code>Dict</code> with the following key/vals:<ul>
+<li><code>suffix</code>: <code>str</code> that specifies suffix to append to masked value</li>
+</ul>
+</li>
+</ul>
+<h3 id="hash">Hash</h3>
+<p>Masks the data by hashing the input before returning it. The hash is deterministic such that the same input will return the same output within the context of the same privacy request. This is not the case when the masking service is called as a standalone service, outside the context of a privacy request.</p>
+<p><code>strategy</code>: <code>hash</code></p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>algorithm</code> (optional): <code>str</code> that specifies Hash masking algorithm. Options include <code>SHA-512</code> or <code>SHA_256</code>. Default = <code>SHA_256</code></li>
+<li><code>format_preservation</code> (optional): <code>Dict</code> with the following key/vals:<ul>
+<li><code>suffix</code>: <code>str</code> that specifies suffix to append to masked value</li>
+</ul>
+</li>
+</ul>
+<h3 id="random-string-rewrite">Random String Rewrite</h3>
+<p>Masks the input value with a random string of a specified length.</p>
+<p><code>strategy</code>: <code>random_string_rewrite</code></p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>length</code> (optional): <code>int</code> that specifies length of randomly generated string. Default = <code>30</code></li>
+<li><code>format_preservation</code> (optional): <code>Dict</code> with the following key/vals:<ul>
+<li><code>suffix</code>: <code>str</code> that specifies suffix to append to masked value</li>
+</ul>
+</li>
+</ul>
+<h3 id="aes-encrypt">AES Encrypt</h3>
+<p>Masks the data using AES encryption before returning it. The AES encryption strategy is deterministic such that the same input will return the same output within the context of the same privacy request. This is not the case when the masking service is called as a standalone service, outside the context of a privacy request.</p>
+<p><code>strategy</code>: <code>aes_encrypt</code></p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>mode</code> (optional): <code>str</code> that specifies AES encryption mode. Only supported option is <code>GCM</code>. Default = <code>GCM</code></li>
+<li><code>format_preservation</code> (optional): <code>Dict</code> with the following key/vals:<ul>
+<li><code>suffix</code>: <code>str</code> that specifies suffix to append to masked value</li>
+</ul>
+</li>
+</ul>
+<h3 id="hmac">HMAC</h3>
+<p>Masks the data using HMAC before returning it. The HMAC encryption strategy is deterministic such that the same input will return the same output within the context of the same privacy request. This is not the case when the masking service is called as a standalone service, outside the context of a privacy request.</p>
+<p><code>strategy</code>: <code>hmac</code></p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>algorithm</code> (optional): <code>str</code> that specifies HMAC masking algorithm. Options include <code>SHA-512</code> or <code>SHA_256</code>. Default = <code>SHA_256</code></li>
+<li><code>format_preservation</code> (optional): <code>Dict</code> with the following key/vals:<ul>
+<li><code>suffix</code>: <code>str</code> that specifies suffix to append to masked value</li>
+</ul>
+</li>
+</ul>
 <p>See the <a href="../policies/">Policy guide</a> for more detailed instructions on creating Policies and Rules.</p>
 <h2 id="getting-masking-options">Getting masking options</h2>
 <p>Issue a GET request to <a href="/fidesops/api#operations-Masking-list_masking_strategies_api_v1_masking_strategy_get"><code>/api/v1/masking/strategy</code></a> to preview the different masking
@@ -1190,7 +1289,11 @@ methods, visit the class in the fidesops repository. For now, we will focus on t
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">string</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">string</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">choice</span>
 
@@ -1228,6 +1331,10 @@ methods, visit the class in the fidesops repository. For now, we will focus on t
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">get_description</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">MaskingStrategyDescription</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Not covered in this example&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">data_type_supported</span><span class="p">(</span><span class="n">data_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Not covered in this example&quot;&quot;&quot;</span>
 </code></pre></div>
 </td></tr></table>
