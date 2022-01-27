@@ -2616,7 +2616,7 @@
           "Privacy Requests"
         ],
         "summary": "Get Request Preview Queries",
-        "description": "Returns dry run queries given a list of dataset ids",
+        "description": "Returns dry run queries given a list of dataset ids.  If a dataset references another dataset, both dataset\nkeys must be in the request body.",
         "operationId": "get_request_preview_queries_api_v1_privacy_request_preview_put",
         "requestBody": {
           "content": {
