@@ -460,11 +460,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-an-access-token" class="md-nav__link">
-    Create an Access Token
+  <a href="#create-access-token" class="md-nav__link">
+    Create Access Token
   </a>
   
-    <nav class="md-nav" aria-label="Create an Access Token">
+    <nav class="md-nav" aria-label="Create Access Token">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -916,11 +916,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-an-access-token" class="md-nav__link">
-    Create an Access Token
+  <a href="#create-access-token" class="md-nav__link">
+    Create Access Token
   </a>
   
-    <nav class="md-nav" aria-label="Create an Access Token">
+    <nav class="md-nav" aria-label="Create Access Token">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -963,10 +963,10 @@
 <li>Authorizing your client with scopes</li>
 <li>Creating OAuth tokens</li>
 </ul>
-<p>When you invoke a Fidesops API, you must pass an <em>access token</em> as the value of the <code>Authorization</code> header. Furthermore, the token must included a <em>scope</em> that gives you permission to do take an action on the API. For example, let's say you want to create a new Policy by calling <code>PATCH /api/v1/policy</code>. The token that you pass to the <code>Authorization</code> header must include the <code>policy:create_or_update</code> scope.</p>
+<p>When you invoke a Fidesops API, you must pass an <em>access token</em> as the value of the <code>Authorization</code> header. Furthermore, the token must include a <em>scope</em> that gives you permission to take an action on the API. For example, let's say you want to create a new Policy by calling <code>PATCH /api/v1/policy</code>. The token that you pass to the <code>Authorization</code> header must include the <code>policy:create_or_update</code> scope.</p>
 <p>This document explains how to craft a properly-scoped access token.</p>
 <h2 id="getting-started">Getting Started</h2>
-<p>First, create an access token for the "root" client, included in the deployment by default. The root client's token is all-powerful: It contains all scopes so it can call any of the Fidesops APIs.</p>
+<p>First, create an access token for the "root" client, included in the deployment by default. The root client's token is all-powerful: It contains all scopes, so it can call any of the Fidesops APIs.</p>
 <p>To create the root token, you pass the <code>OAUTH_ROOT_CLIENT_ID</code> and <code>OAUTH_ROOT_CLIENT_SECRET</code> environment variables (which are automatically defined in your system) to the <code>POST /api/v1/oauth/token</code> endpoint. You also set the <code>grant_type</code> parameter to <code>client_credentials</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1034,7 +1034,7 @@ Content-Type: application/json
 }
 </code></pre></div>
 </td></tr></table>
-<h2 id="create-an-access-token">Create an Access Token</h2>
+<h2 id="create-access-token">Create Access Token</h2>
 <p>You then create a new access token by calling <a href="/fidesops/api#operations-OAuth-acquire_access_token_api_v1_oauth_token_post"><code>POST /api/v1/oauth/token</code></a> with the new credentials. </p>
 <p>In the above example, your new access token only lets the client read policies and rules -- the client nor create other clients, nor write policies, nor perform other operations using Fidesops APIs.</p>
 <h3 id="access-token-expiration">Access Token Expiration</h3>

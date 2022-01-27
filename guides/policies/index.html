@@ -1052,7 +1052,8 @@ This policy is subtly different from the concept of a Policy in <a href="https:/
 </ul>
 <h2 id="add-an-erasure-rule-to-your-policy">Add an Erasure Rule to your Policy</h2>
 <p>The simple access policy we've created above, will simply pull all data of category <code>user.provided.identifiable.contact.email</code>, but in the event of an erasure request, we might also want to mask this information. </p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>PATCH /api/v1/policy/{policy_key}/rule
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1064,9 +1065,7 @@ This policy is subtly different from the concept of a Policy in <a href="https:/
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span><span class="w"> </span><span class="err">/api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule</span><span class="w"></span>
-<span class="p">[</span><span class="w"></span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
 <span class="w">  </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mask Provided Emails&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mask_provided_emails&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1081,20 +1080,19 @@ This policy is subtly different from the concept of a Policy in <a href="https:/
 <span class="p">]</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
-This will create a rule to hash a not-yet-specified value with a SHA-512 hash. We need to specify a target to hash, so we need to creat a target for this rule:</p>
+This will create a rule to hash a not-yet-specified value with a SHA-512 hash. We need to specify a target to hash, so we need to create a target for this rule:</p>
+<p>PATCH api/v1/policy/{policy_key}/rule/{rule_key}
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="err">PATCH</span><span class="w"> </span><span class="err">api/v</span><span class="mi">1</span><span class="err">/policy/</span><span class="p">{</span><span class="err">policy_key</span><span class="p">}</span><span class="err">/rule/</span><span class="p">{</span><span class="err">rule_key</span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">[</span><span class="w"></span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">[</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="nt">&quot;data_category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user.provided.identifiable.contact.email&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">  </span><span class="p">]</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table>
+</td></tr></table></p>
 <p>This policy, <code>user_email_address_polcy</code>, will now do the following:
 - Return all data inside the Identity Graph with a data category that matches (or is nested under) <code>user.provided.identifiable.contact</code>.
 - Mask all data inside the Identity Graph with a data category that matches <code>user.provided.identifiable.contact.email</code> with a the <code>SHA-512</code> hashing function.</p>
