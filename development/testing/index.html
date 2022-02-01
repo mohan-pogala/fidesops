@@ -997,7 +997,7 @@
 </td></tr></table>
 <p>Fidesops has a few <a href="https://docs.pytest.org/en/stable/fixture.html"><code>pytest</code> fixtures</a> available for testing; see <code>conftest.py</code> for details.</p>
 <h2 id="running-tests">Running tests</h2>
-<p>Fidesops uses <code>pytest</code> for unit testing. To run tests, invoke <code>pytest</code> from the root Fidesops directory:</p>
+<p>Fidesops uses <code>pytest</code> for unit testing. Once in the Fidesops container shell (<code>make server-shell</code>, or <code>make integration-shell</code> if running integration tests), invoke <code>pytest</code> from the root Fidesops directory:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> fidesops
 pytest
