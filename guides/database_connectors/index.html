@@ -488,8 +488,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-4-mssql-connectionconfig" class="md-nav__link">
-    Example 4: MsSQL ConnectionConfig
+  <a href="#example-4-mariadb-connectionconfig" class="md-nav__link">
+    Example 4: MariaDB ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-mssql-connectionconfig" class="md-nav__link">
+    Example 5: MsSQL ConnectionConfig
   </a>
   
 </li>
@@ -1001,8 +1008,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-4-mssql-connectionconfig" class="md-nav__link">
-    Example 4: MsSQL ConnectionConfig
+  <a href="#example-4-mariadb-connectionconfig" class="md-nav__link">
+    Example 4: MariaDB ConnectionConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-mssql-connectionconfig" class="md-nav__link">
+    Example 5: MsSQL ConnectionConfig
   </a>
   
 </li>
@@ -1113,6 +1127,7 @@ categories.</p>
 <li>PostgreSQL</li>
 <li>MongoDB</li>
 <li>MySQL</li>
+<li>MariaDB</li>
 <li>Microsoft SQLServer</li>
 <li>Amazon Redshift</li>
 <li>Snowflake</li>
@@ -1128,7 +1143,7 @@ categories.</p>
 <p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to snake-case, is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application_postgresql_db</code>.</p>
 </li>
 <li>
-<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>redshift</code>, and <code>snowflake</code>.</p>
+<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>mariadb</code>, <code>mssql</code>, <code>redshift</code>, and <code>snowflake</code>.</p>
 </li>
 <li>
 <p><code>access</code> sets the connection's permissions, one of "read" (Fidesops may only read from your database) or "write" (Fidesops can read from and write to your database).</p>
@@ -1199,7 +1214,27 @@ categories.</p>
 ]
 </code></pre></div>
 </td></tr></table>
-<h4 id="example-4-mssql-connectionconfig">Example 4: MsSQL ConnectionConfig</h4>
+<h4 id="example-4-mariadb-connectionconfig">Example 4: MariaDB ConnectionConfig</h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PATCH api/v1/connection 
+[
+  { 
+    &quot;name&quot;: &quot;My Maria DB&quot;,
+    &quot;key&quot;: &quot;my_maria_db&quot;,
+    &quot;connection_type&quot;: &quot;mariadb&quot;,
+    &quot;access&quot;: &quot;write&quot;
+  }
+]
+</code></pre></div>
+</td></tr></table>
+<h4 id="example-5-mssql-connectionconfig">Example 5: MsSQL ConnectionConfig</h4>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>

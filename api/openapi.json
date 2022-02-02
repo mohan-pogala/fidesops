@@ -3522,7 +3522,8 @@
           "https",
           "redshift",
           "snowflake",
-          "mssql"
+          "mssql",
+          "mariadb"
         ],
         "description": "Supported types to which we can connect fidesops."
       },

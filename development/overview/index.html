@@ -990,6 +990,7 @@ commands to give you different functionality.</p>
 <li><code>make server</code> - this spins up the Fastapi server and supporting resources (a Postgres database and a Redis cache), which you can visit at <code>http://0.0.0.0:8080</code>. Check out the docs at <code>http://0.0.0.0:8000/fidesops/</code></li>
 <li><code>make integration-env</code> - spins up everything in make server, plus additional postgres, mongo, and mysql databases for you to execute privacy requests against.<ul>
 <li>Try this out locally with our <a href="../../postman/Fidesops.postman_collection.json">Fidesops Postman Collection</a></li>
+<li><code>make integration-env datastores="mysql mariadb"</code>- brings up only mysql and mariadb datastores, use </li>
 </ul>
 </li>
 <li><code>make integration-shell</code> - spins up everything in make server, plus all Docker Compose specified datastores (Postgres, MySQL, MSSQL, Mongodb) and opens a server shell. This is most useful for running <code>pytest -k ...</code> commands within the integration shell to test connected datastores.</li>
@@ -997,6 +998,7 @@ commands to give you different functionality.</p>
 <li><code>make check-all</code> - runs the CI checks locally and verifies that your code meets project standards</li>
 <li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:</li>
 <li><code>ipython</code> - open a Python shell</li>
+<li><code>cd src</code> then <code>alembic revision --autogenerate -m "adds enum for mysql connection type"</code> - auto-generates DB migration</li>
 <li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
 <li><code>make pytest-integration</code> - runs access integration tests.</li>
 <li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments.</li>
