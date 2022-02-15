@@ -297,6 +297,12 @@
                   },
                   {
                     "$ref": "#/components/schemas/MSSQLDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MariaDBDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BigQueryDocsSchema"
                   }
                 ]
               }
@@ -3185,6 +3191,28 @@
         },
         "description": "Specifies fields returned from the AES Encryption endpoint"
       },
+      "BigQueryDocsSchema": {
+        "title": "BigQueryDocsSchema",
+        "required": [
+          "keyfile_creds"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "dataset": {
+            "title": "Dataset",
+            "type": "string"
+          },
+          "keyfile_creds": {
+            "$ref": "#/components/schemas/KeyfileCreds"
+          }
+        },
+        "additionalProperties": false,
+        "description": "BigQuery Secrets Schema for API Docs"
+      },
       "Body_acquire_access_token_api_v1_oauth_token_post": {
         "title": "Body_acquire_access_token_api_v1_oauth_token_post",
         "type": "object",
@@ -3523,7 +3551,8 @@
           "redshift",
           "snowflake",
           "mssql",
-          "mariadb"
+          "mariadb",
+          "bigquery"
         ],
         "description": "Supported types to which we can connect fidesops."
       },
@@ -4073,6 +4102,56 @@
           }
         }
       },
+      "KeyfileCreds": {
+        "title": "KeyfileCreds",
+        "required": [
+          "project_id"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Type",
+            "type": "string"
+          },
+          "project_id": {
+            "title": "Project Id",
+            "type": "string"
+          },
+          "private_key_id": {
+            "title": "Private Key Id",
+            "type": "string"
+          },
+          "private_key": {
+            "title": "Private Key",
+            "type": "string"
+          },
+          "client_email": {
+            "title": "Client Email",
+            "type": "string"
+          },
+          "client_id": {
+            "title": "Client Id",
+            "type": "string"
+          },
+          "auth_uri": {
+            "title": "Auth Uri",
+            "type": "string"
+          },
+          "token_uri": {
+            "title": "Token Uri",
+            "type": "string"
+          },
+          "auth_provider_x509_cert_url": {
+            "title": "Auth Provider X509 Cert Url",
+            "type": "string"
+          },
+          "client_x509_cert_url": {
+            "title": "Client X509 Cert Url",
+            "type": "string"
+          }
+        },
+        "description": "Schema that holds BigQuery keyfile key/vals"
+      },
       "MSSQLDocsSchema": {
         "title": "MSSQLDocsSchema",
         "type": "object",
@@ -4104,6 +4183,38 @@
         },
         "additionalProperties": false,
         "description": "MS SQL Secrets Schema for API Docs"
+      },
+      "MariaDBDocsSchema": {
+        "title": "MariaDBDocsSchema",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          },
+          "dbname": {
+            "title": "Dbname",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "type": "string"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false,
+        "description": "MariaDB Secrets Schema for API Docs"
       },
       "MaskingAPIResponse": {
         "title": "MaskingAPIResponse",

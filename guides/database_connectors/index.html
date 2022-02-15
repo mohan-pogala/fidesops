@@ -530,6 +530,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#example-4-google-bigquery" class="md-nav__link">
+    Example 4: Google BigQuery
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1062,6 +1069,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#example-4-google-bigquery" class="md-nav__link">
+    Example 4: Google BigQuery
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1143,6 +1157,7 @@ categories.</p>
 <li>Microsoft SQLServer</li>
 <li>Amazon Redshift</li>
 <li>Snowflake</li>
+<li>Google BigQuery</li>
 </ul>
 <p>Other platforms will be added in future releases.</p>
 <h2 id="creating-a-connectionconfig-object">Creating a ConnectionConfig object</h2>
@@ -1155,7 +1170,7 @@ categories.</p>
 <p><code>key</code>  is a string token that uniquely identifies your ConnectionConfig object. If you don't supply a <code>key</code>, the <code>name</code> value, converted to snake-case, is used. For example, if the <code>name</code> is <code>Application PostgreSQL DB</code>, the converted key is <code>application_postgresql_db</code>.</p>
 </li>
 <li>
-<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>mariadb</code>, <code>mssql</code>, <code>redshift</code>, and <code>snowflake</code>.</p>
+<p><code>connection-type</code> specifies the type of database. Valid values are <code>postgres</code>, <code>mongodb</code>, <code>mysql</code>, <code>mariadb</code>, <code>mssql</code>, <code>redshift</code>, <code>snowflake</code>, and <code>bigquery</code>.</p>
 </li>
 <li>
 <p><code>access</code> sets the connection's permissions, one of "read" (Fidesops may only read from your database) or "write" (Fidesops can read from and write to your database).</p>
@@ -1319,6 +1334,46 @@ specify <code>db_schema</code> for Redshift, and it will be set as the <code>sea
 {
     &quot;url&quot;: &quot;redshift+psycopg2://username@host.amazonaws.com:5439/database&quot;,
     &quot;db_schema&quot;: &quot;my_test_schema&quot;
+}
+</code></pre></div>
+</td></tr></table>
+<h4 id="example-4-google-bigquery">Example 4: Google BigQuery</h4>
+<p>For Google BigQuery, there are 2 items needed for secrets: </p>
+<p><code>dataset</code> - Name of your dataset. BigQuery datasets are top-level containers (within a project) that are used to organize and control access to your tables and views.</p>
+<p><code>keyfile_creds</code> - Credentials from your service account JSON keyfile, accessible for download from the GCP console.  </p>
+<p>Here's an example of what this looks like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/my_bigquery_db/secret`
+
+{
+    &quot;dataset&quot;: &quot;some-dataset&quot;,
+    &quot;keyfile_creds&quot;: {
+        &quot;type&quot;: &quot;service_account&quot;,
+        &quot;project_id&quot;: &quot;project-12345&quot;,
+        &quot;private_key_id&quot;: &quot;qo28cy4nlwu&quot;,
+        &quot;private_key&quot;: &quot;-----BEGIN PRIVATE KEY-----\nqi2unhflhncflkjas\nkqiu34c\n-----END PRIVATE KEY-----\n&quot;,
+        &quot;client_email&quot;: &quot;something@project-12345.iam.gserviceaccount.com&quot;,
+        &quot;client_id&quot;: &quot;287345028734538&quot;,
+        &quot;auth_uri&quot;: &quot;https://accounts.google.com/o/oauth2/auth&quot;,
+        &quot;token_uri&quot;: &quot;https://oauth2.googleapis.com/token&quot;,
+        &quot;auth_provider_x509_cert_url&quot;: &quot;https://www.googleapis.com/oauth2/v1/certs&quot;,
+        &quot;client_x509_cert_url&quot;: &quot;https://www.googleapis.com/robot/v1/metadata/x509/something%40project-12345.iam.gserviceaccount.com&quot;
+    }
 }
 </code></pre></div>
 </td></tr></table>
