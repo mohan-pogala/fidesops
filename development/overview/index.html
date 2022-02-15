@@ -686,29 +686,29 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#write-your-code" class="md-nav__link">
     Write your code
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#submit-your-code" class="md-nav__link">
     Submit your code
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#congratulations" class="md-nav__link">
     Congratulations
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -716,6 +716,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing_details/" class="md-nav__link">
+        Contributing Details
+      </a>
     </li>
   
 
@@ -930,29 +942,29 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#write-your-code" class="md-nav__link">
     Write your code
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#submit-your-code" class="md-nav__link">
     Submit your code
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#congratulations" class="md-nav__link">
     Congratulations
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -990,23 +1002,25 @@ commands to give you different functionality.</p>
 <li><code>make server</code> - this spins up the Fastapi server and supporting resources (a Postgres database and a Redis cache), which you can visit at <code>http://0.0.0.0:8080</code>. Check out the docs at <code>http://0.0.0.0:8000/fidesops/</code></li>
 <li><code>make integration-env</code> - spins up everything in make server, plus additional postgres, mongo, and mysql databases for you to execute privacy requests against.<ul>
 <li>Try this out locally with our <a href="../../postman/Fidesops.postman_collection.json">Fidesops Postman Collection</a></li>
-<li><code>make integration-env datastores="mysql mariadb"</code>- brings up only mysql and mariadb datastores, use </li>
+<li><code>make integration-env datastores="mysql mariadb"</code>- brings up only mysql and mariadb datastores </li>
 </ul>
 </li>
 <li><code>make integration-shell</code> - spins up everything in make server, plus all Docker Compose specified datastores (Postgres, MySQL, MSSQL, Mongodb) and opens a server shell. This is most useful for running <code>pytest -k ...</code> commands within the integration shell to test connected datastores.</li>
 <li><code>make black</code>, <code>make mypy</code>, and <code>make pylint</code> - auto-formats code</li>
 <li><code>make check-all</code> - runs the CI checks locally and verifies that your code meets project standards</li>
-<li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:</li>
+<li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:<ul>
 <li><code>ipython</code> - open a Python shell</li>
 <li><code>cd src</code> then <code>alembic revision --autogenerate -m "adds enum for mysql connection type"</code> - auto-generates DB migration</li>
+</ul>
+</li>
 <li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
 <li><code>make pytest-integration</code> - runs access integration tests.</li>
 <li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments.</li>
 <li><code>make pytest-integration-erasure</code> - runs erasure integration tests.</li>
-<li><code>make reset-db</code> - tears down the Fideops postgres db, then recreates and re-runs migrations.</li>
+<li><code>make reset-db</code> - tears down the Fidesops postgres db, then recreates and re-runs migrations.</li>
 <li><code>make quickstart</code> - runs a quick, five minute quickstart that talks to the Fidesops API to execute privacy requests</li>
 <li><code>make check-migrations</code> - verifies there are no un-run migrations </li>
-<li><code>make docs-serve</code> - spins up just the docs</li>
+<li><code>make docs-serve</code> - spins up just the docs, which you can visit at <code>http://0.0.0.0:8000/fidesops/</code></li>
 </ul>
 <p>See <a href="https://github.com/ethyca/fidesops/blob/main/Makefile">Makefile</a> for more options. </p>
 <h4 id="issues">Issues</h4>
@@ -1016,18 +1030,19 @@ commands to give you different functionality.</p>
 </li>
 <li>
 <p>Package not found: When running <code>make server</code>, if you get a <code>importlib.metadata.PackageNotFoundError: fidesops</code>, do <code>make server-shell</code>,
-and then run <code>pip install -e .</code>. Verify Fidesops is installed with <code>pip list</code>. </p>
+and then run <code>pip install -e .</code>. Verify Fidesops is installed with <code>pip list</code>.</p>
 </li>
 </ul>
-<h3 id="write-your-code">Write your code</h3>
-<p>We have no doubt you can write amazing code! However, we want to help you ensure your code plays nicely with the rest of the Fidesops ecosystem. Many projects describe code style and documentation as a suggestion; in Fidesops it's a CI-checked requirement.</p>
+<h2 id="write-your-code">Write your code</h2>
+<p>See the <a href="../contributing_details/">contributing details</a> guide to get familiar with writing and testing API endpoints, database models, and more. </p>
+<p>We want to help you ensure your code plays nicely with the rest of the Fidesops ecosystem. Many projects describe code style and documentation as a suggestion; in Fidesops it's a CI-checked requirement.</p>
 <ul>
 <li>To learn how to style your code, see the <a href="../code_style/">style guide</a>.</li>
 <li>To learn how to document your code, see the <a href="../documentation/">docs guide</a>.</li>
 <li>To learn how to test your code, see the <a href="../testing/">tests guide</a>.</li>
 <li>To learn what format your PR should follow, make sure to follow the <a href="../pull_requests/">pull request guidelines</a>.</li>
 </ul>
-<h3 id="submit-your-code">Submit your code</h3>
+<h2 id="submit-your-code">Submit your code</h2>
 <p>In order to submit code to Fidesops, please:</p>
 <ul>
 <li><a href="https://help.github.com/en/articles/fork-a-repo">Fork the Fidesops repository</a></li>
@@ -1044,10 +1059,10 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
     git checkout -b my-new-branch
     git push origin my-new-branch</code></li>
 <li><a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork">Open a Pull Request</a> once your work is ready for review</li>
-<li>Submit the pull request from <em>your</em> repo</li>
+<li>Submit the pull request from <em>your</em> repo. Pull requests should be submitted with a clear description of the issue being handled, including links to any external specifications or Github issues. PRs should not be merged by the person submitting them, except in rare and urgent circumstances.</li>
 <li>Once automated tests have passed, a maintainer will review your PR and provide feedback on any changes it requires to be approved. Once approved, your PR will be merged into Fidesops.</li>
 </ul>
-<h3 id="congratulations">Congratulations</h3>
+<h2 id="congratulations">Congratulations</h2>
 <p>You're a Fidesops contributor - welcome to the team! 🎉</p>
                 
               
@@ -1128,9 +1143,9 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
       
         
         <a
-          href="../code_style/"
+          href="../contributing_details/"
           class="md-footer__link md-footer__link--next"
-          aria-label="Next: Code Style"
+          aria-label="Next: Contributing Details"
           rel="next"
         >
           <div class="md-footer__title">
@@ -1138,7 +1153,7 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
               <span class="md-footer__direction">
                 Next
               </span>
-              Code Style
+              Contributing Details
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -631,6 +631,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../contributing_details/" class="md-nav__link">
+        Contributing Details
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../code_style/" class="md-nav__link">
         Code Style
       </a>
@@ -997,10 +1009,19 @@
 </td></tr></table>
 <p>Fidesops has a few <a href="https://docs.pytest.org/en/stable/fixture.html"><code>pytest</code> fixtures</a> available for testing; see <code>conftest.py</code> for details.</p>
 <h2 id="running-tests">Running tests</h2>
-<p>Fidesops uses <code>pytest</code> for unit testing. Once in the Fidesops container shell (<code>make server-shell</code>, or <code>make integration-shell</code> if running integration tests), invoke <code>pytest</code> from the root Fidesops directory:</p>
+<p>Fidesops uses <code>pytest</code> for unit testing. As with other <code>make</code> commands, you have the option to run <code>pytest</code> in command-line or in application shell:</p>
+<ol>
+<li>In shell: Once in the Fidesops container shell (<code>make server-shell</code>, or <code>make integration-shell</code> if running integration tests), invoke <code>pytest</code> from the root Fidesops directory:</li>
+</ol>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> fidesops
 pytest
+</code></pre></div>
+</td></tr></table>
+<ol>
+<li>From regular command-line: </li>
+</ol>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make pytest
 </code></pre></div>
 </td></tr></table>
 <h3 id="running-specific-tests">Running specific tests</h3>
@@ -1010,6 +1031,16 @@ pytest
 pytest tests/integration/ -k api
 </code></pre></div>
 </td></tr></table>
+<p>Other commands you may need are listed below. The full documentation can be found at: https://docs.pytest.org/en/6.2.x/.</p>
+<ul>
+<li>Run all tests in a directory: <code>make pytestpath=path/to/dir/ pytest</code></li>
+<li>Run all tests in a file: <code>make pytestpath=path/to/file.py pytest</code></li>
+<li>Run all tests within a class within a file: <code>make pytestpath=path/to/file.py::ClassName pytest</code></li>
+<li>Run a specific test within a class within a file: <code>make pytestpath=path/to/file.py::ClassName::method_name pytest</code></li>
+<li>Run a specific test within a file: <code>make pytestpath=path/to/file.py::method_name pytest</code></li>
+<li>Run integration tests (access): <code>make pytest-integration</code></li>
+<li>Run integration tests (erasure): <code>make pytest-integration-erasure</code></li>
+</ul>
 <h4 id="debugging">Debugging</h4>
 <p>For debugging, we recommend installing the <a href="https://github.com/pdbpp/pdbpp"><code>pdbpp</code></a> package and running <code>pytest</code> with the <code>--pdb</code> flag (which will open the debugger on any error) or setting <code>breakpoint()</code> appropriately.</p>
 <h4 id="stepwise-execution">Stepwise execution</h4>
