@@ -495,26 +495,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#object-fields" class="md-nav__link">
-    Object fields
-  </a>
-  
-    <nav class="md-nav" aria-label="Object fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#referencing-a-nested-field" class="md-nav__link">
-    Referencing a nested field
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -524,6 +504,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../complex_fields/" class="md-nav__link">
+        Annotate Complex Fields
+      </a>
     </li>
   
 
@@ -951,26 +943,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#object-fields" class="md-nav__link">
-    Object fields
-  </a>
-  
-    <nav class="md-nav" aria-label="Object fields">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#referencing-a-nested-field" class="md-nav__link">
-    Referencing a nested field
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1161,116 +1133,6 @@
 </ul>
 </li>
 </ul>
-<h4 id="object-fields">Object fields</h4>
-<p>To declare an <code>object</code> field, you should define nested fields underneath that field. You can optionally
-add the <code>data_type: object</code> annotation, but the object type will be inferred by the presence of the nested fields. In the example below, 
-<code>workplace_info</code> is an object field with two nested fields: <code>employer</code> and <code>position</code>.</p>
-<p>Data categories cannot be specified at the <code>object</code> level due to potential conflicts with nested fields. Instead,
-annotate the scalar fields within the object field.  Here, the <code>workplace_info.position</code> field has <code>data_category</code>
-<code>user.provided.identifiable.job_title</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">dataset</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fides_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo_nested_object_example</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mongo Example with Nested Objects</span><span class="w"></span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example of a Mongo dataset that contains &#39;details&#39; about customers defined in the &#39;postgres_example_test_dataset&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">collections</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer_details</span><span class="w"></span>
-<span class="w">        </span><span class="nt">fields</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_id</span><span class="w"></span>
-<span class="w">            </span><span class="nt">data_categories</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">system.operations</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">            </span><span class="nt">fidesops_meta</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">primary_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer_id</span><span class="w"></span>
-<span class="w">            </span><span class="nt">data_categories</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">user.derived.identifiable.unique_id</span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">            </span><span class="nt">fidesops_meta</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="nt">references</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres_example_test_dataset</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer.id</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">direction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">from</span><span class="w"></span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workplace_info</span><span class="w"></span>
-<span class="w">            </span><span class="nt">fidesops_meta</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
-<span class="w">            </span><span class="nt">fields</span><span class="p">:</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">employer</span><span class="w"></span>
-<span class="w">                </span><span class="nt">fidesops_meta</span><span class="p">:</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">position</span><span class="w"></span>
-<span class="w">                </span><span class="nt">data_categories</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">user.provided.identifiable.job_title</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"></span>
-<span class="w">                </span><span class="nt">fidesops_meta</span><span class="p">:</span><span class="w"></span>
-<span class="w">                  </span><span class="nt">data_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="w"></span>
-</code></pre></div>
-</td></tr></table>
-<h5 id="referencing-a-nested-field">Referencing a nested field</h5>
-<p>To define a relationship between a field on one collection and a nested field on another collection, use dot notation
-in the <code>fidesops_meta</code> references for as many levels are necessary.</p>
-<p>In the example below, we might add another column to our <code>customer</code> collection that references
-the nested field <code>workplace_info.id</code> field in the <code>customer_details</code> collection. 
-Under references, this field is denoted by <code>&lt;collection_name&gt;.&lt;field_name&gt;.&lt;sub_field&gt;</code> name, or
-<code>customer_details.workplace_info.id</code>.</p>
-<p>If we preferred, we could instead define this relationship on the <code>customer_details.workplace_info.id</code> field itself,
-with a direction of <code>from</code>, with field <code>mydatabase.customer.workplace_id</code>, and dataset <code>mydatabase</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>dataset:
-  - fides_key: mydatabase
-    name: internal database
-    description: our internal database of customer data
-    collections:
-      - name: customer
-        fields:
-          - name: workplace_id
-            data_categories: [system.operations]
-            fidesops_meta:
-              references:
-                - dataset: mongo_nested_object_example
-                  field: customer_details.workplace_info.id
-                  direction: to
-          ...
-</code></pre></div>
-</td></tr></table>
-<p>Note that we currently support access requests on object fields in MongoDB only.  Support for 
-nested erasures, as well as support for array fields is underway.</p>
                 
               
               
@@ -1350,9 +1212,9 @@ nested erasures, as well as support for array fields is underway.</p>
       
         
         <a
-          href="../query_execution/"
+          href="../complex_fields/"
           class="md-footer__link md-footer__link--next"
-          aria-label="Next: Preview Query Execution"
+          aria-label="Next: Annotate Complex Fields"
           rel="next"
         >
           <div class="md-footer__title">
@@ -1360,7 +1222,7 @@ nested erasures, as well as support for array fields is underway.</p>
               <span class="md-footer__direction">
                 Next
               </span>
-              Preview Query Execution
+              Annotate Complex Fields
             </div>
           </div>
           <div class="md-footer__button md-icon">
