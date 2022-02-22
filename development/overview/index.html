@@ -1026,8 +1026,9 @@ commands to give you different functionality.</p>
 </ul>
 </li>
 <li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
-<li><code>make pytest-integration</code> - runs access integration tests.</li>
-<li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments.</li>
+<li><code>make pytest-integration</code> - runs all integration tests, except those on external datastores.</li>
+<li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments. NB. This can be used to run integration tests on external datastores if those datastores are explicitly specified.</li>
+<li><code>make pytest-integration-external</code> - runs only external integration tests.</li>
 <li><code>make pytest-integration-erasure</code> - runs erasure integration tests.</li>
 <li><code>make reset-db</code> - tears down the Fidesops postgres db, then recreates and re-runs migrations.</li>
 <li><code>make quickstart</code> - runs a quick, five minute quickstart that talks to the Fidesops API to execute privacy requests</li>
