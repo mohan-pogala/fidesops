@@ -303,6 +303,9 @@
                   },
                   {
                     "$ref": "#/components/schemas/BigQueryDocsSchema"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SaaSSchema"
                   }
                 ]
               }
@@ -3548,6 +3551,7 @@
           "mongodb",
           "mysql",
           "https",
+          "saas",
           "redshift",
           "snowflake",
           "mssql",
@@ -5130,6 +5134,13 @@
           }
         },
         "description": "An external representation of a Rule's target DataCategory within a Fidesops Policy"
+      },
+      "SaaSSchema": {
+        "title": "SaaSSchema",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "description": "Abstract base schema for updating SaaS connection configuration secrets.\nFields are added during runtime based on the connector_params in the\npassed in saas_config"
       },
       "SnowflakeDocsSchema": {
         "title": "SnowflakeDocsSchema",
