@@ -4053,6 +4053,10 @@
           "length": {
             "title": "Length",
             "type": "integer"
+          },
+          "return_all_elements": {
+            "title": "Return All Elements",
+            "type": "boolean"
           }
         },
         "description": "Fidesops-specific annotations used for query traversal"
