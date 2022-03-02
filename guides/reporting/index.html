@@ -971,12 +971,12 @@
 <p>In this section we'll cover:</p>
 <ul>
 <li>How to check the high-level status of your privacy requests</li>
-<li>How to get more detailed execution logs of queries that were run as part of your privacy requests. </li>
+<li>How to get more detailed execution logs of collections and fields that were potentially affected as part of your privacy request.</li>
 </ul>
 <p>Take me directly to <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs</a>.</p>
 <h2 id="overview">Overview</h2>
-<p>The reporting feature allows you to fetch information about privacy requests. You can opt for high-level or more detailed 
-information about the individual queries executed internally.</p>
+<p>The reporting feature allows you to fetch information about privacy requests. You can opt for high-level status 
+information, or get more detailed information about the status of the requests on each of your collections.</p>
 <h2 id="high-level-status">High-level Status</h2>
 <p>This request displays concise, high-level information for all your PrivacyRequests including their status and related timestamps.</p>
 <p>Check out the <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_api_v1_privacy_request_get">API docs here</a>.</p>
@@ -1020,7 +1020,7 @@ information about the individual queries executed internally.</p>
 <p><code>GET api/v1/privacy-request?created_gt=2021-10-01&amp;created_lt=2021-10-05&amp;status=pending</code></p>
 <ul>
 <li>id</li>
-<li>status (one of <code>in_processing</code>, <code>pending</code>, <code>complete</code>, or <code>error</code>)</li>
+<li>status (one of <code>in_processing</code>, <code>pending</code>, <code>paused</code>, <code>complete</code>, or <code>error</code>)</li>
 <li>created_lt</li>
 <li>created_gt</li>
 <li>started_lt</li>
@@ -1035,13 +1035,16 @@ information about the individual queries executed internally.</p>
 Embedded logs in the previous endpoints are truncated at 50 logs.</p>
 <p>Check out the <a href="/fidesops/api#operations-Privacy_Requests-get_request_status_logs_api_v1_privacy_request__privacy_request_id__log_get">API docs here</a>.</p>
 <h2 id="view-individual-privacy-request-log-details">View Individual Privacy Request Log Details</h2>
-<p>Use the <code>verbose</code> query param to see more details about individual queries run as part of the Privacy Request along
-with individual statuses. </p>
+<p>Use the <code>verbose</code> query param to see more details about individual collections visited as part of the Privacy Request along
+with individual statuses. Individual collection statuses include <code>in_processing</code>, <code>retrying</code>, <code>complete</code> or <code>error</code>.
+You may see multiple logs for each collection as they reach different steps in the lifecycle.  </p>
 <p><code>verbose</code> will embed a “results” key in the response, with execution logs grouped by dataset name.  In the example below,
-we have two datasets: <code>my-mongo-db</code> and <code>my-postgres-db</code>. There is one execution log for my-mongo-db and two execution
-logs for my-postgres-db.  The embedded execution logs are automatically truncated at 50 logs, so to view the entire 
-list of logs, visit the execution logs endpoint separately.</p>
-<p><code>GET api/v1/privacy-request?verbose=True</code></p>
+we have two datasets: <code>my-mongo-db</code> and <code>my-postgres-db</code>. There are two execution logs for <code>my-mongo-db</code> (when the <code>flights</code> 
+collection is starting execution and when the <code>flights</code> collection has finished) and two execution
+logs for <code>my-postgres-db</code> (when the <code>order</code> collection is starting and finishing execution).  <code>fields_affected</code> are the fields
+that were potentially returned or masked based on the Rules you've specified on the Policy. The embedded execution logs 
+are automatically truncated at 50 logs, so to view the entire list of logs, visit the execution logs endpoint separately.</p>
+<p><code>GET api/v1/privacy-request?id={privacy_request_id}&amp;verbose=True</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1109,49 +1112,51 @@ list of logs, visit the execution logs endpoint separately.</p>
 <span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="normal">68</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pri_5f4feff5-fb60-4286-82bd-7e0748ce90ac&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-04T17:36:32.223287+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;started_processing_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-04T17:36:37.248880+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;finished_processing_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-04T17:36:37.263121+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pri_2e0655c3-7a76-425e-8c4c-52fee32ce14b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:03.878898+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;started_processing_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:04.021763+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;finished_processing_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:06.211547+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;my-mongo-db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;flights&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;fields_affected&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;starting&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;in_processing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:04.668513+00:00&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;flights&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;fields_affected&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">                            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order.customer_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;field_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mongo_test:flights:passenger_information.full_name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="nt">&quot;field_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;passenger_information.full_name&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                </span><span class="nt">&quot;data_categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">                                    </span><span class="s2">&quot;user.provided.identifiable.name&quot;</span><span class="w"></span>
 <span class="w">                                </span><span class="p">]</span><span class="w"></span>
 <span class="w">                            </span><span class="p">}</span><span class="w"></span>
 <span class="w">                        </span><span class="p">],</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-05T18:24:55.570430+00:00&quot;</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:04.727094+00:00&quot;</span><span class="w"></span>
 <span class="w">                    </span><span class="p">}</span><span class="w"></span>
 <span class="w">                </span><span class="p">],</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;my-postgres-db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;fields_affected&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order.customer_name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;field_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                </span><span class="nt">&quot;data_categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">                                    </span><span class="s2">&quot;user.provided.identifiable.name&quot;</span><span class="w"></span>
-<span class="w">                                </span><span class="p">]</span><span class="w"></span>
-<span class="w">                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                        </span><span class="p">],</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;fields_affected&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;starting&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-05T18:24:39.953914+00:00&quot;</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;in_processing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:38:04.668513+00:00&quot;</span><span class="w"></span>
 <span class="w">                    </span><span class="p">},</span><span class="w"></span>
 <span class="w">                    </span><span class="p">{</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;order&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1163,11 +1168,11 @@ list of logs, visit the execution logs endpoint separately.</p>
 <span class="w">                                    </span><span class="s2">&quot;user.provided.identifiable.name&quot;</span><span class="w"></span>
 <span class="w">                                </span><span class="p">]</span><span class="w"></span>
 <span class="w">                            </span><span class="p">}</span><span class="w"></span>
-<span class="w">                        </span><span class="p">],</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="p">],</span><span class="w"> </span>
+<span class="w">                        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">                        </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;access&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pending&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-05T18:24:45.240612+00:00&quot;</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28T16:39:04.668513+00:00&quot;</span><span class="w"></span>
 <span class="w">                    </span><span class="p">}</span><span class="w"></span>
 <span class="w">                </span><span class="p">]</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
