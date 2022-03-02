@@ -3082,6 +3082,207 @@
           }
         ]
       }
+    },
+    "/api/v1/connection/{connection_key}/validate_saas_config": {
+      "put": {
+        "tags": [
+          "SaaS Configs"
+        ],
+        "summary": "Validate Saas Config",
+        "description": "Uses the SaaSConfig Pydantic model to validate the SaaS config\nwithout attempting to save it to the database.\n\nChecks that:\n- all required fields are present, all field values are valid types\n- each connector_param only has one of references or identity, not both",
+        "operationId": "validate_saas_config_api_v1_connection__connection_key__validate_saas_config_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaaSConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateSaaSConfigResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "saas_config:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/api/v1/connection/{connection_key}/saas_config": {
+      "get": {
+        "tags": [
+          "SaaS Configs"
+        ],
+        "summary": "Get Saas Config",
+        "description": "Returns the SaaS config for the given connection config.",
+        "operationId": "get_saas_config_api_v1_connection__connection_key__saas_config_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "connection_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaaSConfig"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "saas_config:read"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "SaaS Configs"
+        ],
+        "summary": "Delete Saas Config",
+        "description": "Removes the SaaS config for the given connection config.\nThe corresponding dataset and secrets must be deleted before deleting the SaaS config",
+        "operationId": "delete_saas_config_api_v1_connection__connection_key__saas_config_delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "connection_key",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "saas_config:delete"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "SaaS Configs"
+        ],
+        "summary": "Patch Saas Config",
+        "description": "Given a SaaS config element, update the corresponding ConnectionConfig object\nor report failure",
+        "operationId": "patch_saas_config_api_v1_connection__connection_key__saas_config_patch",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Connection Key",
+              "pattern": "^[a-zA-Z0-9_.]+$",
+              "type": "string"
+            },
+            "name": "connection_key",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaaSConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SaaSConfig"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2ClientCredentialsBearer": [
+              "saas_config:create_or_update"
+            ]
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -3453,6 +3654,36 @@
         },
         "description": "Schema for use when Bulk Create/Update fails."
       },
+      "ClientConfig": {
+        "title": "ClientConfig",
+        "required": [
+          "protocol",
+          "host",
+          "authentication"
+        ],
+        "type": "object",
+        "properties": {
+          "protocol": {
+            "title": "Protocol",
+            "type": "string"
+          },
+          "host": {
+            "title": "Host",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/ConnectorParamRef"
+              }
+            ]
+          },
+          "authentication": {
+            "$ref": "#/components/schemas/Strategy"
+          }
+        },
+        "description": "Definition for an authenticated base HTTP client"
+      },
       "ClientCreatedResponse": {
         "title": "ClientCreatedResponse",
         "required": [
@@ -3560,6 +3791,37 @@
         ],
         "description": "Supported types to which we can connect fidesops."
       },
+      "ConnectorParam": {
+        "title": "ConnectorParam",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "default_value": {
+            "title": "Default Value"
+          }
+        },
+        "description": "Used to define the required parameters for the connector (user-provided and constants)"
+      },
+      "ConnectorParamRef": {
+        "title": "ConnectorParamRef",
+        "required": [
+          "connector_param"
+        ],
+        "type": "object",
+        "properties": {
+          "connector_param": {
+            "title": "Connector Param",
+            "type": "string"
+          }
+        },
+        "description": "A reference to a value in the connector params (by name)"
+      },
       "CreateConnectionConfiguration": {
         "title": "CreateConnectionConfiguration",
         "required": [
@@ -3636,6 +3898,28 @@
           }
         },
         "description": "Response model for dataset dry run"
+      },
+      "Endpoint": {
+        "title": "Endpoint",
+        "required": [
+          "name",
+          "requests"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "requests": {
+            "title": "Requests",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SaaSRequest"
+            }
+          }
+        },
+        "description": "An collection of read/update/delete requests which corresponds to a FidesopsDataset collection (by name)"
       },
       "ExecutionLogDetailResponse": {
         "title": "ExecutionLogDetailResponse",
@@ -5049,6 +5333,48 @@
         "additionalProperties": false,
         "description": "Redshift Secrets Schema for API Docs"
       },
+      "RequestParam": {
+        "title": "RequestParam",
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type",
+            "enum": [
+              "query",
+              "path",
+              "body"
+            ],
+            "type": "string"
+          },
+          "default_value": {
+            "title": "Default Value"
+          },
+          "identity": {
+            "title": "Identity",
+            "type": "string"
+          },
+          "data_type": {
+            "title": "Data Type",
+            "type": "string"
+          },
+          "references": {
+            "title": "References",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FidesopsDatasetReference"
+            }
+          }
+        },
+        "description": "A request parameter which includes the type (query, path, or body) along with a default value or\na reference to an identity value or a value in another dataset."
+      },
       "ResponseFormat": {
         "title": "ResponseFormat",
         "enum": [
@@ -5138,6 +5464,109 @@
           }
         },
         "description": "An external representation of a Rule's target DataCategory within a Fidesops Policy"
+      },
+      "SaaSConfig": {
+        "title": "SaaSConfig",
+        "required": [
+          "fides_key",
+          "name",
+          "description",
+          "version",
+          "connector_params",
+          "client_config",
+          "endpoints",
+          "test_request"
+        ],
+        "type": "object",
+        "properties": {
+          "fides_key": {
+            "title": "Fides Key",
+            "pattern": "^[a-zA-Z0-9_.]+$",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          },
+          "connector_params": {
+            "title": "Connector Params",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConnectorParam"
+            }
+          },
+          "client_config": {
+            "$ref": "#/components/schemas/ClientConfig"
+          },
+          "endpoints": {
+            "title": "Endpoints",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Endpoint"
+            }
+          },
+          "test_request": {
+            "$ref": "#/components/schemas/SaaSRequest"
+          }
+        },
+        "description": "Used to store endpoint and param configurations for a SaaS connector.\nThis is done to separate the details of how to make the API calls\nfrom the data provided by a given API collection.\n\nThe required fields for the config are converted into a Dataset which is\nmerged with the standard Fidesops Dataset to provide a complete set of dependencies\nfor the graph traversal"
+      },
+      "SaaSConfigValidationDetails": {
+        "title": "SaaSConfigValidationDetails",
+        "type": "object",
+        "properties": {
+          "msg": {
+            "title": "Msg",
+            "type": "string"
+          }
+        },
+        "description": "Message with any validation issues with the SaaS config"
+      },
+      "SaaSRequest": {
+        "title": "SaaSRequest",
+        "required": [
+          "path"
+        ],
+        "type": "object",
+        "properties": {
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "request_params": {
+            "title": "Request Params",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RequestParam"
+            }
+          },
+          "data_path": {
+            "title": "Data Path",
+            "type": "string"
+          },
+          "preprocessor": {
+            "$ref": "#/components/schemas/Strategy"
+          },
+          "postprocessor": {
+            "title": "Postprocessor",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Strategy"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Strategy"
+          }
+        },
+        "description": "A single request with a static or dynamic path, and the request params needed to build the request.\nAlso includes optional strategies for pre/postprocessing and pagination."
       },
       "SaaSSchema": {
         "title": "SaaSSchema",
@@ -5390,6 +5819,25 @@
         ],
         "description": "Enum for storage destination types"
       },
+      "Strategy": {
+        "title": "Strategy",
+        "required": [
+          "strategy",
+          "configuration"
+        ],
+        "type": "object",
+        "properties": {
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "configuration": {
+            "title": "Configuration",
+            "type": "object"
+          }
+        },
+        "description": "General shape for swappable strategies (ex: auth, pagination, postprocessing, etc.)"
+      },
       "TestStatusMessage": {
         "title": "TestStatusMessage",
         "required": [
@@ -5427,6 +5875,23 @@
           }
         },
         "description": "Response model for validating a dataset, which includes both the dataset\nitself (if valid) plus a details object describing if the dataset is\ntraversable or not."
+      },
+      "ValidateSaaSConfigResponse": {
+        "title": "ValidateSaaSConfigResponse",
+        "required": [
+          "saas_config",
+          "validation_details"
+        ],
+        "type": "object",
+        "properties": {
+          "saas_config": {
+            "$ref": "#/components/schemas/SaaSConfig"
+          },
+          "validation_details": {
+            "$ref": "#/components/schemas/SaaSConfigValidationDetails"
+          }
+        },
+        "description": "Response model for validating a SaaS config, which includes both the SaaS config\nitself (if valid) plus a details object describing any validation errors."
       },
       "ValidationError": {
         "title": "ValidationError",
