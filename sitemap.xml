@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ethyca.github.io/fidesops/development/jetbrains_debugging/</loc>
+         <lastmod>2022-03-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ethyca.github.io/fidesops/development/overview/</loc>
          <lastmod>2022-03-03</lastmod>
          <changefreq>daily</changefreq>
