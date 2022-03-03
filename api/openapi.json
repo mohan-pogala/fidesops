@@ -5551,11 +5551,15 @@
             "title": "Data Path",
             "type": "string"
           },
-          "preprocessor": {
-            "$ref": "#/components/schemas/Strategy"
+          "preprocessors": {
+            "title": "Preprocessors",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Strategy"
+            }
           },
-          "postprocessor": {
-            "title": "Postprocessor",
+          "postprocessors": {
+            "title": "Postprocessors",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Strategy"
@@ -5835,7 +5839,7 @@
             "type": "object"
           }
         },
-        "description": "General shape for swappable strategies (ex: auth, pagination, postprocessing, etc.)"
+        "description": "General shape for swappable strategies (ex: auth, processors, pagination, etc.)"
       },
       "TestStatusMessage": {
         "title": "TestStatusMessage",
