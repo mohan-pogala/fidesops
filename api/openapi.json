@@ -5349,8 +5349,7 @@
             "title": "Type",
             "enum": [
               "query",
-              "path",
-              "body"
+              "path"
             ],
             "type": "string"
           },
@@ -5373,7 +5372,7 @@
             }
           }
         },
-        "description": "A request parameter which includes the type (query, path, or body) along with a default value or\na reference to an identity value or a value in another dataset."
+        "description": "A request parameter which includes the type (query or path) along with a default value or\na reference to an identity value or a value in another dataset."
       },
       "ResponseFormat": {
         "title": "ResponseFormat",
