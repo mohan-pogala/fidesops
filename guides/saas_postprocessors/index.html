@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://ethyca.github.io/fidesops/development/overview/">
+        <link rel="canonical" href="https://ethyca.github.io/fidesops/guides/saas_postprocessors/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.2.5">
     
     
       
-        <title>Overview - Fidesops</title>
+        <title>SaaS Post-Processors - Fidesops</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#development-overview" class="md-skip">
+        <a href="#saas-post-processors" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              SaaS Post-Processors
             
           </span>
         </div>
@@ -375,12 +375,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         How-To Guides
@@ -398,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/oauth/" class="md-nav__link">
+      <a href="../oauth/" class="md-nav__link">
         Authenticate with OAuth
       </a>
     </li>
@@ -410,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/database_connectors/" class="md-nav__link">
+      <a href="../database_connectors/" class="md-nav__link">
         Connect SQL and NoSQL Databases
       </a>
     </li>
@@ -422,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/datasets/" class="md-nav__link">
+      <a href="../datasets/" class="md-nav__link">
         Configure Datasets
       </a>
     </li>
@@ -434,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/saas_connectors/" class="md-nav__link">
+      <a href="../saas_connectors/" class="md-nav__link">
         Connect to SaaS Applications
       </a>
     </li>
@@ -446,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/saas_config/" class="md-nav__link">
+      <a href="../saas_config/" class="md-nav__link">
         SaaS Configuration
       </a>
     </li>
@@ -456,11 +458,118 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../guides/saas_postprocessors/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SaaS Post-Processors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SaaS Post-Processors
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-strategies" class="md-nav__link">
+    Supported Strategies
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    Filter
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-details" class="md-nav__link">
+    Configuration Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unwrap" class="md-nav__link">
+    Unwrap
+  </a>
+  
+    <nav class="md-nav" aria-label="Unwrap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-details_1" class="md-nav__link">
+    Configuration Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -470,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/complex_fields/" class="md-nav__link">
+      <a href="../complex_fields/" class="md-nav__link">
         Annotate Complex Fields
       </a>
     </li>
@@ -482,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/query_execution/" class="md-nav__link">
+      <a href="../query_execution/" class="md-nav__link">
         Preview Query Execution
       </a>
     </li>
@@ -494,7 +603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/policies/" class="md-nav__link">
+      <a href="../policies/" class="md-nav__link">
         Create Request Policies
       </a>
     </li>
@@ -506,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/masking_strategies/" class="md-nav__link">
+      <a href="../masking_strategies/" class="md-nav__link">
         Configure Data Masking Strategies
       </a>
     </li>
@@ -518,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/storage/" class="md-nav__link">
+      <a href="../storage/" class="md-nav__link">
         Configure Storage Destinations
       </a>
     </li>
@@ -530,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/policy_webhooks/" class="md-nav__link">
+      <a href="../policy_webhooks/" class="md-nav__link">
         Configure Policy Webhooks
       </a>
     </li>
@@ -542,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/privacy_requests/" class="md-nav__link">
+      <a href="../privacy_requests/" class="md-nav__link">
         Execute Privacy Requests
       </a>
     </li>
@@ -554,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/reporting/" class="md-nav__link">
+      <a href="../reporting/" class="md-nav__link">
         Report on Privacy Requests
       </a>
     </li>
@@ -566,7 +675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/onetrust/" class="md-nav__link">
+      <a href="../onetrust/" class="md-nav__link">
         Configure OneTrust Integration
       </a>
     </li>
@@ -578,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/configuration_reference/" class="md-nav__link">
+      <a href="../configuration_reference/" class="md-nav__link">
         Configuration Reference
       </a>
     </li>
@@ -642,14 +751,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       <label class="md-nav__link" for="__nav_8">
         Development
@@ -665,105 +772,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../development/overview/" class="md-nav__link">
         Overview
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started-with-fidesops-in-docker" class="md-nav__link">
-    Getting Started with Fidesops in Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started with Fidesops in Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    System Requirements
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#available-make-commands" class="md-nav__link">
-    Available make commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Available make commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
-    Issues
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#write-your-code" class="md-nav__link">
-    Write your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-your-code" class="md-nav__link">
-    Submit your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
-    Congratulations
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -773,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing_details/" class="md-nav__link">
+      <a href="../../development/contributing_details/" class="md-nav__link">
         Contributing Details
       </a>
     </li>
@@ -785,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_style/" class="md-nav__link">
+      <a href="../../development/code_style/" class="md-nav__link">
         Code Style
       </a>
     </li>
@@ -797,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/" class="md-nav__link">
+      <a href="../../development/documentation/" class="md-nav__link">
         Documentation
       </a>
     </li>
@@ -809,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         Testing
       </a>
     </li>
@@ -821,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pull_requests/" class="md-nav__link">
+      <a href="../../development/pull_requests/" class="md-nav__link">
         Pull Requests
       </a>
     </li>
@@ -833,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../releases/" class="md-nav__link">
+      <a href="../../development/releases/" class="md-nav__link">
         Releases
       </a>
     </li>
@@ -956,31 +969,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started-with-fidesops-in-docker" class="md-nav__link">
-    Getting Started with Fidesops in Docker
+  <a href="#configuration" class="md-nav__link">
+    Configuration
   </a>
   
-    <nav class="md-nav" aria-label="Getting Started with Fidesops in Docker">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-strategies" class="md-nav__link">
+    Supported Strategies
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Strategies">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    System Requirements
+  <a href="#filter" class="md-nav__link">
+    Filter
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-details" class="md-nav__link">
+    Configuration Details
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#available-make-commands" class="md-nav__link">
-    Available make commands
+  <a href="#example" class="md-nav__link">
+    Example
   </a>
   
-    <nav class="md-nav" aria-label="Available make commands">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unwrap" class="md-nav__link">
+    Unwrap
+  </a>
+  
+    <nav class="md-nav" aria-label="Unwrap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
-    Issues
+  <a href="#configuration-details_1" class="md-nav__link">
+    Configuration Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -992,27 +1039,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#write-your-code" class="md-nav__link">
-    Write your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-your-code" class="md-nav__link">
-    Submit your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
-    Congratulations
-  </a>
   
 </li>
       
@@ -1029,90 +1055,174 @@
               
                 
                 
-                <h1 id="development-overview">Development Overview</h1>
-<hr />
-<p>Thanks for contributing to Fidesops! This section of the docs is designed to help you become familiar with how we work, the standards we apply, and how to ensure your contribution is successful.</p>
-<p>If you're stuck, don't be shy about asking for help <a href="https://github.com/ethyca/fidesops/issues">on GitHub</a>.</p>
-<h2 id="getting-started-with-fidesops-in-docker">Getting Started with Fidesops in Docker</h2>
-<p>The recommended way to run Fidesops is to launch it with Docker and Docker Compose. <code>Make</code> commands wrap docker-compose 
-commands to give you different functionality.</p>
-<h3 id="system-requirements">System Requirements</h3>
-<ol>
-<li>Install Docker: https://docs.docker.com/desktop/#download-and-install</li>
-<li>Install <code>make</code> locally (see Make on Homebrew (Mac), Make for Windows, or your preferred installation) </li>
-<li><code>brew install make</code></li>
-<li><a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Create a fork of fidesops</a> </li>
-<li>Clone your fork <code>git clone https://github.com/&lt;your-fork-location&gt;/fidesops.git</code></li>
-<li><code>cd fidesops</code></li>
-</ol>
-<h3 id="available-make-commands">Available make commands</h3>
-<ul>
-<li><code>make server</code> - this spins up the Fastapi server and supporting resources (a Postgres database and a Redis cache), which you can visit at <code>http://0.0.0.0:8080</code>. Check out the docs at <code>http://0.0.0.0:8000/fidesops/</code></li>
-<li><code>make integration-env</code> - spins up everything in make server, plus additional postgres, mongo, and mysql databases for you to execute privacy requests against.<ul>
-<li>Try this out locally with our <a href="../../postman/Fidesops.postman_collection.json">Fidesops Postman Collection</a></li>
-<li><code>make integration-env datastores="mysql mariadb"</code>- brings up only mysql and mariadb datastores </li>
-</ul>
-</li>
-<li><code>make integration-shell</code> - spins up everything in make server, plus all Docker Compose specified datastores (Postgres, MySQL, MSSQL, Mongodb) and opens a server shell. This is most useful for running <code>pytest -k ...</code> commands within the integration shell to test connected datastores.</li>
-<li><code>make black</code>, <code>make mypy</code>, and <code>make pylint</code> - auto-formats code</li>
-<li><code>make check-all</code> - runs the CI checks locally and verifies that your code meets project standards</li>
-<li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:<ul>
-<li><code>ipython</code> - open a Python shell</li>
-<li><code>cd src</code> then <code>alembic revision --autogenerate -m "adds enum for mysql connection type"</code> - auto-generates DB migration</li>
-</ul>
-</li>
-<li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
-<li><code>make pytest-integration</code> - runs all integration tests, except those on external datastores.</li>
-<li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments. NB. This can be used to run integration tests on external datastores if those datastores are explicitly specified.</li>
-<li><code>make pytest-integration-external</code> - runs only external integration tests.</li>
-<li><code>make pytest-integration-erasure</code> - runs erasure integration tests.</li>
-<li><code>make reset-db</code> - tears down the Fidesops postgres db, then recreates and re-runs migrations.</li>
-<li><code>make quickstart</code> - runs a quick, five minute quickstart that talks to the Fidesops API to execute privacy requests</li>
-<li><code>make check-migrations</code> - verifies there are no un-run migrations </li>
-<li><code>make docs-serve</code> - spins up just the docs, which you can visit at <code>http://0.0.0.0:8000/fidesops/</code></li>
-</ul>
-<p>See <a href="https://github.com/ethyca/fidesops/blob/main/Makefile">Makefile</a> for more options. </p>
-<h4 id="issues">Issues</h4>
-<ul>
-<li>
-<p>MSSQL: Known issues around connecting to MSSQL exist today for Apple M1 users. M1 users that wish to install <code>pyodbc</code> locally, please reference the workaround <a href="https://github.com/mkleehammer/pyodbc/issues/846">here</a>.</p>
-</li>
-<li>
-<p>Package not found: When running <code>make server</code>, if you get a <code>importlib.metadata.PackageNotFoundError: fidesops</code>, do <code>make server-shell</code>,
-and then run <code>pip install -e .</code>. Verify Fidesops is installed with <code>pip list</code>.</p>
-</li>
-</ul>
-<h2 id="write-your-code">Write your code</h2>
-<p>See the <a href="../contributing_details/">contributing details</a> guide to get familiar with writing and testing API endpoints, database models, and more. </p>
-<p>We want to help you ensure your code plays nicely with the rest of the Fidesops ecosystem. Many projects describe code style and documentation as a suggestion; in Fidesops it's a CI-checked requirement.</p>
-<ul>
-<li>To learn how to style your code, see the <a href="../code_style/">style guide</a>.</li>
-<li>To learn how to document your code, see the <a href="../documentation/">docs guide</a>.</li>
-<li>To learn how to test your code, see the <a href="../testing/">tests guide</a>.</li>
-<li>To learn what format your PR should follow, make sure to follow the <a href="../pull_requests/">pull request guidelines</a>.</li>
-</ul>
-<h2 id="submit-your-code">Submit your code</h2>
-<p>In order to submit code to Fidesops, please:</p>
-<ul>
-<li><a href="https://help.github.com/en/articles/fork-a-repo">Fork the Fidesops repository</a></li>
-<li>Add the original as a remote (I'm naming it <code>upstream</code>), to keep your fork in sync
-  <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git remote add upstream https://github.com/ethyca/fidesops.git
+                <h1 id="saas-post-processors">SaaS Post-Processors</h1>
+<p>Post-processors are, in essence, data transformers. Given data from an endpoint, we can add specific processors to transform the data into a format we need for subject requests.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Post-processors are configured within the <code>endpoints</code> section of a <code>saas_config</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">endpoints</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">messages</span><span class="w"></span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">read</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/conversations/&lt;id&gt;/messages</span><span class="w"></span>
+<span class="w">        </span><span class="nt">request_params</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">        </span><span class="nt">postprocessors</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unwrap</span><span class="w"></span>
+<span class="w">            </span><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">data_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conversation_messages</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter</span><span class="w"></span>
+<span class="w">            </span><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">from_email</span><span class="w"></span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">identity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"></span>
 </code></pre></div>
-</td></tr></table></li>
-<li><a href="https://help.github.com/en/desktop/contributing-to-projects/creating-a-branch-for-your-work">Create a new branch</a> on your fork
-  <code>bash
-    git checkout main 
-    git fetch upstream 
-    git merge upstream/main 
-    git push origin main 
-    git checkout -b my-new-branch
-    git push origin my-new-branch</code></li>
-<li><a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork">Open a Pull Request</a> once your work is ready for review</li>
-<li>Submit the pull request from <em>your</em> repo. Pull requests should be submitted with a clear description of the issue being handled, including links to any external specifications or Github issues. PRs should not be merged by the person submitting them, except in rare and urgent circumstances.</li>
-<li>Once automated tests have passed, a maintainer will review your PR and provide feedback on any changes it requires to be approved. Once approved, your PR will be merged into Fidesops.</li>
+</td></tr></table>
+<p>Note: Order matters as it's defined in the config. In the above example, unwrap will be run first, then the output of unwrap will be used in the filter strategy.</p>
+<h2 id="supported-strategies">Supported Strategies</h2>
+<ul>
+<li><code>unwrap</code>: Gets object at given data path.</li>
+<li><code>filter</code>: Removes data that does not match a given field and value.</li>
 </ul>
-<h2 id="congratulations">Congratulations</h2>
-<p>You're a Fidesops contributor - welcome to the team! 🎉</p>
+<h3 id="filter">Filter</h3>
+<p>Filters object or array given field name and value. Value can reference a dynamic identity passed in through the request OR be a hard-coded value.</p>
+<h4 id="configuration-details">Configuration Details</h4>
+<p><code>strategy</code>: filter</p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>field</code> (<em>str</em>): Corresponds to the field on which to filter. For example, we wish to filter where <code>email_contact == "bob@mail.com"</code>, then <code>field</code> will be <code>email_contact</code>. Note that filtering an array by a field that's deeply nested is not yet supported.</li>
+<li><code>value</code> (<em>str</em>): Value to search for when filtering (e.g. hard-coded <code>bob@mail.com</code>) or Dict of identity path:<ul>
+<li><code>identity</code> (<em>str</em>): Identity object from subject request (e.g. <code>email</code> or <code>phone_number</code>)</li>
+</ul>
+</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Post-Processor Config:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter</span><span class="w"></span>
+<span class="w">  </span><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email_contact</span><span class="w"></span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">identity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Identity data passed in through request:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>{
+  &quot;email&quot;: &quot;somebody@email.com&quot;
+}
+</code></pre></div>
+</td></tr></table>
+<p>Data to be processed:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>data = [
+    {
+        &quot;id&quot;: 1397429347
+        &quot;email_contact&quot;: &quot;somebody@email.com&quot;
+        &quot;name&quot;: &quot;Somebody Awesome&quot;
+    },
+    {
+        &quot;id&quot;: 238475234
+        &quot;email_contact&quot;: &quot;somebody-else@email.com&quot;
+        &quot;name&quot;: &quot;Somebody Cool&quot;
+    }
+]
+</code></pre></div>
+</td></tr></table></p>
+<p>Result:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>result = [
+          {
+              &quot;id&quot;: 1397429347
+              &quot;email_contact&quot;: &quot;somebody@email.com&quot;
+              &quot;name&quot;: &quot;Somebody Awesome&quot;
+          }
+        ]
+</code></pre></div>
+</td></tr></table></p>
+<p>Note: Type casting is not supported at this time. We currently only support filtering by string values. e.g. <code>bob@mail.com</code> and not <code>12344245</code>.</p>
+<h3 id="unwrap">Unwrap</h3>
+<p>Given a path to a dict/list, returns the dict/list at that location.</p>
+<h4 id="configuration-details_1">Configuration Details</h4>
+<p><code>strategy</code>: unwrap</p>
+<p><code>configuration</code>:</p>
+<ul>
+<li><code>data_path</code> (<em>str</em>): Gives the path to desired object. E.g. <code>exact_matches.members</code> will attempt to get the <code>members</code> object on the <code>exact_matches</code> object.</li>
+</ul>
+<h4 id="example_1">Example</h4>
+<p>Post-Processor Config:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">strategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unwrap</span><span class="w"></span>
+<span class="w">  </span><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exact_matches.members</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Data to be processed:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>data = {
+  &quot;exact_matches&quot;: {
+    &quot;members&quot;: [
+      { &quot;howdy&quot;: 123 },
+      { &quot;meow&quot;: 841 }
+    ]
+  }
+}
+
+data_path = exact_matches.members
+</code></pre></div>
+</td></tr></table>
+Result:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>result = [
+  { &quot;howdy&quot;: 123 },
+  { &quot;meow&quot;: 841 }
+]
+</code></pre></div>
+</td></tr></table></p>
                 
               
               
@@ -1169,9 +1279,9 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
       
         
         <a
-          href="../../api/"
+          href="../saas_config/"
           class="md-footer__link md-footer__link--prev"
-          aria-label="Previous: API"
+          aria-label="Previous: SaaS Configuration"
           rel="prev"
         >
           <div class="md-footer__button md-icon">
@@ -1182,7 +1292,7 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
               <span class="md-footer__direction">
                 Previous
               </span>
-              API
+              SaaS Configuration
             </div>
           </div>
         </a>
@@ -1192,9 +1302,9 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
       
         
         <a
-          href="../contributing_details/"
+          href="../complex_fields/"
           class="md-footer__link md-footer__link--next"
-          aria-label="Next: Contributing Details"
+          aria-label="Next: Annotate Complex Fields"
           rel="next"
         >
           <div class="md-footer__title">
@@ -1202,7 +1312,7 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
               <span class="md-footer__direction">
                 Next
               </span>
-              Contributing Details
+              Annotate Complex Fields
             </div>
           </div>
           <div class="md-footer__button md-icon">

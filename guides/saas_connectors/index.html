@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://ethyca.github.io/fidesops/development/overview/">
+        <link rel="canonical" href="https://ethyca.github.io/fidesops/guides/saas_connectors/">
       
       <link rel="icon" href="../../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.2.5">
     
     
       
-        <title>Overview - Fidesops</title>
+        <title>Connect to SaaS Applications - Fidesops</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#development-overview" class="md-skip">
+        <a href="#how-to-connect-to-saas-applications" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Connect to SaaS Applications
             
           </span>
         </div>
@@ -375,12 +375,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         How-To Guides
@@ -398,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/oauth/" class="md-nav__link">
+      <a href="../oauth/" class="md-nav__link">
         Authenticate with OAuth
       </a>
     </li>
@@ -410,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/database_connectors/" class="md-nav__link">
+      <a href="../database_connectors/" class="md-nav__link">
         Connect SQL and NoSQL Databases
       </a>
     </li>
@@ -422,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/datasets/" class="md-nav__link">
+      <a href="../datasets/" class="md-nav__link">
         Configure Datasets
       </a>
     </li>
@@ -432,11 +434,72 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../guides/saas_connectors/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Connect to SaaS Applications
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Connect to SaaS Applications
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-saas-connection" class="md-nav__link">
+    What is a SaaS connection?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-saas-applications" class="md-nav__link">
+    Supported SaaS applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-configure-a-saas-connector" class="md-nav__link">
+    How to configure a SaaS connector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-considerations" class="md-nav__link">
+    Additional considerations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -446,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/saas_config/" class="md-nav__link">
+      <a href="../saas_config/" class="md-nav__link">
         SaaS Configuration
       </a>
     </li>
@@ -458,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/saas_postprocessors/" class="md-nav__link">
+      <a href="../saas_postprocessors/" class="md-nav__link">
         SaaS Post-Processors
       </a>
     </li>
@@ -470,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/complex_fields/" class="md-nav__link">
+      <a href="../complex_fields/" class="md-nav__link">
         Annotate Complex Fields
       </a>
     </li>
@@ -482,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/query_execution/" class="md-nav__link">
+      <a href="../query_execution/" class="md-nav__link">
         Preview Query Execution
       </a>
     </li>
@@ -494,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/policies/" class="md-nav__link">
+      <a href="../policies/" class="md-nav__link">
         Create Request Policies
       </a>
     </li>
@@ -506,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/masking_strategies/" class="md-nav__link">
+      <a href="../masking_strategies/" class="md-nav__link">
         Configure Data Masking Strategies
       </a>
     </li>
@@ -518,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/storage/" class="md-nav__link">
+      <a href="../storage/" class="md-nav__link">
         Configure Storage Destinations
       </a>
     </li>
@@ -530,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/policy_webhooks/" class="md-nav__link">
+      <a href="../policy_webhooks/" class="md-nav__link">
         Configure Policy Webhooks
       </a>
     </li>
@@ -542,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/privacy_requests/" class="md-nav__link">
+      <a href="../privacy_requests/" class="md-nav__link">
         Execute Privacy Requests
       </a>
     </li>
@@ -554,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/reporting/" class="md-nav__link">
+      <a href="../reporting/" class="md-nav__link">
         Report on Privacy Requests
       </a>
     </li>
@@ -566,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/onetrust/" class="md-nav__link">
+      <a href="../onetrust/" class="md-nav__link">
         Configure OneTrust Integration
       </a>
     </li>
@@ -578,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/configuration_reference/" class="md-nav__link">
+      <a href="../configuration_reference/" class="md-nav__link">
         Configuration Reference
       </a>
     </li>
@@ -642,14 +705,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       <label class="md-nav__link" for="__nav_8">
         Development
@@ -665,105 +726,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../development/overview/" class="md-nav__link">
         Overview
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started-with-fidesops-in-docker" class="md-nav__link">
-    Getting Started with Fidesops in Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started with Fidesops in Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    System Requirements
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#available-make-commands" class="md-nav__link">
-    Available make commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Available make commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
-    Issues
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#write-your-code" class="md-nav__link">
-    Write your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-your-code" class="md-nav__link">
-    Submit your code
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
-    Congratulations
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -773,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing_details/" class="md-nav__link">
+      <a href="../../development/contributing_details/" class="md-nav__link">
         Contributing Details
       </a>
     </li>
@@ -785,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_style/" class="md-nav__link">
+      <a href="../../development/code_style/" class="md-nav__link">
         Code Style
       </a>
     </li>
@@ -797,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/" class="md-nav__link">
+      <a href="../../development/documentation/" class="md-nav__link">
         Documentation
       </a>
     </li>
@@ -809,7 +776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../development/testing/" class="md-nav__link">
         Testing
       </a>
     </li>
@@ -821,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pull_requests/" class="md-nav__link">
+      <a href="../../development/pull_requests/" class="md-nav__link">
         Pull Requests
       </a>
     </li>
@@ -833,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../releases/" class="md-nav__link">
+      <a href="../../development/releases/" class="md-nav__link">
         Releases
       </a>
     </li>
@@ -956,62 +923,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started-with-fidesops-in-docker" class="md-nav__link">
-    Getting Started with Fidesops in Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started with Fidesops in Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-requirements" class="md-nav__link">
-    System Requirements
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#available-make-commands" class="md-nav__link">
-    Available make commands
-  </a>
-  
-    <nav class="md-nav" aria-label="Available make commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
-    Issues
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#write-your-code" class="md-nav__link">
-    Write your code
+  <a href="#what-is-a-saas-connection" class="md-nav__link">
+    What is a SaaS connection?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submit-your-code" class="md-nav__link">
-    Submit your code
+  <a href="#supported-saas-applications" class="md-nav__link">
+    Supported SaaS applications
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#congratulations" class="md-nav__link">
-    Congratulations
+  <a href="#how-to-configure-a-saas-connector" class="md-nav__link">
+    How to configure a SaaS connector
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-considerations" class="md-nav__link">
+    Additional considerations
   </a>
   
 </li>
@@ -1029,90 +963,110 @@
               
                 
                 
-                <h1 id="development-overview">Development Overview</h1>
-<hr />
-<p>Thanks for contributing to Fidesops! This section of the docs is designed to help you become familiar with how we work, the standards we apply, and how to ensure your contribution is successful.</p>
-<p>If you're stuck, don't be shy about asking for help <a href="https://github.com/ethyca/fidesops/issues">on GitHub</a>.</p>
-<h2 id="getting-started-with-fidesops-in-docker">Getting Started with Fidesops in Docker</h2>
-<p>The recommended way to run Fidesops is to launch it with Docker and Docker Compose. <code>Make</code> commands wrap docker-compose 
-commands to give you different functionality.</p>
-<h3 id="system-requirements">System Requirements</h3>
+                <h1 id="how-to-connect-to-saas-applications">How-To: Connect to SaaS Applications</h1>
+<h2 id="what-is-a-saas-connection">What is a SaaS connection?</h2>
+<p>A SaaS (Software as a Service) connection is a connection type within Fidesops that allows a user to connect to a SaaS application (e.g., Mailchimp, Stripe, Slack, etc.) and execute data access and erasure requests against that application. These connections use functionality introduced in earlier sections (<a href="../database_connectors/#creating-a-connectionconfig-object">ConnectionConfigs</a> and <a href="../datasets/">Datasets</a>) but also use a new <a href="../saas_config/">SaaS configuration</a> specification to define how to connect to specific SaaS applications.</p>
+<h2 id="supported-saas-applications">Supported SaaS applications</h2>
+<p>The current implementation of the SaaS framework can support any SaaS application that uses these features:</p>
+<ul>
+<li>Basic and bearer authentication</li>
+<li>Data access via HTTP GET requests</li>
+<li>Erasure via HTTP PUT requests</li>
+</ul>
+<p>The following features are planned for future releases and will allow for the configuration of broader types of connections:</p>
+<ul>
+<li>OAuth 2.0 authentication</li>
+<li>Pagination based on headers and response contents</li>
+<li>Retry logic based on status codes and response contents</li>
+</ul>
+<p>Full <a href="https://github.com/ethyca/fidesops/tree/main/data/saas">examples</a> of a valid SaaS config and Dataset are currently available for Mailchimp.</p>
+<h2 id="how-to-configure-a-saas-connector">How to configure a SaaS connector</h2>
+<p>For convenience we've included a SaaS Connector <a href="../../postman/using_postman/">Postman</a> collection to execute the necessary steps to configure a SaaS connector.</p>
 <ol>
-<li>Install Docker: https://docs.docker.com/desktop/#download-and-install</li>
-<li>Install <code>make</code> locally (see Make on Homebrew (Mac), Make for Windows, or your preferred installation) </li>
-<li><code>brew install make</code></li>
-<li><a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Create a fork of fidesops</a> </li>
-<li>Clone your fork <code>git clone https://github.com/&lt;your-fork-location&gt;/fidesops.git</code></li>
-<li><code>cd fidesops</code></li>
-</ol>
-<h3 id="available-make-commands">Available make commands</h3>
-<ul>
-<li><code>make server</code> - this spins up the Fastapi server and supporting resources (a Postgres database and a Redis cache), which you can visit at <code>http://0.0.0.0:8080</code>. Check out the docs at <code>http://0.0.0.0:8000/fidesops/</code></li>
-<li><code>make integration-env</code> - spins up everything in make server, plus additional postgres, mongo, and mysql databases for you to execute privacy requests against.<ul>
-<li>Try this out locally with our <a href="../../postman/Fidesops.postman_collection.json">Fidesops Postman Collection</a></li>
-<li><code>make integration-env datastores="mysql mariadb"</code>- brings up only mysql and mariadb datastores </li>
-</ul>
-</li>
-<li><code>make integration-shell</code> - spins up everything in make server, plus all Docker Compose specified datastores (Postgres, MySQL, MSSQL, Mongodb) and opens a server shell. This is most useful for running <code>pytest -k ...</code> commands within the integration shell to test connected datastores.</li>
-<li><code>make black</code>, <code>make mypy</code>, and <code>make pylint</code> - auto-formats code</li>
-<li><code>make check-all</code> - runs the CI checks locally and verifies that your code meets project standards</li>
-<li><code>make server-shell</code>-  opens a shell on the Docker container, from here you can run useful commands like:<ul>
-<li><code>ipython</code> - open a Python shell</li>
-<li><code>cd src</code> then <code>alembic revision --autogenerate -m "adds enum for mysql connection type"</code> - auto-generates DB migration</li>
-</ul>
-</li>
-<li><code>make pytest</code> - runs all unit tests except those that talk to integration databases</li>
-<li><code>make pytest-integration</code> - runs all integration tests, except those on external datastores.</li>
-<li><code>make pytest-integration datastores="postgres snowflake mssql"</code> - runs access integration tests for the Postgres, Snowflake and MSSQL environments. NB. This can be used to run integration tests on external datastores if those datastores are explicitly specified.</li>
-<li><code>make pytest-integration-external</code> - runs only external integration tests.</li>
-<li><code>make pytest-integration-erasure</code> - runs erasure integration tests.</li>
-<li><code>make reset-db</code> - tears down the Fidesops postgres db, then recreates and re-runs migrations.</li>
-<li><code>make quickstart</code> - runs a quick, five minute quickstart that talks to the Fidesops API to execute privacy requests</li>
-<li><code>make check-migrations</code> - verifies there are no un-run migrations </li>
-<li><code>make docs-serve</code> - spins up just the docs, which you can visit at <code>http://0.0.0.0:8000/fidesops/</code></li>
-</ul>
-<p>See <a href="https://github.com/ethyca/fidesops/blob/main/Makefile">Makefile</a> for more options. </p>
-<h4 id="issues">Issues</h4>
-<ul>
-<li>
-<p>MSSQL: Known issues around connecting to MSSQL exist today for Apple M1 users. M1 users that wish to install <code>pyodbc</code> locally, please reference the workaround <a href="https://github.com/mkleehammer/pyodbc/issues/846">here</a>.</p>
-</li>
-<li>
-<p>Package not found: When running <code>make server</code>, if you get a <code>importlib.metadata.PackageNotFoundError: fidesops</code>, do <code>make server-shell</code>,
-and then run <code>pip install -e .</code>. Verify Fidesops is installed with <code>pip list</code>.</p>
-</li>
-</ul>
-<h2 id="write-your-code">Write your code</h2>
-<p>See the <a href="../contributing_details/">contributing details</a> guide to get familiar with writing and testing API endpoints, database models, and more. </p>
-<p>We want to help you ensure your code plays nicely with the rest of the Fidesops ecosystem. Many projects describe code style and documentation as a suggestion; in Fidesops it's a CI-checked requirement.</p>
-<ul>
-<li>To learn how to style your code, see the <a href="../code_style/">style guide</a>.</li>
-<li>To learn how to document your code, see the <a href="../documentation/">docs guide</a>.</li>
-<li>To learn how to test your code, see the <a href="../testing/">tests guide</a>.</li>
-<li>To learn what format your PR should follow, make sure to follow the <a href="../pull_requests/">pull request guidelines</a>.</li>
-</ul>
-<h2 id="submit-your-code">Submit your code</h2>
-<p>In order to submit code to Fidesops, please:</p>
-<ul>
-<li><a href="https://help.github.com/en/articles/fork-a-repo">Fork the Fidesops repository</a></li>
-<li>Add the original as a remote (I'm naming it <code>upstream</code>), to keep your fork in sync
-  <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git remote add upstream https://github.com/ethyca/fidesops.git
+<li>Create a ConnectionConfig of type <code>saas</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PATCH api/v1/connection
+
+[
+  {
+    &quot;name&quot;: &quot;SaaS Application&quot;,
+    &quot;key&quot;: {saas_key},
+    &quot;connection_type&quot;: &quot;saas&quot;,
+    &quot;access&quot;: &quot;read&quot;
+  }
+]
 </code></pre></div>
 </td></tr></table></li>
-<li><a href="https://help.github.com/en/desktop/contributing-to-projects/creating-a-branch-for-your-work">Create a new branch</a> on your fork
-  <code>bash
-    git checkout main 
-    git fetch upstream 
-    git merge upstream/main 
-    git push origin main 
-    git checkout -b my-new-branch
-    git push origin my-new-branch</code></li>
-<li><a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork">Open a Pull Request</a> once your work is ready for review</li>
-<li>Submit the pull request from <em>your</em> repo. Pull requests should be submitted with a clear description of the issue being handled, including links to any external specifications or Github issues. PRs should not be merged by the person submitting them, except in rare and urgent circumstances.</li>
-<li>Once automated tests have passed, a maintainer will review your PR and provide feedback on any changes it requires to be approved. Once approved, your PR will be merged into Fidesops.</li>
-</ul>
-<h2 id="congratulations">Congratulations</h2>
-<p>You're a Fidesops contributor - welcome to the team! 🎉</p>
+<li>Add a SaaS Config (in JSON format)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PATCH api/v1/connection/{saas_key}/saas_config
+
+{
+    &quot;fides_key&quot;: &quot;mailchimp_connector_example&quot;,
+    &quot;name&quot;: &quot;Mailchimp SaaS Config&quot;,
+    &quot;description&quot;: &quot;A sample schema representing the Mailchimp connector for Fidesops&quot;
+    ...
+</code></pre></div>
+</td></tr></table></li>
+<li>Configure the secrets. The SaaS config must already defined to provide validation for the secrets.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/{saas_key}/secret?verify=true
+
+{
+  &quot;domain&quot;: &quot;{mailchimp_domain}&quot;,
+  &quot;username&quot;: &quot;{mailchimp_username}&quot;,
+  &quot;api_key&quot;: &quot;{mailchimp_api_key}&quot;
+}
+</code></pre></div>
+</td></tr></table></li>
+<li>Add a Dataset (in JSON format)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>PUT api/v1/connection/{saas_key}/dataset
+[
+  {
+    &quot;fides_key&quot;:&quot;mailchimp_connector_example&quot;,
+    &quot;name&quot;:&quot;Mailchimp Dataset&quot;,
+    &quot;description&quot;:&quot;A sample dataset representing the Mailchimp connector for Fidesops&quot;,
+    &quot;collections&quot;:[
+      {
+        &quot;name&quot;:&quot;messages&quot;
+    ...
+</code></pre></div>
+</td></tr></table></li>
+</ol>
+<h2 id="additional-considerations">Additional considerations</h2>
+<p>These are constraints enforced by the API validation but it is important to keep these in mind.</p>
+<ol>
+<li>A SaaS connector dataset cannot have any <code>identities</code> or <code>references</code> in the <code>fidesops_meta</code>. These relationships must be defined in the SaaS config.</li>
+<li>SaaS config references can only have a direction of <code>from</code>.</li>
+<li>The <code>fides_key</code> between the SaaS config and the Dataset must match. This is how we associate the two pieces together.</li>
+</ol>
                 
               
               
@@ -1169,9 +1123,9 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
       
         
         <a
-          href="../../api/"
+          href="../datasets/"
           class="md-footer__link md-footer__link--prev"
-          aria-label="Previous: API"
+          aria-label="Previous: Configure Datasets"
           rel="prev"
         >
           <div class="md-footer__button md-icon">
@@ -1182,7 +1136,7 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
               <span class="md-footer__direction">
                 Previous
               </span>
-              API
+              Configure Datasets
             </div>
           </div>
         </a>
@@ -1192,9 +1146,9 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
       
         
         <a
-          href="../contributing_details/"
+          href="../saas_config/"
           class="md-footer__link md-footer__link--next"
-          aria-label="Next: Contributing Details"
+          aria-label="Next: SaaS Configuration"
           rel="next"
         >
           <div class="md-footer__title">
@@ -1202,7 +1156,7 @@ and then run <code>pip install -e .</code>. Verify Fidesops is installed with <c
               <span class="md-footer__direction">
                 Next
               </span>
-              Contributing Details
+              SaaS Configuration
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -156,6 +156,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ethyca.github.io/fidesops/guides/saas_config/</loc>
+         <lastmod>2022-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ethyca.github.io/fidesops/guides/saas_connectors/</loc>
+         <lastmod>2022-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ethyca.github.io/fidesops/guides/saas_postprocessors/</loc>
+         <lastmod>2022-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ethyca.github.io/fidesops/guides/storage/</loc>
          <lastmod>2022-03-04</lastmod>
          <changefreq>daily</changefreq>
