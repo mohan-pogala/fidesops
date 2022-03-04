@@ -1038,7 +1038,7 @@ we submit  a request to apply the <code>a-demo-policy</code> Policy to all targe
 <p><code>external_id</code> is an optional  identifier of your own invention that lets you track the Privacy Request. See <a href="../reporting/">How-To: Report on Privacy Requests</a> for more information.</p>
 </li>
 <li>
-<p><code>requested_at</code> is an ISO8601 timestamp that specifies the moment that the request was submitted.</p>
+<p><code>requested_at</code> (Optional) is an ISO8601 timestamp that specifies the moment that the request was submitted. Defaults to the <code>created_at</code> time if not specified.</p>
 </li>
 <li>
 <p><code>policy_key</code> identifies the Policy object to which this request will be applied. See <a href="../policies/">How-To: Configure Request Policies</a> for more information.</p>

@@ -2536,14 +2536,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "OAuth2ClientCredentialsBearer": [
-              "privacy-request:create"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/v1/privacy-request/{privacy_request_id}/log": {
@@ -5129,7 +5122,6 @@
       "PrivacyRequestCreate": {
         "title": "PrivacyRequestCreate",
         "required": [
-          "requested_at",
           "identity",
           "policy_key"
         ],
