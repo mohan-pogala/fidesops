@@ -930,7 +930,7 @@
                 <h1 id="query-execution">Query Execution</h1>
 <h2 id="graphs-and-traversals">Graphs and Traversals</h2>
 <p>Fidesops uses your Datasets to generate a <em>graph</em> of the resources. Based on the identity data you provide, Fidesops then generates a specific <em>traversal</em>, which is the order of steps that will be taken to fulfill a specific request. </p>
-<p>The graph supports both directed and non-directed edges using the optional <code>direction</code> parameter on the relation (non-directional edges may be traversed in either direction). You can preview the queries that will be generated or manually control the order of operations by making relations explicitly directional and with the and Collection parameters. If you specify a Collection that can't be reached, Fidesops generates an error.</p>
+<p>The graph supports both directed and non-directed edges using the optional <code>direction</code> parameter on the relation (non-directional edges may be traversed in either direction). You can preview the queries that will be generated or manually control the order of operations by making relations explicitly directional and with the <code>after</code> Collection parameters. If you specify a Collection that can't be reached, Fidesops generates an error.</p>
 <h2 id="an-example-graph">An example graph</h2>
 <p>In this example there are three databases: a mysql database that stores users and their comments, a postgres DB that stores purchase information, and a mongoDB that stores user accounts. Each of them may have related data that we'd like to retrieve.</p>
 <p><img alt="Example tables" src="../../img/traversal_tables.png" title="Example tables" /></p>

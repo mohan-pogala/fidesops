@@ -929,8 +929,8 @@
 <h2 id="creating-a-postgres-connectionconfig">Creating a Postgres ConnectionConfig</h2>
 <p>For more detailed information, <a href="../../guides/database_connectors/">see the Database Connectors Guide</a>.</p>
 <hr />
-<p>Next, we need to create a ConnectionConfig so fidesops can connect to our Flask App's  database.</p>
-<p>Let's add a method that hits the PUT <code>connection</code> endpoint, and creates a ConnectionConfig for a <code>postgres</code> database:</p>
+<p>Next, we need to create a ConnectionConfig so fidesops can connect to our Flask App's database.</p>
+<p>Let's add a method that hits the PATCH <code>connection</code> endpoint, and creates a ConnectionConfig for a <code>postgres</code> database:</p>
 <h3 id="define-helper-methods">Define helper methods</h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -950,11 +950,9 @@
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_postgres_connection</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_postgres_connection</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a connection in fidesops for our PostgreSQL database. Returns the response JSON if successful.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Connections-put_connections_api_v1_connection_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">connection_create_data</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -993,13 +991,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">configure_postgres_connection</span><span class="p">(</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">configure_postgres_connection</span><span class="p">(</span>
     <span class="n">key</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dbname</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">access_token</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Configure the connection with the given `key` in fidesops with our PostgreSQL database credentials. Returns the response JSON if successful.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Connections-put_connection_config_secrets_api_v1_connection__connection_key__secret_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">connection_secrets_data</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="n">host</span><span class="p">,</span>

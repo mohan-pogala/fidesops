@@ -954,11 +954,9 @@ to upload this to a Storage location like S3.  S3 would require a follow-up step
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_local_storage</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">create_local_storage</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a StorageConfig in fidesops to write to a local file. Returns the response JSON if successful.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Storage-put_config_api_v1_storage_config_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">storage_create_data</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">{</span>

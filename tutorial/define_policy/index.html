@@ -953,40 +953,10 @@ convenience (handy if you'll be running this script multiple times).</p>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
 <span class="k">def</span> <span class="nf">create_policy</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a request policy in fidesops with the given key.Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_policies_api_v1_policy_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">policy_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -1002,16 +972,39 @@ convenience (handy if you'll be running this script multiple times).</p>
     <span class="p">)</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating a Policy. Status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
- <span class="err">```</span>   
-<span class="err">```</span><span class="n">python</span>
-<span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
 <span class="k">def</span> <span class="nf">create_policy_rule</span><span class="p">(</span>
     <span class="n">policy_key</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">action_type</span><span class="p">,</span> <span class="n">storage_destination_key</span><span class="p">,</span> <span class="n">access_token</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a Policy Rule to return matched data in an access request to the given Storage destination.</span>
 <span class="sd">    Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_policies_api_v1_policy_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">rule_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -1051,13 +1044,11 @@ convenience (handy if you'll be running this script multiple times).</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
 <span class="k">def</span> <span class="nf">create_policy_rule_target</span><span class="p">(</span><span class="n">policy_key</span><span class="p">,</span> <span class="n">rule_key</span><span class="p">,</span> <span class="n">data_category</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a Policy Rule Target that matches the given data_category.</span>
 <span class="sd">    Returns the response JSON if successful, or throws an error otherwise.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Policy-create_or_update_rules_api_v1_policy__policy_key__rule_put</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">target_create_data</span> <span class="o">=</span> <span class="p">[</span>
@@ -1084,13 +1075,11 @@ convenience (handy if you'll be running this script multiple times).</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">...</span>
 <span class="k">def</span> <span class="nf">delete_policy_rule</span><span class="p">(</span><span class="n">policy_key</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">access_token</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes a Policy rule with the given key.</span>
 <span class="sd">    Returns the response JSON.</span>
-<span class="sd">    See http://localhost:8000/api#operations-Policy-delete_rule_api_v1_policy__policy_key__rule__rule_key__delete</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">FIDESOPS_URL</span><span class="si">}</span><span class="s2">/api/v1/policy/</span><span class="si">{</span><span class="n">policy_key</span><span class="si">}</span><span class="s2">/rule/</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -1146,13 +1135,11 @@ We also configure on the Rule that any results will be uploaded to our local Sto
 </td></tr></table>
 <p>If you look back at our annotated YAML <code>fides_resources/flaskr_postgres_dataset.yml</code>, we can see the relevant fields
 associated with this Data Category that we will expect in our final upload package:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>- `products` collection:  `description`,`name`, and `price` 
-- `user` collection: `email`, `first_name`, `last_name`, and `password`
-- `purchases` collection`: `city`, `state`, `street_1`, `street_2`, and `zip`
-</code></pre></div>
-</td></tr></table>
+<ul>
+<li><code>products</code> collection:  <code>description</code>,<code>name</code>, and <code>price</code> </li>
+<li><code>user</code> collection: <code>email</code>, <code>first_name</code>, <code>last_name</code>, and <code>password</code></li>
+<li><code>purchases</code> collection<code>:</code>city<code>,</code>state<code>,</code>street_1<code>,</code>street_2<code>, and</code>zip`</li>
+</ul>
                 
               
               
