@@ -1117,8 +1117,9 @@ PRIVACY_REQUEST_DETAIL = &quot;/privacy-request/{privacy_request_id}&quot;
 <h3 id="the-orm-sqlalchemy">The ORM -- SQLAlchemy</h3>
 <p>SQLAlchemy is an Object Relational Mapper, allowing us to avoid writing direct database queries within our codebase, and access the database via Python code instead. The ORM provides an additional configuration layer allowing user-defined Python classes to be mapped to database tables and other constructs, as well as an object persistence mechanism known as the <code>Session</code>. Some common uses cases are listed below, for a more comprehensive guide see: https://docs.sqlalchemy.org/en/14/tutorial/index.html</p>
 <h3 id="adding-models">Adding models</h3>
-<p>Database tables are defined with model classes. Model files should live in <code>src/app/models/</code>. Individual model classes must inherit from our custom base class at <code>app.db.base_class.Base</code> to ensure uniformity within the database. Multiple models per file are encouraged so long as they fit the same logical delineation within the project. An example model declaration is added below. For a comprehensive guide see: https://docs.sqlalchemy.org/en/14/orm/mapping_styles.html#declarative-mapping</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p>Database tables are defined with model classes. Model files should live in <code>src/app/models/</code>. Individual model classes must inherit from our custom base class at <code>app.db.base_class.Base</code> to ensure uniformity within the database. Multiple models per file are encouraged so long as they fit the same logical delineation within the project. An example model declaration is added below. For a comprehensive guide see: https://docs.sqlalchemy.org/en/14/orm/mapping_styles.html#declarative-mapping
+You should also import your model in src/fidesops/db/base.py so it is visible for alembic.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
