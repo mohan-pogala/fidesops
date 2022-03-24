@@ -1,0 +1,12 @@
+dataset:
+  - fides_key: heap_connector_example
+    name: Heap Dataset
+    description: A sample dataset representing the Heap connector for Fidesops
+    collections:
+      - name: user_deletion
+        fields:
+          - name: identity
+            data_categories: [user.derived.identifiable.unique_id]
+            fidesops_meta:
+              data_type: string
+         

@@ -1,0 +1,97 @@
+saas_config:
+  fides_key: heap_connector_example
+  name: Heap SaaS Config
+  description: A sample schema representing the Heap connector for Fidesops
+  version: 0.0.1
+
+  connector_params:
+    - name: domain
+    - name: app_id
+    - name: api_key
+
+  client_config:
+    protocol: https
+    host:
+      connector_param: domain
+    authentication:
+      strategy: basic_authentication
+      configuration:
+        username:
+          connector_param: app_id
+        password:
+          connector_param: api_key
+
+  test_request:
+    path: /api/public/<api_version>/auth_token
+    # TODO - custom authorization hasn't written at this time.
+    # TODO - Please refer to original YAML for furthe details   
+    request_params:
+      - name: api_version
+        type: path
+        default_value: v0
+# TODO - metaEndpoints hasn't written at this time.
+# TODO - Please refer to original YAML for further details
+
+  endpoints:
+  - name: user_deletion
+    requests:
+      delete:
+        path: /api/public/<api_version>/user_deletion
+        request_params:
+          - name: api_version
+            type: path
+            default_value: v0
+    # TODO - custom HTTP method hasn't written at this time.
+    # TODO - Please refer to original YAML for further details
+
+    # TODO - custom authorization hasn't written at this time.
+    # TODO - Please refer to original YAML for further details
+
+    # TODO - defaultData hasn't written at this time.
+    # TODO - Please refer to original YAML for further details
+    # defaultData is the input for delete operation
+  - name: conversations
+    requests:
+      read:
+        path: /3.0/conversations
+        request_params:
+          - name: count
+            type: query
+            default_value: 1000
+          - name: offset
+            type: query
+            default_value: 0
+          - name: placeholder
+            type: query
+            identity: email
+        data_path: conversations
+        pagination:
+          strategy: offset
+          configuration:
+            incremental_param: offset
+            increment_by: 1000
+            limit: 10000
+  - name: member
+    requests:
+      read:
+        path: /3.0/search-members
+        request_params:
+          - name: query
+            type: query
+            identity: email
+        data_path: exact_matches.members
+      update:
+        path: /3.0/lists/<list_id>/members/<subscriber_hash>
+        request_params:
+          - name: list_id
+            type: path
+            references:
+              - dataset: mailchimp_connector_example
+                field: member.list_id
+                direction: from
+          - name: subscriber_hash
+            type: path
+            references:
+              - dataset: mailchimp_connector_example
+                field: member.id
+                direction: from
