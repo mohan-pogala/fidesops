@@ -23,12 +23,12 @@ saas_config:
 
   test_request:
     path: /api/public/<api_version>/auth_token
+    method: POST
     # TODO - custom authorization hasn't written at this time.
     # TODO - Please refer to original YAML for furthe details   
-    request_params:
+    param_values:
       - name: api_version
-        type: path
-        default_value: v0
+        value: v0
 # TODO - metaEndpoints hasn't written at this time.
 # TODO - Please refer to original YAML for further details
 
@@ -37,12 +37,10 @@ saas_config:
     requests:
       delete:
         path: /api/public/<api_version>/user_deletion
-        request_params:
+        method: POST
+        param_values:
           - name: api_version
-            type: path
-            default_value: v0
-    # TODO - custom HTTP method hasn't written at this time.
-    # TODO - Please refer to original YAML for further details
+            value: v0
 
     # TODO - custom authorization hasn't written at this time.
     # TODO - Please refer to original YAML for further details
@@ -50,48 +48,3 @@ saas_config:
     # TODO - defaultData hasn't written at this time.
     # TODO - Please refer to original YAML for further details
     # defaultData is the input for delete operation
-  - name: conversations
-    requests:
-      read:
-        path: /3.0/conversations
-        request_params:
-          - name: count
-            type: query
-            default_value: 1000
-          - name: offset
-            type: query
-            default_value: 0
-          - name: placeholder
-            type: query
-            identity: email
-        data_path: conversations
-        pagination:
-          strategy: offset
-          configuration:
-            incremental_param: offset
-            increment_by: 1000
-            limit: 10000
-  - name: member
-    requests:
-      read:
-        path: /3.0/search-members
-        request_params:
-          - name: query
-            type: query
-            identity: email
-        data_path: exact_matches.members
-      update:
-        path: /3.0/lists/<list_id>/members/<subscriber_hash>
-        request_params:
-          - name: list_id
-            type: path
-            references:
-              - dataset: mailchimp_connector_example
-                field: member.list_id
-                direction: from
-          - name: subscriber_hash
-            type: path
-            references:
-              - dataset: mailchimp_connector_example
-                field: member.id
-                direction: from
