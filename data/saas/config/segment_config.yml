@@ -126,6 +126,7 @@ saas_config:
     requests:
       read:
         path: /<api_version>/spaces/<namespace_id>/collections/users/profiles/<segment_id>/external_ids
+        method: GET
         param_values:
           - name: api_version
             value: v1
